@@ -1,0 +1,80 @@
+{
+    "splash": {
+        "welcome": "Welcome to Application"
+    },
+    "onBoard": {
+        "page1": {
+            "title": "Page 1",
+            "desc": "Page 1 Description"
+        },
+        "page2": {
+            "title": "Page 2",
+            "desc": "Page 2 Description"
+        },
+        "page3": {
+            "title": "Page 3",
+            "desc": "Page 3 Description"
+        },
+        "page4": {
+            "title": "Page 4",
+            "desc": "Page 4 Description"
+        }
+    },
+
+    "login": {
+        "tab1": "Login",
+        "tab2": "SignUp",
+        "email": "Email",
+        "password": "Password",
+        "forgotText": "Forgot Password",
+        "login": "Login",
+        "dontAccount": "Don't have an account? ",
+        "alreadyAccount": "Already have an account? ",
+        "continueWithoutLogin": "Continue Without Login",
+        "terms": "Terms and Conditions",
+        "signup": "Sign Up",
+        "alert": {
+            "title": " Verify Your Account",
+            "desc": "Verification link has been sent to your email address",
+            "button": "Go Home"
+        }
+    },
+
+    "forgotpassword": {
+        "appbar": "Forgot Password",
+        "title": "Forgot Your Password?\n\n",
+        "desc": "Enter your email and we will send you a code to reset your password",
+        "email": "Email",
+        "hint": "Enter your email",
+        "send": "Send"
+    },
+    "confirmotp": {
+        "appbar": "Forgot Password",
+        "title": "Confirm the Code\n\n",
+        "desc": "Enter the 6 digits code to reset your password",
+        "receive": "Did'nt receive the code? ",
+        "resend": "Resend",
+        "confirm": "Confirm",
+        "expired": "Code expires after ",
+        "second": " seconds",
+        "alert": {
+            "title": " Transaction Successfull",
+            "desc": "Code resend successfully",
+            "button": "Okey"
+        }
+    },
+    "changepassword": {
+        "appbar": "Forgot Password",
+        "title": "Change Password\n\n",
+        "desc": "Enter your new password",
+        "password": "New Password",
+        "confirmpassword": "Confirm New Password",
+        "confirm": "Confirm",
+        "alert": {
+            "title": " Transaction Successfull",
+            "desc": "Your password successfully changed",
+            "button": "Go Home"
+        }
+    }
+
+}
