@@ -30,7 +30,7 @@ class IndicatorListView extends StatelessWidget {
     return CircleAvatar(
       radius: radiusValue(index, context),
       backgroundColor:
-          isCurrentIndex(index) ? context.colorSchemeLight.green : context.colorSchemeLight.orange,
+          isCurrentIndex(index) ? context.colorSchemeLight.blue : context.colorSchemeLight.black,
       child: animatedOpacity(index, context),
     );
   }

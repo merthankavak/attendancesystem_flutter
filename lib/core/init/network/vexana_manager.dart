@@ -1,8 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vexana/vexana.dart';
-
-import '../../constants/app/app_constants.dart';
 
 class VexanaManager {
   static VexanaManager? _instace;
@@ -13,7 +12,7 @@ class VexanaManager {
   }
 
   static const String _iosBaseUrl = 'https://localhost:3000/';
-  static const String _androidBaseUrl = ApplicationConstants.APP_API_SITE;
+  static final String _androidBaseUrl = dotenv.env['APP_API_SITE'].toString();
 
   VexanaManager._init();
 

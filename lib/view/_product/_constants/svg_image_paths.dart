@@ -1,3 +1,5 @@
+import '../../../core/extension/string_extension.dart';
+
 class SVGImagePaths {
   static SVGImagePaths? _instace;
   static SVGImagePaths get instance {
@@ -5,4 +7,6 @@ class SVGImagePaths {
   }
 
   SVGImagePaths._init();
+  final onBoard1SVG = 'onBoard1'.toSVG;
+  final loginSVG = 'login'.toSVG;
 }
