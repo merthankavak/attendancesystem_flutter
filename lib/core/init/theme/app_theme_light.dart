@@ -258,13 +258,16 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
   AppBarTheme get appBarTheme {
     return AppBarTheme(
       systemOverlayStyle: colorSchemeLight!.systemUiOverlayLight,
-      color: colorSchemeLight!.blue,
+      color: colorSchemeLight!.lightGray,
       backgroundColor: null,
       foregroundColor: null,
-      elevation: 10,
+      elevation: 0,
+      toolbarHeight: 85,
       shadowColor: colorSchemeLight!.black,
-      iconTheme: IconThemeData(color: colorSchemeLight!.white, size: 21),
-      actionsIconTheme: IconThemeData(color: colorSchemeLight!.white, size: 21),
+      iconTheme: IconThemeData(
+        color: colorSchemeLight!.black,
+      ),
+      actionsIconTheme: IconThemeData(color: colorSchemeLight!.black),
       centerTitle: true,
       toolbarTextStyle: textTheme.headline6,
       titleTextStyle: textTheme.headline6,

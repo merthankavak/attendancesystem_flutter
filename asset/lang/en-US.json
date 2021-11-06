@@ -22,8 +22,9 @@
     },
 
     "login": {
-        "tab1": "Login",
-        "tab2": "SignUp",
+        "tab1": "Teacher",
+        "tab2": "Student",
+        "name": "Full Name",
         "email": "Email",
         "password": "Password",
         "forgotText": "Forgot Password",
@@ -36,20 +37,21 @@
         "alert": {
             "title": " Verify Your Account",
             "desc": "Verification link has been sent to your email address",
-            "button": "Go Home"
+            "button": "Okay"
         }
     },
 
     "forgotpassword": {
-        "appbar": "Forgot Password",
+      
         "title": "Forgot Your Password?\n\n",
         "desc": "Enter your email and we will send you a code to reset your password",
         "email": "Email",
         "hint": "Enter your email",
+        "usertype": "Select your user type",
         "send": "Send"
     },
     "confirmotp": {
-        "appbar": "Forgot Password",
+       
         "title": "Confirm the Code\n\n",
         "desc": "Enter the 6 digits code to reset your password",
         "receive": "Did'nt receive the code? ",
@@ -60,11 +62,11 @@
         "alert": {
             "title": " Transaction Successfull",
             "desc": "Code resend successfully",
-            "button": "Okey"
+            "button": "Okay"
         }
     },
     "changepassword": {
-        "appbar": "Forgot Password",
+        
         "title": "Change Password\n\n",
         "desc": "Enter your new password",
         "password": "New Password",
@@ -73,7 +75,7 @@
         "alert": {
             "title": " Transaction Successfull",
             "desc": "Your password successfully changed",
-            "button": "Go Home"
+            "button": "Okay"
         }
     }
 

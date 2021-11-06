@@ -4,6 +4,9 @@ import '../constants/regex/regex_constants.dart';
 
 extension StringExtension on String {
   String get locale => this.tr();
+  String? get isValidName =>
+      contains(RegExp(RegexConstants.NAME_REGEX)) ? null : 'Name does not valid!';
+  bool get isValidNames => RegExp(RegexConstants.NAME_REGEX).hasMatch(this);
 
   String? get isValidEmail =>
       contains(RegExp(RegexConstants.EMAIL_REGEX)) ? null : 'Email does not valid!';

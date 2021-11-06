@@ -46,9 +46,8 @@ dependencies:
   shared_preferences: ^2.0.8
   json_serializable: ^6.0.1
   json_annotation: ^4.3.0
-  vexana: ^2.4.2
+  vexana: 2.2.1
   intl: ^0.17.0
-  pedantic: ^1.11.1
   mockito: ^5.0.16
   pin_code_fields: ^7.3.0
   timer_count_down: ^2.2.0
@@ -56,8 +55,12 @@ dependencies:
   lottie: ^1.2.1
   kartal: ^2.2.0
   webview_flutter: ^2.1.2
-  logger: ^1.1.0
   flutter_dotenv: ^5.0.2
+
+  pedantic: ^1.11.0
+
+
+
 
 dev_dependencies:
   flutter_test:

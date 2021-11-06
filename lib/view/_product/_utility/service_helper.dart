@@ -9,7 +9,7 @@ abstract class ServiceHelper {
     scaffoldKey.currentState!.showSnackBar(SnackBar(
         backgroundColor: Colors.black,
         content: Text(
-          errorModel.model!.toJson()!['message'] ?? errorModel.statusCode.toString(),
+          errorModel.model!.toJson()['message'] ?? errorModel.statusCode.toString(),
           style: TextStyle(color: Colors.white),
         )));
   }

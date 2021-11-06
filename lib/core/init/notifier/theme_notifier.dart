@@ -20,9 +20,9 @@ class ThemeNotifier extends ChangeNotifier {
 
   Future<void> loadTheme() async {
     var prefs = await SharedPreferences.getInstance();
-    var preferredTheme = await prefs.getBool(PreferencesKeys.THEME.toString()) ?? false;
-    _currentTheme = await preferredTheme ? ThemeData.dark() : AppThemeLight.instance.theme;
-    _currenThemeEnum = await preferredTheme ? AppThemes.DARK : AppThemes.LIGHT;
+    var preferredTheme = prefs.getBool(PreferencesKeys.THEME.toString()) ?? false;
+    _currentTheme = preferredTheme ? ThemeData.dark() : AppThemeLight.instance.theme;
+    _currenThemeEnum = preferredTheme ? AppThemes.DARK : AppThemes.LIGHT;
     notifyListeners();
   }
 

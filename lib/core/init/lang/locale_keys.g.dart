@@ -18,6 +18,7 @@ abstract class  LocaleKeys {
   static const onBoard = 'onBoard';
   static const login_tab1 = 'login.tab1';
   static const login_tab2 = 'login.tab2';
+  static const login_name = 'login.name';
   static const login_email = 'login.email';
   static const login_password = 'login.password';
   static const login_forgotText = 'login.forgotText';
@@ -32,14 +33,13 @@ abstract class  LocaleKeys {
   static const login_alert_button = 'login.alert.button';
   static const login_alert = 'login.alert';
   static const login = 'login';
-  static const forgotpassword_appbar = 'forgotpassword.appbar';
   static const forgotpassword_title = 'forgotpassword.title';
   static const forgotpassword_desc = 'forgotpassword.desc';
   static const forgotpassword_email = 'forgotpassword.email';
   static const forgotpassword_hint = 'forgotpassword.hint';
+  static const forgotpassword_usertype = 'forgotpassword.usertype';
   static const forgotpassword_send = 'forgotpassword.send';
   static const forgotpassword = 'forgotpassword';
-  static const confirmotp_appbar = 'confirmotp.appbar';
   static const confirmotp_title = 'confirmotp.title';
   static const confirmotp_desc = 'confirmotp.desc';
   static const confirmotp_receive = 'confirmotp.receive';
@@ -52,7 +52,6 @@ abstract class  LocaleKeys {
   static const confirmotp_alert_button = 'confirmotp.alert.button';
   static const confirmotp_alert = 'confirmotp.alert';
   static const confirmotp = 'confirmotp';
-  static const changepassword_appbar = 'changepassword.appbar';
   static const changepassword_title = 'changepassword.title';
   static const changepassword_desc = 'changepassword.desc';
   static const changepassword_password = 'changepassword.password';

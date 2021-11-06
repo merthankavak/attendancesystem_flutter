@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../view/authenticate/forgot_password/view/forgot_password_view.dart';
+import '../../../view/authenticate/forgot_password/view/subview/change_password_view.dart';
+import '../../../view/authenticate/forgot_password/view/subview/confirm_otp_view.dart';
+import '../../../view/authenticate/login/view/login_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -12,7 +16,17 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.LOGIN_VIEW:
-      //return normalNavigate(LoginView());
+        return normalNavigate(LoginView());
+      case NavigationConstants.FORGOT_PASSWORD_VIEW:
+        return normalNavigate(ForgotPasswordView(typeOfUser: args.arguments.toString()));
+      case NavigationConstants.CONFIRM_OTP_VIEW:
+        return normalNavigate(ConfirmOtpView(
+            email: args.arguments.toString().split(',')[0],
+            typeOfUser: args.arguments.toString().split(',')[1]));
+      case NavigationConstants.CHANGE_PASSWORD_VIEW:
+        return normalNavigate(ChangePasswordView(
+            otpCode: args.arguments.toString().split(',')[0],
+            typeOfUser: args.arguments.toString().split(',')[1]));
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),
