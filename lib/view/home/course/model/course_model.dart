@@ -20,8 +20,9 @@ class CourseModel extends INetworkModel<CourseModel> {
   final String? createdAt;
   final String? updatedAt;
 
-  CourseModel(this.id,
-      {this.teacher,
+  CourseModel(
+      {this.id,
+      this.teacher,
       this.courseShortName,
       this.courseName,
       this.students,

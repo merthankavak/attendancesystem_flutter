@@ -4,6 +4,7 @@ import '../../../view/authenticate/forgot_password/view/forgot_password_view.dar
 import '../../../view/authenticate/forgot_password/view/subview/change_password_view.dart';
 import '../../../view/authenticate/forgot_password/view/subview/confirm_otp_view.dart';
 import '../../../view/authenticate/login/view/login_view.dart';
+import '../../../view/home/course/view/course_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -27,6 +28,8 @@ class NavigationRoute {
         return normalNavigate(ChangePasswordView(
             otpCode: args.arguments.toString().split(',')[0],
             typeOfUser: args.arguments.toString().split(',')[1]));
+      case NavigationConstants.COURSE_VIEW:
+        return normalNavigate(CourseView(typeOfUser: args.arguments.toString()));
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),

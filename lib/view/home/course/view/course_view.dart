@@ -4,7 +4,8 @@ import '../../../../core/base/view/base_view.dart';
 import '../viewmodel/course_view_model.dart';
 
 class CourseView extends StatelessWidget {
-  const CourseView({Key? key}) : super(key: key);
+  final String typeOfUser;
+  const CourseView({Key? key, required this.typeOfUser}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

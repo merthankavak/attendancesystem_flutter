@@ -7,7 +7,7 @@ part of 'course_model.dart';
 // **************************************************************************
 
 CourseModel _$CourseModelFromJson(Map<String, dynamic> json) => CourseModel(
-      json['_id'] as String?,
+      id: json['_id'] as String?,
       teacher: json['teacher'] == null
           ? null
           : TeacherModel.fromJson(json['teacher'] as Map<String, dynamic>),

@@ -81,7 +81,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
           await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token!);
           await localeManager.setStringValue(PreferencesKeys.ID, response.user!.id!);
           await localeManager.setStringValue(PreferencesKeys.EMAIL, response.user!.email!);
-          //await navigation.navigateToPage(path: NavigationConstants.HOME);
+          await navigation.navigateToPage(path: NavigationConstants.COURSE_VIEW, data: typeOfUser);
         }
       }
     }
@@ -116,13 +116,6 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
         }
       }
     }
-    isLoadingChange();
-  }
-
-  @action
-  Future<void> navigateToHome() async {
-    isLoadingChange();
-    //await navigation.navigateToPage(path: NavigationConstants.HOME);
     isLoadingChange();
   }
 

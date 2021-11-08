@@ -6,4 +6,5 @@ class NavigationConstants {
   static const CONFIRM_OTP_VIEW = '/confirmotpview';
   static const CHANGE_PASSWORD_VIEW = '/changepasswordview';
   static const SETTINGS_WEB_VIEW = '/terms';
+  static const COURSE_VIEW = '/courseview';
 }

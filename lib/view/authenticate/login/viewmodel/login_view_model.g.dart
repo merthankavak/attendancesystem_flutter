@@ -72,14 +72,6 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
         .run(() => super.fetchRegisterService(context, typeOfUser));
   }
 
-  final _$navigateToHomeAsyncAction =
-      AsyncAction('_LoginViewModelBase.navigateToHome');
-
-  @override
-  Future<void> navigateToHome() {
-    return _$navigateToHomeAsyncAction.run(() => super.navigateToHome());
-  }
-
   final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase');
 

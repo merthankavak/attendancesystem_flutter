@@ -12,18 +12,21 @@ abstract class ICourseService {
   ICourseService(this.manager, this.scaffoldyKey);
 
   //Teacher Course Control
-  Future<CourseModel?> addCourseControl(TeacherModel teacherModel, CourseModel courseModel);
+  Future<CourseModel?> addCourseControl(
+      TeacherModel teacherModel, CourseModel courseModel, String token);
   Future<CourseModel?> addCourseScheduleControl(
-      String courseStartDate, String courseEndDate, String courseTime);
-  Future<CourseModel?> updateCourseControl(CourseModel courseModel);
-  Future<CourseModel?> deleteCourseControl(CourseModel courseModel);
-  Future<CourseModel?> getOneCourseTeacherControl(CourseModel courseModel);
-  Future<CourseModel?> getCourseListControl(TeacherModel teacherModel);
+      String id, String courseStartDate, String courseEndDate, String courseTime, String token);
+  Future<CourseModel?> updateCourseControl(CourseModel courseModel, String token);
+  Future<CourseModel?> deleteCourseControl(CourseModel courseModel, String token);
+  Future<CourseModel?> getOneCourseTeacherControl(CourseModel courseModel, String token);
+  Future<CourseModel?> getCourseListTeacherControl(TeacherModel teacherModel, String token);
 
   //Student Course Control
-  Future<CourseModel?> joinCourseControl(StudentModel studentModel, CourseModel courseModel);
-  Future<CourseModel?> leaveCourseControl(StudentModel studentModel, CourseModel courseModel);
+  Future<CourseModel?> joinCourseControl(
+      StudentModel studentModel, CourseModel courseModel, String token);
+  Future<CourseModel?> leaveCourseControl(
+      StudentModel studentModel, CourseModel courseModel, String token);
   Future<CourseModel?> getOneCourseStudentControl(
-      StudentModel studentModel, CourseModel courseModel);
-  Future<CourseModel?> getCourseListStudentControl(StudentModel studentModel);
+      StudentModel studentModel, CourseModel courseModel, String token);
+  Future<CourseModel?> getCourseListStudentControl(StudentModel studentModel, String token);
 }
