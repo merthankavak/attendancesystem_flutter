@@ -7,4 +7,5 @@ class NavigationConstants {
   static const CHANGE_PASSWORD_VIEW = '/changepasswordview';
   static const SETTINGS_WEB_VIEW = '/terms';
   static const COURSE_VIEW = '/courseview';
+  static const COURSE_DETAIL_VIEW = 'coursedetailview';
 }

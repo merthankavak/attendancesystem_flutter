@@ -6,9 +6,8 @@ import 'package:vexana/vexana.dart';
 
 import '../../../_product/_enum/network_route_enum.dart';
 import '../../../_product/_utility/service_helper.dart';
-import '../../courses/model/submodel/students/student_model.dart';
-import '../model/course_model.dart';
-import '../model/submodel/teacher/teacher_model.dart';
+import '../model/submodel/course/course_model.dart';
+import '../model/submodel/courselist_model.dart';
 import 'ICourseService.dart';
 
 class CourseService extends ICourseService with ServiceHelper {
@@ -17,7 +16,7 @@ class CourseService extends ICourseService with ServiceHelper {
 
   @override
   Future<CourseModel?> addCourseControl(
-      TeacherModel teacherModel, CourseModel courseModel, String token) async {
+      String teacherId, CourseModel courseModel, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
       urlSuffix: '/course/addcourse',
@@ -69,10 +68,10 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> deleteCourseControl(CourseModel courseModel, String token) async {
+  Future<CourseModel?> deleteCourseControl(String id, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: '/course/deletecourse/' + courseModel.id!,
+      urlSuffix: '/course/deletecourse/' + id,
       parseModel: CourseModel(),
       method: RequestType.DELETE,
       options: Options(headers: {
@@ -86,10 +85,10 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getOneCourseTeacherControl(CourseModel courseModel, String token) async {
+  Future<CourseModel?> getOneCourseTeacherControl(String id, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: '/course/' + courseModel.id!,
+      urlSuffix: '/course/' + id,
       parseModel: CourseModel(),
       method: RequestType.GET,
       options: Options(headers: {
@@ -102,11 +101,11 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getCourseListTeacherControl(TeacherModel teacherModel, String token) async {
-    final response = await manager.send<CourseModel, CourseModel>(
+  Future<CourseListModel?> getCourseListTeacherControl(String teacherId, String token) async {
+    final response = await manager.send<CourseListModel, CourseListModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: '/course/list/' + teacherModel.id!,
-      parseModel: CourseModel(),
+      urlSuffix: '/course/list/' + teacherId,
+      parseModel: CourseListModel(),
       method: RequestType.GET,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
@@ -119,11 +118,11 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getCourseListStudentControl(StudentModel studentModel, String token) async {
-    final response = await manager.send<CourseModel, CourseModel>(
+  Future<CourseListModel?> getCourseListStudentControl(String studentId, String token) async {
+    final response = await manager.send<CourseListModel, CourseListModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: '/course/list/' + studentModel.id!,
-      parseModel: CourseModel(),
+      urlSuffix: '/course/list/' + studentId,
+      parseModel: CourseListModel(),
       method: RequestType.GET,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
@@ -136,11 +135,10 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getOneCourseStudentControl(
-      StudentModel studentModel, CourseModel courseModel, String token) async {
+  Future<CourseModel?> getOneCourseStudentControl(String studentId, String id, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: '/course/' + courseModel.id!,
+      urlSuffix: '/course/' + id,
       parseModel: CourseModel(),
       method: RequestType.GET,
       options: Options(headers: {
@@ -155,7 +153,7 @@ class CourseService extends ICourseService with ServiceHelper {
 
   @override
   Future<CourseModel?> joinCourseControl(
-      StudentModel studentModel, CourseModel courseModel, String token) async {
+      String studentId, CourseModel courseModel, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.STUDENT.rawValue,
       urlSuffix: '/course/joincourse',
@@ -172,11 +170,10 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> leaveCourseControl(
-      StudentModel studentModel, CourseModel courseModel, String token) async {
+  Future<CourseModel?> leaveCourseControl(String id, String courseId, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: '/course/leave/' + studentModel.id!,
+      urlSuffix: '/course/leave/' + id,
       parseModel: CourseModel(),
       method: RequestType.DELETE,
       options: Options(headers: {

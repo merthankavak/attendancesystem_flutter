@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
-import 'submodel/attendance/attendance_model.dart';
-import 'submodel/students/student_model.dart';
-import 'submodel/teacher/teacher_model.dart';
+import '../attendance/attendance_model.dart';
+import '../students/student_model.dart';
+import '../teacher/teacher_model.dart';
 
 part 'course_model.g.dart';
 
