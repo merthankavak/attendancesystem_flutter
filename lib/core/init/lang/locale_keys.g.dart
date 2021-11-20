@@ -62,5 +62,30 @@ abstract class  LocaleKeys {
   static const changepassword_alert_button = 'changepassword.alert.button';
   static const changepassword_alert = 'changepassword.alert';
   static const changepassword = 'changepassword';
+  static const course_title = 'course.title';
+  static const course_student_student = 'course.student.student';
+  static const course_student_title = 'course.student.title';
+  static const course_student_tooltip = 'course.student.tooltip';
+  static const course_student_desc_title = 'course.student.desc.title';
+  static const course_student_desc_desc1 = 'course.student.desc.desc1';
+  static const course_student_desc_desc2 = 'course.student.desc.desc2';
+  static const course_student_desc = 'course.student.desc';
+  static const course_student_button = 'course.student.button';
+  static const course_student_hint = 'course.student.hint';
+  static const course_student_unenroll = 'course.student.unenroll';
+  static const course_student = 'course.student';
+  static const course_teacher_teacher = 'course.teacher.teacher';
+  static const course_teacher_title = 'course.teacher.title';
+  static const course_teacher_tooltip = 'course.teacher.tooltip';
+  static const course_teacher_desc_title = 'course.teacher.desc.title';
+  static const course_teacher_desc_desc1 = 'course.teacher.desc.desc1';
+  static const course_teacher_desc = 'course.teacher.desc';
+  static const course_teacher_button = 'course.teacher.button';
+  static const course_teacher_coursenNameHint = 'course.teacher.coursenNameHint';
+  static const course_teacher_coursenShortNameHint = 'course.teacher.coursenShortNameHint';
+  static const course_teacher_delete = 'course.teacher.delete';
+  static const course_teacher_share = 'course.teacher.share';
+  static const course_teacher = 'course.teacher';
+  static const course = 'course';
 
 }

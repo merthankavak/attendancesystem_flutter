@@ -20,6 +20,10 @@ extension StringExtension on String {
   String? get isValidOtp =>
       contains(RegExp(RegexConstants.OTP_REGEX)) ? null : 'Code does not valid!';
   bool get isValidOtps => RegExp(RegexConstants.OTP_REGEX).hasMatch(this);
+
+  String? get isValidCourseCode =>
+      contains(RegExp(RegexConstants.COURSE_CODE_REGEX)) ? null : 'Course code does not valid!';
+  bool get isValidCourseCodes => RegExp(RegexConstants.COURSE_CODE_REGEX).hasMatch(this);
 }
 
 extension ImagePathExtension on String {

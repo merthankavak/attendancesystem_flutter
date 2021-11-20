@@ -638,7 +638,7 @@ packages:
     source: hosted
     version: "3.1.1"
   share:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: share
       url: "https://pub.dartlang.org"

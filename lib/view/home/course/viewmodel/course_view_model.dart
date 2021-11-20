@@ -36,6 +36,9 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   @observable
   CourseModel? courseModel;
 
+  @computed
+  List<CourseModel>? get courseList => courseListModel?.courseList;
+
   @observable
   bool isLoading = false;
 
@@ -68,9 +71,12 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   @action
   Future<void> getCoursesList(String typeOfUser) async {
     _changeLoading();
-    typeOfUser == 'student'
-        ? courseListModel = await courseService.getCourseListStudentControl(id!, token!)
-        : await courseService.getCourseListTeacherControl(id!, token!);
+    if (typeOfUser == 'student') {
+      courseListModel = await courseService.getCourseListStudentControl(id!, token!);
+    }
+    if (typeOfUser == 'teacher') {
+      courseListModel = await courseService.getCourseListTeacherControl(id!, token!);
+    }
     _changeLoading();
   }
 
@@ -97,6 +103,9 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   @action
   Future<void> deleteCourse(String courseId, String typeOfUser) async {
     _changeLoading();
+    if (navigation.navigatorKey.currentState!.canPop()) {
+      navigation.navigatorKey.currentState!.pop();
+    }
     final response = await courseService.deleteCourseControl(courseId, token!);
     if (response != null) {
       await navigation.navigateToPageClear(path: NavigationConstants.COURSE_VIEW, data: typeOfUser);
@@ -107,6 +116,9 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   @action
   Future<void> leaveCourse(String courseId, String typeOfUser) async {
     _changeLoading();
+    if (navigation.navigatorKey.currentState!.canPop()) {
+      navigation.navigatorKey.currentState!.pop();
+    }
     final response = await courseService.leaveCourseControl(id!, courseId, token!);
     if (response != null) {
       await navigation.navigateToPageClear(path: NavigationConstants.COURSE_VIEW, data: typeOfUser);
@@ -151,6 +163,9 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     _changeLoading();
     if (typeOfUser == 'student') {
       if (floatingActionFormStudent.currentState!.validate()) {
+        if (navigation.navigatorKey.currentState!.canPop()) {
+          navigation.navigatorKey.currentState!.pop();
+        }
         final response = await courseService.joinCourseControl(
             id!, CourseModel(courseCode: courseCodeController!.text), token!);
         if (response != null) {
@@ -158,8 +173,12 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
               path: NavigationConstants.COURSE_VIEW, data: typeOfUser);
         }
       }
-    } else {
+    }
+    if (typeOfUser == 'teacher') {
       if (floatingActionFormTeacher.currentState!.validate()) {
+        if (navigation.navigatorKey.currentState!.canPop()) {
+          navigation.navigatorKey.currentState!.pop();
+        }
         final response = await courseService.addCourseControl(
             id!,
             CourseModel(
@@ -172,5 +191,6 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
         }
       }
     }
+    _changeLoading();
   }
 }

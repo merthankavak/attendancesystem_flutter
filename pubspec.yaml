@@ -56,7 +56,7 @@ dependencies:
   kartal: ^2.2.0
   webview_flutter: ^2.1.2
   flutter_dotenv: ^5.0.2
-
+  share: ^2.0.4
   pedantic: ^1.11.0
 
 

@@ -22,6 +22,11 @@ class CourseService extends ICourseService with ServiceHelper {
       urlSuffix: '/course/addcourse',
       parseModel: CourseModel(),
       method: RequestType.POST,
+      data: {
+        'teacherId': teacherId,
+        'courseShortName': courseModel.courseShortName,
+        'courseName': courseModel.courseName
+      },
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -159,6 +164,7 @@ class CourseService extends ICourseService with ServiceHelper {
       urlSuffix: '/course/joincourse',
       parseModel: CourseModel(),
       method: RequestType.POST,
+      data: {'studentId': studentId, 'courseCode': courseModel.courseCode},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -176,6 +182,7 @@ class CourseService extends ICourseService with ServiceHelper {
       urlSuffix: '/course/leave/' + id,
       parseModel: CourseModel(),
       method: RequestType.DELETE,
+      data: {'courseId': courseId},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'

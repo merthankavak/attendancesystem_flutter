@@ -269,8 +269,8 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
       ),
       actionsIconTheme: IconThemeData(color: colorSchemeLight!.black),
       centerTitle: true,
-      toolbarTextStyle: textTheme.headline6,
-      titleTextStyle: textTheme.headline6,
+      toolbarTextStyle: textTheme.headline6!.copyWith(color: colorSchemeLight!.black),
+      titleTextStyle: textTheme.headline6!.copyWith(color: colorSchemeLight!.black),
     );
   }
 

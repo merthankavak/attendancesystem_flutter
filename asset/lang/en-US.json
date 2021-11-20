@@ -42,7 +42,7 @@
     },
 
     "forgotpassword": {
-      
+
         "title": "Forgot Your Password?\n\n",
         "desc": "Enter your email and we will send you a code to reset your password",
         "email": "Email",
@@ -51,7 +51,7 @@
         "send": "Send"
     },
     "confirmotp": {
-       
+
         "title": "Confirm the Code\n\n",
         "desc": "Enter the 6 digits code to reset your password",
         "receive": "Did'nt receive the code? ",
@@ -66,7 +66,7 @@
         }
     },
     "changepassword": {
-        
+
         "title": "Change Password\n\n",
         "desc": "Enter your new password",
         "password": "New Password",
@@ -76,6 +76,38 @@
             "title": " Transaction Successfull",
             "desc": "Your password successfully changed",
             "button": "Okay"
+        }
+    },
+
+    "course": {
+        "title": "Attendance System",
+        "student": {
+            "student": "Student",
+            "title": "Join Course\n\n",
+            "tooltip": "Join Course",
+            "desc": {
+                "title": "To sign in with a course code",
+                "desc1": "• Ask your teacher for the course code, then enter it here\n",
+                "desc2": "• Use a course code with 6 letters or numbers, and no spaces or symbols\n"
+            },
+            "button": "Join",
+            "hint": "Enter the course code",
+            "unenroll": "Unenroll"
+        },
+        "teacher": {
+            "teacher": "Teacher",
+            "title": "Create Course\n\n",
+            "tooltip": "Create Course",
+            "desc": {
+                "title": "To create course",
+                "desc1": "• Enter the course details\n"
+            },
+            "button": "Create",
+            "coursenNameHint": "Enter the course name",
+            "coursenShortNameHint": "Enter the course short name",
+            "delete": "Delete Course",
+            "share": "Share Course Code"
+
         }
     }
 
