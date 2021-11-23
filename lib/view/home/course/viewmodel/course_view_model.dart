@@ -18,23 +18,19 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   @override
   void setContext(BuildContext context) => this.context = context;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
   GlobalKey<FormState> floatingActionFormStudent = GlobalKey();
   GlobalKey<FormState> floatingActionFormTeacher = GlobalKey();
 
   TextEditingController? courseCodeController;
   TextEditingController? courseShortNameController;
   TextEditingController? courseNameController;
-  TextEditingController? courseStartDateController;
-  TextEditingController? courseEndDateController;
-  TextEditingController? courseTimeController;
+
   late DecorationHelper helper;
   late ICourseService courseService;
 
   @observable
   CourseListModel? courseListModel;
-
-  @observable
-  CourseModel? courseModel;
 
   @computed
   List<CourseModel>? get courseList => courseListModel?.courseList;
@@ -52,9 +48,6 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     courseCodeController = TextEditingController();
     courseShortNameController = TextEditingController();
     courseNameController = TextEditingController();
-    courseStartDateController = TextEditingController();
-    courseEndDateController = TextEditingController();
-    courseTimeController = TextEditingController();
     getPrefs();
   }
 
@@ -68,6 +61,13 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     id = localeManager.getStringValue(PreferencesKeys.ID);
   }
 
+  void sendCourseDetailView(String typeOfUser, String courseId) async {
+    _changeLoading();
+    await navigation.navigateToPage(
+        path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+    _changeLoading();
+  }
+
   @action
   Future<void> getCoursesList(String typeOfUser) async {
     _changeLoading();
@@ -77,26 +77,6 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     if (typeOfUser == 'teacher') {
       courseListModel = await courseService.getCourseListTeacherControl(id!, token!);
     }
-    _changeLoading();
-  }
-
-  @action
-  Future<void> getCourseDetail(String typeOfUser, String courseId) async {
-    _changeLoading();
-    if (typeOfUser == 'student') {
-      courseModel = await courseService.getOneCourseStudentControl(id!, courseId, token!);
-      if (courseModel != null) {
-        await navigation.navigateToPageClear(
-            path: NavigationConstants.COURSE_DETAIL_VIEW, data: [typeOfUser, courseId]);
-      }
-    } else {
-      courseModel = await courseService.getOneCourseTeacherControl(courseId, token!);
-      if (courseModel != null) {
-        await navigation.navigateToPageClear(
-            path: NavigationConstants.COURSE_DETAIL_VIEW, data: [typeOfUser, courseId]);
-      }
-    }
-
     _changeLoading();
   }
 
@@ -122,38 +102,6 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     final response = await courseService.leaveCourseControl(id!, courseId, token!);
     if (response != null) {
       await navigation.navigateToPageClear(path: NavigationConstants.COURSE_VIEW, data: typeOfUser);
-    }
-    _changeLoading();
-  }
-
-  @action
-  Future<void> updateCourse(String courseId, String typeOfUser) async {
-    _changeLoading();
-    final response = await courseService.updateCourseControl(
-        CourseModel(
-            courseName: courseNameController!.text,
-            courseShortName: courseShortNameController!.text),
-        token!);
-    if (response != null) {
-      await navigation.navigateToPageClear(
-          path: NavigationConstants.COURSE_DETAIL_VIEW, data: [typeOfUser, courseId]);
-    }
-    _changeLoading();
-  }
-
-  @action
-  Future<void> addCourseSchedule(String courseId, String typeOfUser) async {
-    _changeLoading();
-    final response = await courseService.addCourseScheduleControl(
-        courseId,
-        courseStartDateController!.text,
-        courseEndDateController!.text,
-        courseTimeController!.text,
-        token!);
-
-    if (response != null) {
-      await navigation.navigateToPageClear(
-          path: NavigationConstants.COURSE_DETAIL_VIEW, data: [typeOfUser, courseId]);
     }
     _changeLoading();
   }

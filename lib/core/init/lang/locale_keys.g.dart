@@ -63,6 +63,13 @@ abstract class  LocaleKeys {
   static const changepassword_alert = 'changepassword.alert';
   static const changepassword = 'changepassword';
   static const course_title = 'course.title';
+  static const course_detail_bottombar_first = 'course.detail.bottombar.first';
+  static const course_detail_bottombar_sec = 'course.detail.bottombar.sec';
+  static const course_detail_bottombar_third = 'course.detail.bottombar.third';
+  static const course_detail_bottombar = 'course.detail.bottombar';
+  static const course_detail_time = 'course.detail.time';
+  static const course_detail_code = 'course.detail.code';
+  static const course_detail = 'course.detail';
   static const course_student_student = 'course.student.student';
   static const course_student_title = 'course.student.title';
   static const course_student_tooltip = 'course.student.tooltip';
@@ -85,6 +92,14 @@ abstract class  LocaleKeys {
   static const course_teacher_coursenShortNameHint = 'course.teacher.coursenShortNameHint';
   static const course_teacher_delete = 'course.teacher.delete';
   static const course_teacher_share = 'course.teacher.share';
+  static const course_teacher_settings_title = 'course.teacher.settings.title';
+  static const course_teacher_settings_coursenNameHint = 'course.teacher.settings.coursenNameHint';
+  static const course_teacher_settings_coursenShortNameHint = 'course.teacher.settings.coursenShortNameHint';
+  static const course_teacher_settings_courseStartDate = 'course.teacher.settings.courseStartDate';
+  static const course_teacher_settings_courseEndDate = 'course.teacher.settings.courseEndDate';
+  static const course_teacher_settings_courseTime = 'course.teacher.settings.courseTime';
+  static const course_teacher_settings_button = 'course.teacher.settings.button';
+  static const course_teacher_settings = 'course.teacher.settings';
   static const course_teacher = 'course.teacher';
   static const course = 'course';
 

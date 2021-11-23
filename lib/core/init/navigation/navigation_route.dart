@@ -5,6 +5,7 @@ import '../../../view/authenticate/forgot_password/view/subview/change_password_
 import '../../../view/authenticate/forgot_password/view/subview/confirm_otp_view.dart';
 import '../../../view/authenticate/login/view/login_view.dart';
 import '../../../view/home/course/view/course_view.dart';
+import '../../../view/home/course/view/subview/course_detail_settings_view.dart';
 import '../../../view/home/course/view/subview/course_detail_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
@@ -33,6 +34,10 @@ class NavigationRoute {
         return normalNavigate(CourseView(typeOfUser: args.arguments.toString()));
       case NavigationConstants.COURSE_DETAIL_VIEW:
         return normalNavigate(CourseDetailView(
+            typeOfUser: args.arguments.toString().split(',')[0],
+            courseId: args.arguments.toString().split(',')[1]));
+      case NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW:
+        return normalNavigate(CourseDetailSettingsView(
             typeOfUser: args.arguments.toString().split(',')[0],
             courseId: args.arguments.toString().split(',')[1]));
       default:

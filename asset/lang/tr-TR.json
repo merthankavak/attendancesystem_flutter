@@ -80,6 +80,15 @@
     },
     "course": {
         "title": "Attendance System",
+        "detail": {
+            "bottombar": {
+                "first": "Home",
+                "sec": "Students",
+                "third": "Attendance"
+            },
+            "time": "Time",
+            "code": "Course Code"
+        },
         "student": {
             "student": "Student",
             "title": "Join Course\n\n",
@@ -105,7 +114,16 @@
             "coursenNameHint": "Enter the course name",
             "coursenShortNameHint": "Enter the course short name",
             "delete": "Delete Course",
-            "share": "Share Course Code"
+            "share": "Share Course Code",
+            "settings": {
+                "title": "Course Settings",
+                "coursenNameHint": "Update the course name",
+                "coursenShortNameHint": "Update the course short name",
+                "courseStartDate": "Select the course start date",
+                "courseEndDate": "Select the course end date",
+                "courseTime": "Select the course time",
+                "button": "Update"
+            }
 
         }
     }

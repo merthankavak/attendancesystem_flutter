@@ -24,6 +24,10 @@ extension StringExtension on String {
   String? get isValidCourseCode =>
       contains(RegExp(RegexConstants.COURSE_CODE_REGEX)) ? null : 'Course code does not valid!';
   bool get isValidCourseCodes => RegExp(RegexConstants.COURSE_CODE_REGEX).hasMatch(this);
+
+  String? get isValidCourseDate =>
+      contains(RegExp(RegexConstants.COURSE_DATE_REGEX)) ? null : 'Course date does not valid!';
+  bool get isValidCourseDates => RegExp(RegexConstants.COURSE_DATE_REGEX).hasMatch(this);
 }
 
 extension ImagePathExtension on String {

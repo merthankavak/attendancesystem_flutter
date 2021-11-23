@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
+import '../image/student_image_model.dart';
+
 part 'student_model.g.dart';
 
 @JsonSerializable()
@@ -10,9 +12,16 @@ class StudentModel extends INetworkModel<StudentModel> {
   final String? stdId;
   final String? email;
   final String? fullName;
+  final StudentImageModel? studentImageModel;
   final bool? attendanceStatus;
 
-  StudentModel({this.id, this.stdId, this.email, this.fullName, this.attendanceStatus});
+  StudentModel(
+      {this.id,
+      this.stdId,
+      this.email,
+      this.fullName,
+      this.studentImageModel,
+      this.attendanceStatus});
 
   @override
   StudentModel fromJson(Map<String, dynamic> json) {

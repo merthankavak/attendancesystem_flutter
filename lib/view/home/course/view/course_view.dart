@@ -12,6 +12,7 @@ import '../viewmodel/course_view_model.dart';
 
 class CourseView extends StatelessWidget {
   final String typeOfUser;
+
   const CourseView({Key? key, required this.typeOfUser}) : super(key: key);
 
   @override
@@ -59,11 +60,10 @@ class CourseView extends StatelessWidget {
   Observer buildObserverCard(CourseViewModel viewModel, int index) {
     return Observer(builder: (_) {
       return CourseListCard(
-        courseViewModel: viewModel,
-        courseList: viewModel.courseList!,
-        itemIndex: index,
-        typeOfUser: typeOfUser,
-      );
+          courseViewModel: viewModel,
+          courseList: viewModel.courseList!,
+          itemIndex: index,
+          typeOfUser: typeOfUser);
     });
   }
 

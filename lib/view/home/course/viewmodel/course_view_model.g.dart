@@ -33,21 +33,6 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
     });
   }
 
-  final _$courseModelAtom = Atom(name: '_CourseViewModelBase.courseModel');
-
-  @override
-  CourseModel? get courseModel {
-    _$courseModelAtom.reportRead();
-    return super.courseModel;
-  }
-
-  @override
-  set courseModel(CourseModel? value) {
-    _$courseModelAtom.reportWrite(value, super.courseModel, () {
-      super.courseModel = value;
-    });
-  }
-
   final _$isLoadingAtom = Atom(name: '_CourseViewModelBase.isLoading');
 
   @override
@@ -72,15 +57,6 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.getCoursesList(typeOfUser));
   }
 
-  final _$getCourseDetailAsyncAction =
-      AsyncAction('_CourseViewModelBase.getCourseDetail');
-
-  @override
-  Future<void> getCourseDetail(String typeOfUser, String courseId) {
-    return _$getCourseDetailAsyncAction
-        .run(() => super.getCourseDetail(typeOfUser, courseId));
-  }
-
   final _$deleteCourseAsyncAction =
       AsyncAction('_CourseViewModelBase.deleteCourse');
 
@@ -97,24 +73,6 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
   Future<void> leaveCourse(String courseId, String typeOfUser) {
     return _$leaveCourseAsyncAction
         .run(() => super.leaveCourse(courseId, typeOfUser));
-  }
-
-  final _$updateCourseAsyncAction =
-      AsyncAction('_CourseViewModelBase.updateCourse');
-
-  @override
-  Future<void> updateCourse(String courseId, String typeOfUser) {
-    return _$updateCourseAsyncAction
-        .run(() => super.updateCourse(courseId, typeOfUser));
-  }
-
-  final _$addCourseScheduleAsyncAction =
-      AsyncAction('_CourseViewModelBase.addCourseSchedule');
-
-  @override
-  Future<void> addCourseSchedule(String courseId, String typeOfUser) {
-    return _$addCourseScheduleAsyncAction
-        .run(() => super.addCourseSchedule(courseId, typeOfUser));
   }
 
   final _$floatingButtonControlAsyncAction =
@@ -144,7 +102,6 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
   String toString() {
     return '''
 courseListModel: ${courseListModel},
-courseModel: ${courseModel},
 isLoading: ${isLoading},
 courseList: ${courseList}
     ''';

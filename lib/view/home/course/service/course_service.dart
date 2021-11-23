@@ -8,6 +8,7 @@ import '../../../_product/_enum/network_route_enum.dart';
 import '../../../_product/_utility/service_helper.dart';
 import '../model/submodel/course/course_model.dart';
 import '../model/submodel/courselist_model.dart';
+import '../model/submodel/detail/detail_model.dart';
 import 'ICourseService.dart';
 
 class CourseService extends ICourseService with ServiceHelper {
@@ -90,11 +91,11 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getOneCourseTeacherControl(String id, String token) async {
-    final response = await manager.send<CourseModel, CourseModel>(
+  Future<DetailModel?> getOneCourseTeacherControl(String id, String token) async {
+    final response = await manager.send<DetailModel, DetailModel>(
       NetworkRoutes.TEACHER.rawValue,
       urlSuffix: '/course/' + id,
-      parseModel: CourseModel(),
+      parseModel: DetailModel(),
       method: RequestType.GET,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
@@ -112,6 +113,7 @@ class CourseService extends ICourseService with ServiceHelper {
       urlSuffix: '/course/list/' + teacherId,
       parseModel: CourseListModel(),
       method: RequestType.GET,
+      data: {},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -140,11 +142,11 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<CourseModel?> getOneCourseStudentControl(String studentId, String id, String token) async {
-    final response = await manager.send<CourseModel, CourseModel>(
+  Future<DetailModel?> getOneCourseStudentControl(String studentId, String id, String token) async {
+    final response = await manager.send<DetailModel, DetailModel>(
       NetworkRoutes.STUDENT.rawValue,
       urlSuffix: '/course/' + id,
-      parseModel: CourseModel(),
+      parseModel: DetailModel(),
       method: RequestType.GET,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
