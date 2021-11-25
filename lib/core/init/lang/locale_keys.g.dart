@@ -92,14 +92,21 @@ abstract class  LocaleKeys {
   static const course_teacher_coursenShortNameHint = 'course.teacher.coursenShortNameHint';
   static const course_teacher_delete = 'course.teacher.delete';
   static const course_teacher_share = 'course.teacher.share';
+  static const course_teacher_schedule_title = 'course.teacher.schedule.title';
+  static const course_teacher_schedule_courseStartDate = 'course.teacher.schedule.courseStartDate';
+  static const course_teacher_schedule_courseEndDate = 'course.teacher.schedule.courseEndDate';
+  static const course_teacher_schedule_courseStartTime = 'course.teacher.schedule.courseStartTime';
+  static const course_teacher_schedule_courseEndTime = 'course.teacher.schedule.courseEndTime';
+  static const course_teacher_schedule_button = 'course.teacher.schedule.button';
+  static const course_teacher_schedule = 'course.teacher.schedule';
   static const course_teacher_settings_title = 'course.teacher.settings.title';
   static const course_teacher_settings_coursenNameHint = 'course.teacher.settings.coursenNameHint';
   static const course_teacher_settings_coursenShortNameHint = 'course.teacher.settings.coursenShortNameHint';
-  static const course_teacher_settings_courseStartDate = 'course.teacher.settings.courseStartDate';
-  static const course_teacher_settings_courseEndDate = 'course.teacher.settings.courseEndDate';
-  static const course_teacher_settings_courseTime = 'course.teacher.settings.courseTime';
   static const course_teacher_settings_button = 'course.teacher.settings.button';
   static const course_teacher_settings = 'course.teacher.settings';
+  static const course_teacher_attendance_photo = 'course.teacher.attendance.photo';
+  static const course_teacher_attendance_camera = 'course.teacher.attendance.camera';
+  static const course_teacher_attendance = 'course.teacher.attendance';
   static const course_teacher = 'course.teacher';
   static const course = 'course';
 

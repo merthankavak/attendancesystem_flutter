@@ -17,7 +17,8 @@ CourseModel _$CourseModelFromJson(Map<String, dynamic> json) => CourseModel(
           ?.map((e) => StudentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       attendance: (json['attendance'] as List<dynamic>?)
-          ?.map((e) => AttendanceModel.fromJson(e as Map<String, dynamic>))
+          ?.map(
+              (e) => AttendanceStatusModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       courseCode: json['courseCode'] as String?,
       createdAt: json['createdAt'] as String?,

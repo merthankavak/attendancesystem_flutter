@@ -3,6 +3,7 @@
     package="com.example.attendancesystem_flutter">
    <uses-permission android:name="android.permission.INTERNET"/> 
    <application
+        android:requestLegacyExternalStorage="true"
         tools:replace="android:label"
         android:label="Attendance System"
         android:icon="@mipmap/ic_launcher">

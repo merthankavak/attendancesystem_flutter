@@ -116,14 +116,23 @@
             "coursenShortNameHint": "Enter the course short name",
             "delete": "Delete Course",
             "share": "Share Course Code",
+            "schedule": {
+                "title": "Course Schedule",
+                "courseStartDate": "Enter the course start date",
+                "courseEndDate": "Enter the course end date",
+                "courseStartTime": "Enter the course start time",
+                "courseEndTime": "Enter the course end time",
+                "button": "Continue"
+            },
             "settings": {
                 "title": "Course Settings",
                 "coursenNameHint": "Update the course name",
                 "coursenShortNameHint": "Update the course short name",
-                "courseStartDate": "Select the course start date",
-                "courseEndDate": "Select the course end date",
-                "courseTime": "Select the course time",
                 "button": "Update"
+            },
+            "attendance": {
+                "photo": "Photo Library",
+                "camera": "Camera"
             }
 
         }

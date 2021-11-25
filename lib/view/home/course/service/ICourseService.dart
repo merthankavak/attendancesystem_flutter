@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:vexana/vexana.dart';
 
+import '../../attendance/model/manage_attendance_model.dart';
 import '../model/submodel/course/course_model.dart';
 import '../model/submodel/courselist_model.dart';
 import '../model/submodel/detail/detail_model.dart';
@@ -19,6 +22,9 @@ abstract class ICourseService {
   Future<CourseModel?> deleteCourseControl(String id, String token);
   Future<DetailModel?> getOneCourseTeacherControl(String id, String token);
   Future<CourseListModel?> getCourseListTeacherControl(String teacherId, String token);
+  Future<ManageAttendanceModel?> takeAttendance(String date, String id, String token, File image);
+  Future<ManageAttendanceModel?> manageAttendance(
+      String date, String id, String token, dynamic statusArray);
 
   //Student Course Control
   Future<CourseModel?> joinCourseControl(String studentId, CourseModel courseModel, String token);

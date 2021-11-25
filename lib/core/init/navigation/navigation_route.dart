@@ -4,9 +4,11 @@ import '../../../view/authenticate/forgot_password/view/forgot_password_view.dar
 import '../../../view/authenticate/forgot_password/view/subview/change_password_view.dart';
 import '../../../view/authenticate/forgot_password/view/subview/confirm_otp_view.dart';
 import '../../../view/authenticate/login/view/login_view.dart';
+import '../../../view/home/attendance/view/attendance_view.dart';
 import '../../../view/home/course/view/course_view.dart';
 import '../../../view/home/course/view/subview/course_detail_settings_view.dart';
 import '../../../view/home/course/view/subview/course_detail_view.dart';
+import '../../../view/home/course/view/subview/course_schedule_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -36,10 +38,20 @@ class NavigationRoute {
         return normalNavigate(CourseDetailView(
             typeOfUser: args.arguments.toString().split(',')[0],
             courseId: args.arguments.toString().split(',')[1]));
+      case NavigationConstants.COURSE_SCHEDULE_VIEW:
+        return normalNavigate(CourseScheduleView(
+            typeOfUser: args.arguments.toString().split(',')[0],
+            courseId: args.arguments.toString().split(',')[1]));
       case NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW:
         return normalNavigate(CourseDetailSettingsView(
             typeOfUser: args.arguments.toString().split(',')[0],
             courseId: args.arguments.toString().split(',')[1]));
+      case NavigationConstants.ATTENDANCE_VIEW:
+        return normalNavigate(AttendanceView(
+          typeOfUser: args.arguments.toString().split(',')[0],
+          courseId: args.arguments.toString().split(',')[1],
+          date: args.arguments.toString().split(',')[2],
+        ));
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),

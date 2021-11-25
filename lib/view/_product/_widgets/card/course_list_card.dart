@@ -31,8 +31,10 @@ class CourseListCard extends StatelessWidget {
           Expanded(
             flex: 9,
             child: InkWell(
-              onTap: () => courseViewModel.sendCourseDetailView(
-                  typeOfUser, courseViewModel.courseList![itemIndex].id!),
+              onTap: () {
+                courseViewModel.sendCourseDetailView(
+                    typeOfUser, courseViewModel.courseList![itemIndex].id!);
+              },
               child: Padding(
                 padding: context.paddingBitNormal,
                 child: Column(

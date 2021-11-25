@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/button/title_text_button.dart';
-import '../../../../core/extension/context_extension.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/card/course_list_card.dart';
 import '../viewmodel/course_view_model.dart';
@@ -47,9 +47,9 @@ class CourseView extends StatelessWidget {
         itemCount: viewModel.courseList!.length,
         shrinkWrap: true,
         itemBuilder: (context, index) => Padding(
-          padding: context.paddingOnlyList,
+          padding: context.paddingLow,
           child: Container(
-              height: context.veryhighValue,
+              height: context.height * 0.2,
               decoration: viewModel.helper.boxDecorationAll,
               child: buildObserverCard(viewModel, index)),
         ),
@@ -80,8 +80,8 @@ class CourseView extends StatelessWidget {
           ? LocaleKeys.course_teacher_tooltip.tr()
           : LocaleKeys.course_student_tooltip.tr(),
       child: typeOfUser == 'teacher'
-          ? Icon(Icons.add, color: context.colorSchemeLight.white)
-          : Icon(FontAwesomeIcons.arrowRight, color: context.colorSchemeLight.white),
+          ? Icon(Icons.add, color: Colors.white)
+          : Icon(FontAwesomeIcons.arrowRight, color: Colors.white),
     );
   }
 
@@ -89,20 +89,18 @@ class CourseView extends StatelessWidget {
     return showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        shape: RoundedRectangleBorder(borderRadius: context.normalCircularRadius),
+        shape: RoundedRectangleBorder(borderRadius: context.normalBorderRadius),
         builder: (context) {
-          return Container(
-              height: context.height * 0.90,
-              child: Column(
-                children: [
-                  Spacer(flex: 5),
-                  Expanded(
-                      flex: 10,
-                      child: Text(LocaleKeys.course_student_title.tr(),
-                          style: Theme.of(context).textTheme.subtitle1!)),
-                  Expanded(flex: 85, child: buildStudentForm(viewModel, context)),
-                ],
-              ));
+          return DraggableScrollableSheet(
+            initialChildSize: 1,
+            expand: true,
+            minChildSize: 0.3,
+            maxChildSize: 1,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return SingleChildScrollView(
+                  padding: context.paddingNormal, child: buildStudentForm(viewModel, context));
+            },
+          );
         });
   }
 
@@ -110,21 +108,19 @@ class CourseView extends StatelessWidget {
     return showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        shape: RoundedRectangleBorder(borderRadius: context.normalCircularRadius),
+        shape: RoundedRectangleBorder(borderRadius: context.normalBorderRadius),
         builder: (context) {
-          return Container(
-            height: context.height * 0.90,
-            child: Column(
-              children: [
-                Spacer(flex: 5),
-                Expanded(
-                    flex: 10,
-                    child: Text(LocaleKeys.course_teacher_title.tr(),
-                        style: Theme.of(context).textTheme.subtitle1!)),
-                Expanded(flex: 85, child: buildTeacherForm(viewModel, context)),
-              ],
-            ),
-          );
+          return DraggableScrollableSheet(
+              initialChildSize: 1,
+              expand: true,
+              minChildSize: 0.3,
+              maxChildSize: 1,
+              builder: (BuildContext context, ScrollController scrollController) {
+                return SingleChildScrollView(
+                  padding: context.paddingNormal,
+                  child: buildTeacherForm(viewModel, context),
+                );
+              });
         });
   }
 
@@ -150,20 +146,17 @@ class CourseView extends StatelessWidget {
     return Form(
       autovalidateMode: AutovalidateMode.always,
       key: viewModel.floatingActionFormStudent,
-      child: Padding(
-        padding: context.paddingNormalHorizontal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildTextFormFieldCourseCode(viewModel, context),
-            Spacer(flex: 1),
-            buildTextRichStudentJoinCourse(context, viewModel),
-            Spacer(flex: 1),
-            buildElevatedButtonStudentJoinCourse(context, viewModel),
-            Spacer(flex: 4),
-          ],
-        ),
+      child: Column(
+        children: <Widget>[
+          context.emptySizedHeightBoxLow3x,
+          Text(LocaleKeys.course_student_title.tr(), style: Theme.of(context).textTheme.subtitle1!),
+          context.emptySizedHeightBoxLow3x,
+          buildTextFormFieldCourseCode(viewModel, context),
+          context.emptySizedHeightBoxLow3x,
+          buildTextRichStudentJoinCourse(context, viewModel),
+          context.emptySizedHeightBoxLow3x,
+          buildElevatedButtonStudentJoinCourse(context, viewModel),
+        ],
       ),
     );
   }
@@ -172,22 +165,18 @@ class CourseView extends StatelessWidget {
     return Form(
       autovalidateMode: AutovalidateMode.always,
       key: viewModel.floatingActionFormTeacher,
-      child: Padding(
-        padding: context.paddingNormalHorizontal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildTextFormFieldCourseName(viewModel),
-            Spacer(flex: 1),
-            buildTextFormFieldCourseShortName(viewModel),
-            Spacer(flex: 1),
-            buildTextRichTeacherCreateCourse(context, viewModel),
-            Spacer(flex: 1),
-            buildElevatedButtonTeacherCreateCourse(context, viewModel),
-            Spacer(flex: 4),
-          ],
-        ),
+      child: Column(
+        children: <Widget>[
+          context.emptySizedHeightBoxLow3x,
+          Text(LocaleKeys.course_teacher_title.tr(), style: Theme.of(context).textTheme.subtitle1!),
+          buildTextFormFieldCourseName(viewModel),
+          context.emptySizedHeightBoxLow3x,
+          buildTextFormFieldCourseShortName(viewModel),
+          context.emptySizedHeightBoxLow3x,
+          buildTextRichTeacherCreateCourse(context, viewModel),
+          context.emptySizedHeightBoxLow3x,
+          buildElevatedButtonTeacherCreateCourse(context, viewModel),
+        ],
       ),
     );
   }
@@ -226,13 +215,12 @@ class CourseView extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             shape: StadiumBorder(),
-            primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            primary: Colors.blue,
+            onPrimary: context.appTheme.colorScheme.primaryVariant,
           ),
           child: Center(
               child: Text(LocaleKeys.course_student_button.tr(),
-                  style: context.textTheme.subtitle1!
-                      .copyWith(color: context.colorSchemeLight.white))));
+                  style: context.textTheme.subtitle1!.copyWith(color: Colors.white))));
     });
   }
 
@@ -244,13 +232,12 @@ class CourseView extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             shape: StadiumBorder(),
-            primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            primary: Colors.blue,
+            onPrimary: context.appTheme.colorScheme.primaryVariant,
           ),
           child: Center(
               child: Text(LocaleKeys.course_teacher_button.tr(),
-                  style: context.textTheme.subtitle1!
-                      .copyWith(color: context.colorSchemeLight.white))));
+                  style: context.textTheme.subtitle1!.copyWith(color: Colors.white))));
     });
   }
 

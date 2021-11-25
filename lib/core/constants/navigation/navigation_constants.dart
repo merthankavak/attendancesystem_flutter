@@ -8,5 +8,7 @@ class NavigationConstants {
   static const SETTINGS_WEB_VIEW = '/terms';
   static const COURSE_VIEW = '/courseview';
   static const COURSE_DETAIL_VIEW = '/coursedetailview';
+  static const COURSE_SCHEDULE_VIEW = '/coursescheduleview';
   static const COURSE_DETAIL_SETTINGS_VIEW = '/coursedetailsettingsview';
+  static const ATTENDANCE_VIEW = '/attendanceview';
 }

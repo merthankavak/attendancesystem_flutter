@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
-import '../attendance/attendance_model.dart';
+import '../attendance_status/attendance_status_model.dart';
 import '../students/student_model.dart';
 import '../teacher/teacher_model.dart';
 
@@ -15,7 +15,7 @@ class CourseModel extends INetworkModel<CourseModel> {
   final String? courseShortName;
   final String? courseName;
   final List<StudentModel>? students;
-  final List<AttendanceModel>? attendance;
+  final List<AttendanceStatusModel>? attendance;
   final String? courseCode;
   final String? createdAt;
   final String? updatedAt;

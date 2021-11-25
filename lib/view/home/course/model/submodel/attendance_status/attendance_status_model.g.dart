@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'attendance_model.dart';
+part of 'attendance_status_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AttendanceModel _$AttendanceModelFromJson(Map<String, dynamic> json) =>
-    AttendanceModel(
+AttendanceStatusModel _$AttendanceStatusModelFromJson(
+        Map<String, dynamic> json) =>
+    AttendanceStatusModel(
       id: json['_id'] as String?,
       date: json['date'] as String?,
       time: json['time'] as String?,
@@ -17,7 +18,8 @@ AttendanceModel _$AttendanceModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$AttendanceModelToJson(AttendanceModel instance) =>
+Map<String, dynamic> _$AttendanceStatusModelToJson(
+        AttendanceStatusModel instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'date': instance.date,

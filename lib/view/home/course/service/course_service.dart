@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:flutter/src/material/scaffold.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:vexana/vexana.dart';
 
 import '../../../_product/_enum/network_route_enum.dart';
 import '../../../_product/_utility/service_helper.dart';
+import '../../attendance/model/manage_attendance_model.dart';
 import '../model/submodel/course/course_model.dart';
 import '../model/submodel/courselist_model.dart';
 import '../model/submodel/detail/detail_model.dart';
@@ -188,6 +188,45 @@ class CourseService extends ICourseService with ServiceHelper {
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
+      }),
+    );
+
+    showMessage(scaffoldyKey, response.error);
+    return response.data;
+  }
+
+  @override
+  Future<ManageAttendanceModel?> manageAttendance(
+      String date, String id, String token, dynamic statusArray) async {
+    final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
+      NetworkRoutes.TEACHER.rawValue,
+      urlSuffix: '/course/manageattendance/$id/$date',
+      parseModel: ManageAttendanceModel(),
+      method: RequestType.POST,
+      data: {'statusArray': statusArray},
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      }),
+    );
+
+    showMessage(scaffoldyKey, response.error);
+    return response.data;
+  }
+
+  @override
+  Future<ManageAttendanceModel?> takeAttendance(
+      String date, String id, String token, File image) async {
+    final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
+      NetworkRoutes.TEACHER.rawValue,
+      urlSuffix: '/course/takeattendance/$id/$date',
+      parseModel: ManageAttendanceModel(),
+      method: RequestType.POST,
+      data: {'image': image.path},
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: '  application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.acceptHeader: 'multipart/form-data'
       }),
     );
 
