@@ -156,19 +156,25 @@ class CourseDetailView extends StatelessWidget {
             child: Container(
               child: Wrap(
                 children: <Widget>[
-                  ListTile(
-                      leading: Icon(Icons.photo_library),
-                      title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
-                      onTap: () {
-                        viewModel.pickImageFromGallery(typeOfUser, courseId, date);
-                      }),
-                  ListTile(
-                    leading: Icon(Icons.photo_camera),
-                    title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
-                    onTap: () {
-                      viewModel.pickImageFromCamera(typeOfUser, courseId, date);
-                    },
-                  ),
+                  Observer(builder: (_) {
+                    return ListTile(
+                        leading: Icon(Icons.photo_library),
+                        title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
+                        onTap: () async {
+                          await viewModel.pickImageFromGallery(typeOfUser, courseId, date);
+                        });
+                  }),
+                  Observer(builder: (_) {
+                    return ListTile(
+                      leading: Icon(Icons.photo_camera),
+                      title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
+                      onTap: () async {
+                        await viewModel
+                            .pickImageFromCamera(typeOfUser, courseId, date)
+                            .then((value) => viewModel.imageFromCamera);
+                      },
+                    );
+                  }),
                 ],
               ),
             ),

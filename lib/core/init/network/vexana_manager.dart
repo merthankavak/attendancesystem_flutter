@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vexana/vexana.dart';
 
@@ -20,6 +21,7 @@ class VexanaManager {
 
   INetworkManager networkManager = NetworkManager(
     isEnableLogger: true,
+    isEnableTest: true,
     fileManager: LocalFile(),
     errorModel: CustomErrorModel(),
     options: BaseOptions(

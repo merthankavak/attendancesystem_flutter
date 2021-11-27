@@ -24,10 +24,14 @@ class AttendanceView extends StatelessWidget {
       },
       onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
         appBar: buildAppBar(context, viewModel),
-        body: Text('data'),
+        body: Observer(builder: (_) {
+          return viewModel.isLoading ? buildCenter() : Text('data');
+        }),
       ),
     );
   }
+
+  Center buildCenter() => Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, CourseDetailViewModel viewModel) {
     return AppBar(

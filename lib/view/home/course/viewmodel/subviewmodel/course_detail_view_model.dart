@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_single_quotes
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -42,10 +44,16 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   DetailModel? detailModel;
 
   @observable
-  XFile? imageFromGalery;
+  XFile? imageFromGallery;
 
   @observable
   XFile? imageFromCamera;
+
+  @observable
+  File? imageFromCameraFile;
+
+  @observable
+  File? imageFromGalleryFile;
 
   @observable
   ImagePicker? picker;
@@ -158,15 +166,15 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     if (navigation.navigatorKey.currentState!.canPop()) {
       navigation.navigatorKey.currentState!.pop();
     }
-    imageFromGalery = await picker!.pickImage(source: ImageSource.gallery, imageQuality: 100);
-    if (imageFromGalery != null) {
-      final response =
-          await courseService.takeAttendance(date, courseId, token!, File(imageFromCamera!.path));
-      if (response != null) {
-        await navigation.navigateToPage(
-            path: NavigationConstants.ATTENDANCE_VIEW,
-            data: typeOfUser + ',' + courseId + ',' + date);
-      }
+    imageFromGallery = await picker!
+        .pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500, maxWidth: 500);
+    imageFromGalleryFile = await File(imageFromGallery!.path);
+    final response =
+        await courseService.takeAttendance(date, courseId, token!, imageFromGalleryFile!);
+    if (response != null) {
+      await navigation.navigateToPage(
+          path: NavigationConstants.ATTENDANCE_VIEW,
+          data: typeOfUser + ',' + courseId + ',' + date);
     }
   }
 
@@ -175,15 +183,15 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     if (navigation.navigatorKey.currentState!.canPop()) {
       navigation.navigatorKey.currentState!.pop();
     }
-    imageFromCamera = await picker!.pickImage(source: ImageSource.camera, imageQuality: 100);
-    if (imageFromCamera != null) {
-      final response =
-          await courseService.takeAttendance(date, courseId, token!, File(imageFromCamera!.path));
-      if (response != null) {
-        await navigation.navigateToPage(
-            path: NavigationConstants.ATTENDANCE_VIEW,
-            data: typeOfUser + ',' + courseId + ',' + date);
-      }
+    imageFromCamera = await picker!
+        .pickImage(source: ImageSource.camera, imageQuality: 50, maxHeight: 500, maxWidth: 500);
+    imageFromCameraFile = await File(imageFromCamera!.path);
+    final response =
+        await courseService.takeAttendance(date, courseId, token!, imageFromCameraFile!);
+    if (response != null) {
+      await navigation.navigateToPage(
+          path: NavigationConstants.ATTENDANCE_VIEW,
+          data: typeOfUser + ',' + courseId + ',' + date);
     }
   }
 }

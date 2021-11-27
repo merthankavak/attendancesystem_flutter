@@ -33,19 +33,19 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$imageFromGaleryAtom =
-      Atom(name: '_CourseDetailViewModelBase.imageFromGalery');
+  final _$imageFromGalleryAtom =
+      Atom(name: '_CourseDetailViewModelBase.imageFromGallery');
 
   @override
-  XFile? get imageFromGalery {
-    _$imageFromGaleryAtom.reportRead();
-    return super.imageFromGalery;
+  XFile? get imageFromGallery {
+    _$imageFromGalleryAtom.reportRead();
+    return super.imageFromGallery;
   }
 
   @override
-  set imageFromGalery(XFile? value) {
-    _$imageFromGaleryAtom.reportWrite(value, super.imageFromGalery, () {
-      super.imageFromGalery = value;
+  set imageFromGallery(XFile? value) {
+    _$imageFromGalleryAtom.reportWrite(value, super.imageFromGallery, () {
+      super.imageFromGallery = value;
     });
   }
 
@@ -62,6 +62,39 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   set imageFromCamera(XFile? value) {
     _$imageFromCameraAtom.reportWrite(value, super.imageFromCamera, () {
       super.imageFromCamera = value;
+    });
+  }
+
+  final _$imageFromCameraFileAtom =
+      Atom(name: '_CourseDetailViewModelBase.imageFromCameraFile');
+
+  @override
+  File? get imageFromCameraFile {
+    _$imageFromCameraFileAtom.reportRead();
+    return super.imageFromCameraFile;
+  }
+
+  @override
+  set imageFromCameraFile(File? value) {
+    _$imageFromCameraFileAtom.reportWrite(value, super.imageFromCameraFile, () {
+      super.imageFromCameraFile = value;
+    });
+  }
+
+  final _$imageFromGalleryFileAtom =
+      Atom(name: '_CourseDetailViewModelBase.imageFromGalleryFile');
+
+  @override
+  File? get imageFromGalleryFile {
+    _$imageFromGalleryFileAtom.reportRead();
+    return super.imageFromGalleryFile;
+  }
+
+  @override
+  set imageFromGalleryFile(File? value) {
+    _$imageFromGalleryFileAtom.reportWrite(value, super.imageFromGalleryFile,
+        () {
+      super.imageFromGalleryFile = value;
     });
   }
 
@@ -187,8 +220,10 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   String toString() {
     return '''
 detailModel: ${detailModel},
-imageFromGalery: ${imageFromGalery},
+imageFromGallery: ${imageFromGallery},
 imageFromCamera: ${imageFromCamera},
+imageFromCameraFile: ${imageFromCameraFile},
+imageFromGalleryFile: ${imageFromGalleryFile},
 picker: ${picker},
 currentIndex: ${currentIndex},
 isLoading: ${isLoading},

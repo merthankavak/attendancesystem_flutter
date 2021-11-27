@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:vexana/vexana.dart';
 
@@ -216,15 +217,18 @@ class CourseService extends ICourseService with ServiceHelper {
 
   @override
   Future<ManageAttendanceModel?> takeAttendance(
-      String date, String id, String token, File image) async {
+      String date, String id, String token, File file) async {
+    final _formData = FormData.fromMap({
+      'image': await MultipartFile.fromFileSync(file.path),
+    });
     final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
       NetworkRoutes.TEACHER.rawValue,
       urlSuffix: '/course/takeattendance/$id/$date',
       parseModel: ManageAttendanceModel(),
       method: RequestType.POST,
-      data: {'image': image.path},
+      data: _formData,
       options: Options(headers: {
-        HttpHeaders.contentTypeHeader: '  application/json',
+        HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token',
         HttpHeaders.acceptHeader: 'multipart/form-data'
       }),
