@@ -6,11 +6,11 @@ abstract class ServiceHelper {
     if (scaffoldKey == null || errorModel == null) return;
 
     // ignore: deprecated_member_use
-    scaffoldKey.currentState!.showSnackBar(SnackBar(
+    scaffoldKey.currentState!.showSnackBar(
+      SnackBar(
         backgroundColor: Colors.black,
-        content: Text(
-          errorModel.model!.toJson()['message'] ?? errorModel.statusCode.toString(),
-          style: TextStyle(color: Colors.white),
-        )));
+        content: Text(errorModel.response['message']),
+      ),
+    );
   }
 }

@@ -7,9 +7,9 @@ part 'manage_attendance_model.g.dart';
 
 @JsonSerializable()
 class ManageAttendanceModel extends INetworkModel<ManageAttendanceModel> {
-  final int? totalStudent;
-  final int? participateStudent;
-  final int? absentStudent;
+  final String? totalStudent;
+  final String? participateStudent;
+  final String? absentStudent;
   final List<StudentsArray>? studentsArray;
   final String? message;
 

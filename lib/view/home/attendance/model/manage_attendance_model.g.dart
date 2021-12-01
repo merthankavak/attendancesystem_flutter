@@ -9,9 +9,9 @@ part of 'manage_attendance_model.dart';
 ManageAttendanceModel _$ManageAttendanceModelFromJson(
         Map<String, dynamic> json) =>
     ManageAttendanceModel(
-      totalStudent: json['totalStudent'] as int?,
-      participateStudent: json['participateStudent'] as int?,
-      absentStudent: json['absentStudent'] as int?,
+      totalStudent: json['totalStudent'] as String?,
+      participateStudent: json['participateStudent'] as String?,
+      absentStudent: json['absentStudent'] as String?,
       studentsArray: (json['studentsArray'] as List<dynamic>?)
           ?.map((e) => StudentsArray.fromJson(e as Map<String, dynamic>))
           .toList(),

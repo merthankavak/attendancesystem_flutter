@@ -46,7 +46,7 @@ dependencies:
   shared_preferences: ^2.0.8
   json_serializable: ^6.0.1
   json_annotation: ^4.3.0
-  vexana: 2.2.1
+  vexana: 2.4.3
   intl: ^0.17.0
   mockito: ^5.0.16
   pin_code_fields: ^7.3.0
@@ -58,8 +58,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   share: ^2.0.4
   pedantic: ^1.11.0
-  image_picker: any
-  dio: 4.0.0
+  image_picker: ^0.8.4+4
   http_parser: ^4.0.0  
 
 

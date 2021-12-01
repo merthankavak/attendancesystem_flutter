@@ -5,13 +5,14 @@ part 'students_array_model.g.dart';
 
 @JsonSerializable()
 class StudentsArray extends INetworkModel<StudentsArray> {
-  final String? sId;
+  @JsonKey(name: '_id')
+  final String? id;
   final String? stdId;
   final String? email;
   final String? fullName;
   final bool? attendanceStatus;
 
-  StudentsArray({this.sId, this.stdId, this.email, this.fullName, this.attendanceStatus});
+  StudentsArray({this.id, this.stdId, this.email, this.fullName, this.attendanceStatus});
 
   @override
   StudentsArray fromJson(Map<String, dynamic> json) {

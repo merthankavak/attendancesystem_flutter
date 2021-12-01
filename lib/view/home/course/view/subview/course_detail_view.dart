@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/base/view/base_view.dart';
 import '../../../../../core/extension/context_extension.dart';
@@ -148,37 +149,50 @@ class CourseDetailView extends StatelessWidget {
   }
 
   Future<dynamic> showPicker(
-      CourseDetailViewModel viewModel, BuildContext context, String date) async {
-    return showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return SafeArea(
-            child: Container(
-              child: Wrap(
-                children: <Widget>[
-                  Observer(builder: (_) {
-                    return ListTile(
-                        leading: Icon(Icons.photo_library),
-                        title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
+          CourseDetailViewModel viewModel, BuildContext context, String date) async =>
+      await showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return SafeArea(
+              child: Container(
+                child: Wrap(
+                  children: <Widget>[
+                    Observer(builder: (_) {
+                      return ListTile(
+                          leading: Icon(Icons.photo_library),
+                          title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
+                          onTap: () async {
+                            var images = await ImagePicker().pickImage(
+                                source: ImageSource.gallery,
+                                maxHeight: 500,
+                                maxWidth: 500,
+                                imageQuality: 50);
+                            if (images != null) {
+                              await viewModel.takeAttendance(
+                                  typeOfUser, date, courseId, viewModel.token!, images);
+                            }
+                          });
+                    }),
+                    Observer(builder: (_) {
+                      return ListTile(
+                        leading: Icon(Icons.photo_camera),
+                        title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
                         onTap: () async {
-                          await viewModel.pickImageFromGallery(typeOfUser, courseId, date);
-                        });
-                  }),
-                  Observer(builder: (_) {
-                    return ListTile(
-                      leading: Icon(Icons.photo_camera),
-                      title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
-                      onTap: () async {
-                        await viewModel
-                            .pickImageFromCamera(typeOfUser, courseId, date)
-                            .then((value) => viewModel.imageFromCamera);
-                      },
-                    );
-                  }),
-                ],
+                          var images = await ImagePicker().pickImage(
+                              source: ImageSource.camera,
+                              maxHeight: 500,
+                              maxWidth: 500,
+                              imageQuality: 50);
+                          if (images != null) {
+                            await viewModel.takeAttendance(
+                                typeOfUser, date, courseId, viewModel.token!, images);
+                          }
+                        },
+                      );
+                    }),
+                  ],
+                ),
               ),
-            ),
-          );
-        });
-  }
+            );
+          });
 }

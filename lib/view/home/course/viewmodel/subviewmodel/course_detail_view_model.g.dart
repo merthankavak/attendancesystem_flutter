@@ -33,86 +33,6 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$imageFromGalleryAtom =
-      Atom(name: '_CourseDetailViewModelBase.imageFromGallery');
-
-  @override
-  XFile? get imageFromGallery {
-    _$imageFromGalleryAtom.reportRead();
-    return super.imageFromGallery;
-  }
-
-  @override
-  set imageFromGallery(XFile? value) {
-    _$imageFromGalleryAtom.reportWrite(value, super.imageFromGallery, () {
-      super.imageFromGallery = value;
-    });
-  }
-
-  final _$imageFromCameraAtom =
-      Atom(name: '_CourseDetailViewModelBase.imageFromCamera');
-
-  @override
-  XFile? get imageFromCamera {
-    _$imageFromCameraAtom.reportRead();
-    return super.imageFromCamera;
-  }
-
-  @override
-  set imageFromCamera(XFile? value) {
-    _$imageFromCameraAtom.reportWrite(value, super.imageFromCamera, () {
-      super.imageFromCamera = value;
-    });
-  }
-
-  final _$imageFromCameraFileAtom =
-      Atom(name: '_CourseDetailViewModelBase.imageFromCameraFile');
-
-  @override
-  File? get imageFromCameraFile {
-    _$imageFromCameraFileAtom.reportRead();
-    return super.imageFromCameraFile;
-  }
-
-  @override
-  set imageFromCameraFile(File? value) {
-    _$imageFromCameraFileAtom.reportWrite(value, super.imageFromCameraFile, () {
-      super.imageFromCameraFile = value;
-    });
-  }
-
-  final _$imageFromGalleryFileAtom =
-      Atom(name: '_CourseDetailViewModelBase.imageFromGalleryFile');
-
-  @override
-  File? get imageFromGalleryFile {
-    _$imageFromGalleryFileAtom.reportRead();
-    return super.imageFromGalleryFile;
-  }
-
-  @override
-  set imageFromGalleryFile(File? value) {
-    _$imageFromGalleryFileAtom.reportWrite(value, super.imageFromGalleryFile,
-        () {
-      super.imageFromGalleryFile = value;
-    });
-  }
-
-  final _$pickerAtom = Atom(name: '_CourseDetailViewModelBase.picker');
-
-  @override
-  ImagePicker? get picker {
-    _$pickerAtom.reportRead();
-    return super.picker;
-  }
-
-  @override
-  set picker(ImagePicker? value) {
-    _$pickerAtom.reportWrite(value, super.picker, () {
-      super.picker = value;
-    });
-  }
-
   final _$currentIndexAtom =
       Atom(name: '_CourseDetailViewModelBase.currentIndex');
 
@@ -171,24 +91,14 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.addCourseSchedule(courseId, typeOfUser));
   }
 
-  final _$pickImageFromGalleryAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.pickImageFromGallery');
+  final _$takeAttendanceAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.takeAttendance');
 
   @override
-  Future<void> pickImageFromGallery(
-      String typeOfUser, String courseId, String date) {
-    return _$pickImageFromGalleryAsyncAction
-        .run(() => super.pickImageFromGallery(typeOfUser, courseId, date));
-  }
-
-  final _$pickImageFromCameraAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.pickImageFromCamera');
-
-  @override
-  Future<void> pickImageFromCamera(
-      String typeOfUser, String courseId, String date) {
-    return _$pickImageFromCameraAsyncAction
-        .run(() => super.pickImageFromCamera(typeOfUser, courseId, date));
+  Future<void> takeAttendance(
+      String typeOfUser, String date, String id, String token, XFile file) {
+    return _$takeAttendanceAsyncAction
+        .run(() => super.takeAttendance(typeOfUser, date, id, token, file));
   }
 
   final _$_CourseDetailViewModelBaseActionController =
@@ -220,11 +130,6 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   String toString() {
     return '''
 detailModel: ${detailModel},
-imageFromGallery: ${imageFromGallery},
-imageFromCamera: ${imageFromCamera},
-imageFromCameraFile: ${imageFromCameraFile},
-imageFromGalleryFile: ${imageFromGalleryFile},
-picker: ${picker},
 currentIndex: ${currentIndex},
 isLoading: ${isLoading},
 courseDetailModel: ${courseDetailModel}

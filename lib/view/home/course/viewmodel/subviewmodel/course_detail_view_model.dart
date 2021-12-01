@@ -43,21 +43,6 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   @observable
   DetailModel? detailModel;
 
-  @observable
-  XFile? imageFromGallery;
-
-  @observable
-  XFile? imageFromCamera;
-
-  @observable
-  File? imageFromCameraFile;
-
-  @observable
-  File? imageFromGalleryFile;
-
-  @observable
-  ImagePicker? picker;
-
   @computed
   CourseModel? get courseDetailModel => detailModel!.course!;
 
@@ -80,7 +65,6 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     courseEndTimeController = TextEditingController();
     courseNameController = TextEditingController();
     courseShortNameController = TextEditingController();
-    picker = ImagePicker();
     getPrefs();
   }
 
@@ -162,36 +146,16 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   }
 
   @action
-  Future<void> pickImageFromGallery(String typeOfUser, String courseId, String date) async {
+  Future<void> takeAttendance(
+      String typeOfUser, String date, String id, String token, XFile file) async {
     if (navigation.navigatorKey.currentState!.canPop()) {
       navigation.navigatorKey.currentState!.pop();
     }
-    imageFromGallery = await picker!
-        .pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500, maxWidth: 500);
-    imageFromGalleryFile = await File(imageFromGallery!.path);
-    final response =
-        await courseService.takeAttendance(date, courseId, token!, imageFromGalleryFile!);
+    var imageFile = await File(file.path);
+    final response = await courseService.takeAttendance(date, id, token, imageFile);
     if (response != null) {
       await navigation.navigateToPage(
-          path: NavigationConstants.ATTENDANCE_VIEW,
-          data: typeOfUser + ',' + courseId + ',' + date);
-    }
-  }
-
-  @action
-  Future<void> pickImageFromCamera(String typeOfUser, String courseId, String date) async {
-    if (navigation.navigatorKey.currentState!.canPop()) {
-      navigation.navigatorKey.currentState!.pop();
-    }
-    imageFromCamera = await picker!
-        .pickImage(source: ImageSource.camera, imageQuality: 50, maxHeight: 500, maxWidth: 500);
-    imageFromCameraFile = await File(imageFromCamera!.path);
-    final response =
-        await courseService.takeAttendance(date, courseId, token!, imageFromCameraFile!);
-    if (response != null) {
-      await navigation.navigateToPage(
-          path: NavigationConstants.ATTENDANCE_VIEW,
-          data: typeOfUser + ',' + courseId + ',' + date);
+          path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + id + ',' + date);
     }
   }
 }

@@ -205,7 +205,7 @@ packages:
     source: hosted
     version: "2.0.1"
   dio:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: dio
       url: "https://pub.dartlang.org"
@@ -914,7 +914,7 @@ packages:
       name: vexana
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.4.3"
   watcher:
     dependency: transitive
     description:

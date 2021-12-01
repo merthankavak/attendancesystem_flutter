@@ -8,7 +8,7 @@ part of 'students_array_model.dart';
 
 StudentsArray _$StudentsArrayFromJson(Map<String, dynamic> json) =>
     StudentsArray(
-      sId: json['sId'] as String?,
+      id: json['_id'] as String?,
       stdId: json['stdId'] as String?,
       email: json['email'] as String?,
       fullName: json['fullName'] as String?,
@@ -17,7 +17,7 @@ StudentsArray _$StudentsArrayFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$StudentsArrayToJson(StudentsArray instance) =>
     <String, dynamic>{
-      'sId': instance.sId,
+      '_id': instance.id,
       'stdId': instance.stdId,
       'email': instance.email,
       'fullName': instance.fullName,

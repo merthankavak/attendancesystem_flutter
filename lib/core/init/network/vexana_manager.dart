@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vexana/vexana.dart';
 
-import '../../../view/_product/_model/custom_error_model.dart';
-
 class VexanaManager {
   static VexanaManager? _instace;
   static VexanaManager get instance {
@@ -23,8 +21,8 @@ class VexanaManager {
     isEnableLogger: true,
     isEnableTest: true,
     fileManager: LocalFile(),
-    errorModel: CustomErrorModel(),
     options: BaseOptions(
+      followRedirects: false,
       baseUrl: Platform.isAndroid ? _androidBaseUrl : _iosBaseUrl,
     ),
   );

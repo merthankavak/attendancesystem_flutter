@@ -7,7 +7,6 @@ extension NetworkRoutesString on NetworkRoutes {
         return 'api/auth/';
       case NetworkRoutes.TEACHER:
         return 'api/teacher/';
-
       case NetworkRoutes.STUDENT:
         return 'api/student/';
 
