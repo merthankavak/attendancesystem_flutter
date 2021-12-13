@@ -2,8 +2,10 @@
 
 import 'dart:io';
 
+import 'package:attendancesystem_flutter/core/extension/context_extension.dart';
 import 'package:attendancesystem_flutter/view/home/attendance/model/manage_attendance_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_pickers/image_pickers.dart';
 import 'package:mobx/mobx.dart';
 
@@ -49,7 +51,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   ManageAttendanceModel? manageAttendanceModel;
 
   @computed
-  String? get manageAttendanceModels => manageAttendanceModel!.absentStudent;
+  ManageAttendanceModel? get manageAttendanceModels => manageAttendanceModel!;
 
   @computed
   CourseModel? get courseDetailModel => detailModel!.course!;
@@ -59,6 +61,9 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
 
   @observable
   bool isLoading = false;
+
+  @observable
+  var statusArray = [];
 
   String? id = '';
   String? token = '';
@@ -169,9 +174,63 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   }
 
   @action
+  Future<void> manageAttendanceStatus(String typeOfUser, String date, String id) async {
+    _changeLoading();
+    manageAttendanceModel = await courseService.manageAttendance(date, id, token!, statusArray);
+    _changeLoading();
+  }
+
+  @action
   Future<void> showAttendanceStatus(String date, String id) async {
     _changeLoading();
     manageAttendanceModel = await courseService.showAttendance(date, id, token!);
+    statusArray = List.generate(manageAttendanceModel!.studentsArray!.length,
+        (index) => manageAttendanceModel!.studentsArray![index].attendanceStatus.toString());
+    _changeLoading();
+  }
+
+  @action
+  Future<void> showPicker(CourseDetailViewModel viewModel, BuildContext context, int index) async {
+    _changeLoading();
+    await showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return SafeArea(
+            child: Container(
+              child: Wrap(
+                children: <Widget>[
+                  Observer(builder: (_) {
+                    return ListTile(
+                        leading: Icon(Icons.check_box, color: context.colorSchemeLight.green),
+                        title: Text('Present'),
+                        onTap: () async {
+                          if (navigation.navigatorKey.currentState!.canPop()) {
+                            navigation.navigatorKey.currentState!.pop();
+                          }
+                          viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
+                              true;
+                          viewModel.statusArray[index] = 'true';
+                        });
+                  }),
+                  Observer(builder: (_) {
+                    return ListTile(
+                      leading: Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red),
+                      title: Text('Absent'),
+                      onTap: () async {
+                        if (navigation.navigatorKey.currentState!.canPop()) {
+                          navigation.navigatorKey.currentState!.pop();
+                        }
+                        viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
+                            false;
+                        viewModel.statusArray[index] = 'false';
+                      },
+                    );
+                  }),
+                ],
+              ),
+            ),
+          );
+        });
     _changeLoading();
   }
 }

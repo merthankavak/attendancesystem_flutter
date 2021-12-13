@@ -10,7 +10,7 @@ class StudentsArray extends INetworkModel<StudentsArray> {
   final String? stdId;
   final String? email;
   final String? fullName;
-  final bool? attendanceStatus;
+  bool? attendanceStatus;
 
   StudentsArray({this.id, this.stdId, this.email, this.fullName, this.attendanceStatus});
 

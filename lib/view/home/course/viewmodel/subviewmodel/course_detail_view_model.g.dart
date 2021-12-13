@@ -9,13 +9,14 @@ part of 'course_detail_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
-  Computed<String?>? _$manageAttendanceModelsComputed;
+  Computed<ManageAttendanceModel?>? _$manageAttendanceModelsComputed;
 
   @override
-  String? get manageAttendanceModels => (_$manageAttendanceModelsComputed ??=
-          Computed<String?>(() => super.manageAttendanceModels,
+  ManageAttendanceModel? get manageAttendanceModels =>
+      (_$manageAttendanceModelsComputed ??= Computed<ManageAttendanceModel?>(
+              () => super.manageAttendanceModels,
               name: '_CourseDetailViewModelBase.manageAttendanceModels'))
-      .value;
+          .value;
   Computed<CourseModel?>? _$courseDetailModelComputed;
 
   @override
@@ -88,6 +89,22 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
+  final _$statusArrayAtom =
+      Atom(name: '_CourseDetailViewModelBase.statusArray');
+
+  @override
+  List<dynamic> get statusArray {
+    _$statusArrayAtom.reportRead();
+    return super.statusArray;
+  }
+
+  @override
+  set statusArray(List<dynamic> value) {
+    _$statusArrayAtom.reportWrite(value, super.statusArray, () {
+      super.statusArray = value;
+    });
+  }
+
   final _$getCourseDetailAsyncAction =
       AsyncAction('_CourseDetailViewModelBase.getCourseDetail');
 
@@ -145,6 +162,16 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.takeAttendanceStatus(typeOfUser, date, id, file));
   }
 
+  final _$manageAttendanceStatusAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.manageAttendanceStatus');
+
+  @override
+  Future<void> manageAttendanceStatus(
+      String typeOfUser, String date, String id) {
+    return _$manageAttendanceStatusAsyncAction
+        .run(() => super.manageAttendanceStatus(typeOfUser, date, id));
+  }
+
   final _$showAttendanceStatusAsyncAction =
       AsyncAction('_CourseDetailViewModelBase.showAttendanceStatus');
 
@@ -152,6 +179,16 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   Future<void> showAttendanceStatus(String date, String id) {
     return _$showAttendanceStatusAsyncAction
         .run(() => super.showAttendanceStatus(date, id));
+  }
+
+  final _$showPickerAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.showPicker');
+
+  @override
+  Future<void> showPicker(
+      CourseDetailViewModel viewModel, BuildContext context, int index) {
+    return _$showPickerAsyncAction
+        .run(() => super.showPicker(viewModel, context, index));
   }
 
   final _$_CourseDetailViewModelBaseActionController =
@@ -186,6 +223,7 @@ detailModel: ${detailModel},
 manageAttendanceModel: ${manageAttendanceModel},
 currentIndex: ${currentIndex},
 isLoading: ${isLoading},
+statusArray: ${statusArray},
 manageAttendanceModels: ${manageAttendanceModels},
 courseDetailModel: ${courseDetailModel}
     ''';
