@@ -9,6 +9,13 @@ part of 'course_detail_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
+  Computed<String?>? _$manageAttendanceModelsComputed;
+
+  @override
+  String? get manageAttendanceModels => (_$manageAttendanceModelsComputed ??=
+          Computed<String?>(() => super.manageAttendanceModels,
+              name: '_CourseDetailViewModelBase.manageAttendanceModels'))
+      .value;
   Computed<CourseModel?>? _$courseDetailModelComputed;
 
   @override
@@ -30,6 +37,23 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   set detailModel(DetailModel? value) {
     _$detailModelAtom.reportWrite(value, super.detailModel, () {
       super.detailModel = value;
+    });
+  }
+
+  final _$manageAttendanceModelAtom =
+      Atom(name: '_CourseDetailViewModelBase.manageAttendanceModel');
+
+  @override
+  ManageAttendanceModel? get manageAttendanceModel {
+    _$manageAttendanceModelAtom.reportRead();
+    return super.manageAttendanceModel;
+  }
+
+  @override
+  set manageAttendanceModel(ManageAttendanceModel? value) {
+    _$manageAttendanceModelAtom.reportWrite(value, super.manageAttendanceModel,
+        () {
+      super.manageAttendanceModel = value;
     });
   }
 
@@ -73,6 +97,26 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.getCourseDetail(typeOfUser, courseId));
   }
 
+  final _$sendCourseDetailSettingsViewAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.sendCourseDetailSettingsView');
+
+  @override
+  Future<void> sendCourseDetailSettingsView(
+      String typeOfUser, String courseId) {
+    return _$sendCourseDetailSettingsViewAsyncAction
+        .run(() => super.sendCourseDetailSettingsView(typeOfUser, courseId));
+  }
+
+  final _$sendCourseAttendanceViewAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.sendCourseAttendanceView');
+
+  @override
+  Future<void> sendCourseAttendanceView(
+      String typeOfUser, String courseId, String date) {
+    return _$sendCourseAttendanceViewAsyncAction
+        .run(() => super.sendCourseAttendanceView(typeOfUser, courseId, date));
+  }
+
   final _$updateCourseAsyncAction =
       AsyncAction('_CourseDetailViewModelBase.updateCourse');
 
@@ -91,14 +135,23 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.addCourseSchedule(courseId, typeOfUser));
   }
 
-  final _$takeAttendanceAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.takeAttendance');
+  final _$takeAttendanceStatusAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.takeAttendanceStatus');
 
   @override
-  Future<void> takeAttendance(
-      String typeOfUser, String date, String id, String token, XFile file) {
-    return _$takeAttendanceAsyncAction
-        .run(() => super.takeAttendance(typeOfUser, date, id, token, file));
+  Future<void> takeAttendanceStatus(
+      String typeOfUser, String date, String id, Media file) {
+    return _$takeAttendanceStatusAsyncAction
+        .run(() => super.takeAttendanceStatus(typeOfUser, date, id, file));
+  }
+
+  final _$showAttendanceStatusAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.showAttendanceStatus');
+
+  @override
+  Future<void> showAttendanceStatus(String date, String id) {
+    return _$showAttendanceStatusAsyncAction
+        .run(() => super.showAttendanceStatus(date, id));
   }
 
   final _$_CourseDetailViewModelBaseActionController =
@@ -130,8 +183,10 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   String toString() {
     return '''
 detailModel: ${detailModel},
+manageAttendanceModel: ${manageAttendanceModel},
 currentIndex: ${currentIndex},
 isLoading: ${isLoading},
+manageAttendanceModels: ${manageAttendanceModels},
 courseDetailModel: ${courseDetailModel}
     ''';
   }

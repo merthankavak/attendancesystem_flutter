@@ -19,11 +19,16 @@ class VexanaManager {
 
   INetworkManager networkManager = NetworkManager(
     isEnableLogger: true,
-    isEnableTest: true,
     fileManager: LocalFile(),
     options: BaseOptions(
-      followRedirects: false,
       baseUrl: Platform.isAndroid ? _androidBaseUrl : _iosBaseUrl,
+      receiveDataWhenStatusError: true,
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+      validateStatus: (status) {
+        return status! < 500;
+      },
+      followRedirects: false,
     ),
   );
 }

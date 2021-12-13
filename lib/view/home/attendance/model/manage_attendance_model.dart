@@ -11,14 +11,12 @@ class ManageAttendanceModel extends INetworkModel<ManageAttendanceModel> {
   final String? participateStudent;
   final String? absentStudent;
   final List<StudentsArray>? studentsArray;
-  final String? message;
 
   ManageAttendanceModel({
     this.totalStudent,
     this.participateStudent,
     this.absentStudent,
     this.studentsArray,
-    this.message,
   });
 
   @override

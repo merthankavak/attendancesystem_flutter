@@ -60,6 +60,9 @@ dependencies:
   pedantic: ^1.11.0
   image_picker: ^0.8.4+4
   http_parser: ^4.0.0  
+  path_provider: ^2.0.8
+
+  image_pickers: ^2.0.0+2
 
 
 dev_dependencies:

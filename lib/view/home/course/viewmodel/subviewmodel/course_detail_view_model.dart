@@ -2,8 +2,9 @@
 
 import 'dart:io';
 
+import 'package:attendancesystem_flutter/view/home/attendance/model/manage_attendance_model.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_pickers/image_pickers.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../core/base/model/base_view_model.dart';
@@ -25,6 +26,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   GlobalKey<ScaffoldState> detailScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> detailSettingsScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> scheduleScaffoldKey = GlobalKey();
+  GlobalKey<ScaffoldState> attendanceViewScaffoldKey = GlobalKey();
 
   GlobalKey<FormState> courseScheduleFormKey = GlobalKey();
   GlobalKey<FormState> courseUpdateFormKey = GlobalKey();
@@ -42,6 +44,12 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
 
   @observable
   DetailModel? detailModel;
+
+  @observable
+  ManageAttendanceModel? manageAttendanceModel;
+
+  @computed
+  String? get manageAttendanceModels => manageAttendanceModel!.absentStudent;
 
   @computed
   CourseModel? get courseDetailModel => detailModel!.course!;
@@ -95,14 +103,16 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     _changeLoading();
   }
 
-  void sendCourseDetailSettingsView(String typeOfUser, String courseId) async {
+  @action
+  Future<void> sendCourseDetailSettingsView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
         path: NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW, data: typeOfUser + ',' + courseId);
     _changeLoading();
   }
 
-  void sendCourseAttendanceView(String typeOfUser, String courseId, String date) async {
+  @action
+  Future<void> sendCourseAttendanceView(String typeOfUser, String courseId, String date) async {
     _changeLoading();
     await navigation.navigateToPage(
         path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + courseId + ',' + date);
@@ -146,16 +156,22 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   }
 
   @action
-  Future<void> takeAttendance(
-      String typeOfUser, String date, String id, String token, XFile file) async {
+  Future<void> takeAttendanceStatus(String typeOfUser, String date, String id, Media file) async {
+    _changeLoading();
     if (navigation.navigatorKey.currentState!.canPop()) {
       navigation.navigatorKey.currentState!.pop();
     }
-    var imageFile = await File(file.path);
-    final response = await courseService.takeAttendance(date, id, token, imageFile);
-    if (response != null) {
-      await navigation.navigateToPage(
-          path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + id + ',' + date);
-    }
+    var imageFile = await File(file.path!);
+    await courseService.takeAttendance(date, id, token!, imageFile);
+    await navigation.navigateToPage(
+        path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + id + ',' + date);
+    _changeLoading();
+  }
+
+  @action
+  Future<void> showAttendanceStatus(String date, String id) async {
+    _changeLoading();
+    manageAttendanceModel = await courseService.showAttendance(date, id, token!);
+    _changeLoading();
   }
 }

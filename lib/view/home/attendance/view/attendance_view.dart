@@ -10,6 +10,7 @@ class AttendanceView extends StatelessWidget {
   final String typeOfUser;
   final String courseId;
   final String date;
+
   const AttendanceView(
       {Key? key, required this.typeOfUser, required this.courseId, required this.date})
       : super(key: key);
@@ -21,11 +22,17 @@ class AttendanceView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
+        model.showAttendanceStatus(date, courseId);
       },
       onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
+        key: viewModel.attendanceViewScaffoldKey,
         appBar: buildAppBar(context, viewModel),
         body: Observer(builder: (_) {
-          return viewModel.isLoading ? buildCenter() : Text('data');
+          return viewModel.isLoading
+              ? buildCenter()
+              : viewModel.manageAttendanceModels == null
+                  ? Center(child: Text('Not Found'))
+                  : Text('data');
         }),
       ),
     );

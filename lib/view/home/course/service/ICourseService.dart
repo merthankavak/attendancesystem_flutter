@@ -22,7 +22,8 @@ abstract class ICourseService {
   Future<CourseModel?> deleteCourseControl(String id, String token);
   Future<DetailModel?> getOneCourseTeacherControl(String id, String token);
   Future<CourseListModel?> getCourseListTeacherControl(String teacherId, String token);
-  Future<ManageAttendanceModel?>? takeAttendance(String date, String id, String token, File file);
+  Future<void> takeAttendance(String date, String id, String token, File file);
+  Future<ManageAttendanceModel?> showAttendance(String date, String id, String token);
   Future<ManageAttendanceModel?> manageAttendance(
       String date, String id, String token, dynamic statusArray);
 

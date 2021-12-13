@@ -10,6 +10,7 @@
         android:requestLegacyExternalStorage="true"
         tools:replace="android:label"
         android:label="Attendance System"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

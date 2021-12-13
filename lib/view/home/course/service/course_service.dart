@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:vexana/vexana.dart';
 
@@ -218,26 +219,58 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<ManageAttendanceModel?>? takeAttendance(
-      String date, String id, String token, File file) async {
-    final fileName = await file.path.toString().trim().split('/').last;
-    final subType = await file.path.toString().trim().split('.').last;
-    final _formData = await FormData.fromMap({
+  Future<void> takeAttendance(String date, String id, String token, File file) async {
+    final mimeType = await file.path.toString().trim().split('.').last;
+    final originalFile = await file.path.toString().trim().split('/').last;
+    final formData = FormData.fromMap({
       "image": await MultipartFile.fromFile(file.path,
-          filename: fileName, contentType: MediaType("image", subType)),
+          filename: originalFile, contentType: MediaType("image", mimeType)),
     });
     try {
-      final response = await manager.uploadFile<ManageAttendanceModel>(
-          'https://attendance-system-service.herokuapp.com/api/teacher/course/takeattendance/$id/$date',
-          _formData,
-          headers: {
-            HttpHeaders.authorizationHeader: 'Bearer $token',
-            HttpHeaders.acceptHeader: 'multipart/form-data'
-          });
+      final baseUrl = dotenv.env['APP_API_SITE'].toString();
+      await manager.uploadFile(
+        baseUrl + NetworkRoutes.TEACHER.rawValue + "course/takeattendance/$id/$date",
+        formData,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.acceptHeader: '*/*',
+          HttpHeaders.acceptEncodingHeader: 'gzip, deflate, br',
+          HttpHeaders.connectionHeader: 'keep-alive',
+        },
+      );
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.response) {
+        print('Catched');
+      }
+      if (e.type == DioErrorType.connectTimeout) {
+        print('Check your connection');
+      }
 
-      return response.data;
+      if (e.type == DioErrorType.receiveTimeout) {
+        print('Unable to connect to the server');
+      }
+
+      if (e.type == DioErrorType.other) {
+        print('Something went wrong');
+      }
+      print(e);
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  Future<ManageAttendanceModel?> showAttendance(String date, String id, String token) async {
+    final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
+      NetworkRoutes.TEACHER.rawValue + '/course/showattendance/$id/$date',
+      parseModel: ManageAttendanceModel(),
+      method: RequestType.GET,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      }),
+    );
+    showMessage(scaffoldyKey, response.error);
+    return response.data;
   }
 }
