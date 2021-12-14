@@ -26,17 +26,23 @@ class StudentManageAttendanceCard extends StatelessWidget {
           children: [
             Text(courseDetailViewModel.manageAttendanceModels!.studentsArray![index].fullName!),
             Spacer(),
-            courseDetailViewModel.manageAttendanceModels!.studentsArray![index].attendanceStatus ==
-                    true
-                ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
-                : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red),
-            Observer(builder: (_) {
-              return IconButton(
-                  onPressed: () async {
-                    await courseDetailViewModel.showPicker(courseDetailViewModel, context, index);
-                  },
-                  icon: Icon(Icons.edit));
-            })
+            typeOfUser == 'teacher'
+                ? courseDetailViewModel
+                            .manageAttendanceModels!.studentsArray![index].attendanceStatus ==
+                        true
+                    ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
+                    : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red)
+                : SizedBox(),
+            typeOfUser == 'teacher'
+                ? Observer(builder: (_) {
+                    return IconButton(
+                        onPressed: () async {
+                          await courseDetailViewModel.showPicker(
+                              courseDetailViewModel, context, index);
+                        },
+                        icon: Icon(Icons.edit));
+                  })
+                : SizedBox()
           ],
         ),
       ),

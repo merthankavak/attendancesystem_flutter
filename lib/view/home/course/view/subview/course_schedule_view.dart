@@ -27,7 +27,7 @@ class CourseScheduleView extends StatelessWidget {
         model.getCourseDetail(typeOfUser, courseId);
       },
       onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
-        key: viewModel.scheduleScaffoldKey,
+        key: viewModel.courseScheduleViewScaffoldKey,
         body: Observer(builder: (_) {
           return viewModel.isLoading
               ? buildCenter()

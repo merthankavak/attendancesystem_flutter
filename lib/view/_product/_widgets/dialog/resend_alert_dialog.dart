@@ -13,31 +13,41 @@ class ResendAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAlertDialog(
-      title: Text.rich(TextSpan(children: [
-        WidgetSpan(child: Icon(Icons.check_box, color: context.colorSchemeLight.green)),
-        TextSpan(
-            text: LocaleKeys.confirmotp_alert_title.tr(),
-            style: Theme.of(context).textTheme.bodyText1!)
-      ])),
-      content: Padding(
-        padding: context.paddingLow,
-        child: Text(LocaleKeys.confirmotp_alert_desc.tr(),
-            style: Theme.of(context).textTheme.bodyText2!),
+      title: buildTitle(context),
+      content: buildContentPadding(context),
+      actions: [buildActionsPadding(context)],
+    );
+  }
+
+  Text buildTitle(BuildContext context) {
+    return Text.rich(TextSpan(children: [
+      WidgetSpan(child: Icon(Icons.check_box, color: context.colorSchemeLight.green)),
+      TextSpan(
+          text: LocaleKeys.confirmotp_alert_title.tr(),
+          style: Theme.of(context).textTheme.bodyText1!)
+    ]));
+  }
+
+  Padding buildContentPadding(BuildContext context) {
+    return Padding(
+      padding: context.paddingLow,
+      child: Text(LocaleKeys.confirmotp_alert_desc.tr(),
+          style: Theme.of(context).textTheme.bodyText2!),
+    );
+  }
+
+  Padding buildActionsPadding(BuildContext context) {
+    return Padding(
+      padding: context.paddingLow,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextButton(
+              onPressed: onPressed,
+              child: Text(LocaleKeys.confirmotp_alert_button.tr(),
+                  textAlign: TextAlign.center, style: context.textTheme.bodyText2!)),
+        ],
       ),
-      actions: [
-        Padding(
-          padding: context.paddingLow,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextButton(
-                  onPressed: onPressed,
-                  child: Text(LocaleKeys.confirmotp_alert_button.tr(),
-                      textAlign: TextAlign.center, style: context.textTheme.bodyText2!)),
-            ],
-          ),
-        )
-      ],
     );
   }
 }

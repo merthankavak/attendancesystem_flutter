@@ -13,6 +13,7 @@ import '../../viewmodel/subviewmodel/course_detail_view_model.dart';
 class CourseDetailSettingsView extends StatelessWidget {
   final String typeOfUser;
   final String courseId;
+
   const CourseDetailSettingsView({Key? key, required this.typeOfUser, required this.courseId})
       : super(key: key);
 

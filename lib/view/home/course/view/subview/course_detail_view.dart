@@ -15,8 +15,12 @@ import 'course_schedule_view.dart';
 class CourseDetailView extends StatelessWidget {
   final String typeOfUser;
   final String courseId;
-  const CourseDetailView({Key? key, required this.typeOfUser, required this.courseId})
-      : super(key: key);
+
+  const CourseDetailView({
+    Key? key,
+    required this.typeOfUser,
+    required this.courseId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,26 +39,10 @@ class CourseDetailView extends StatelessWidget {
                     ? buildCenter()
                     : viewModel.courseDetailModel == null
                         ? Center(child: Text('Not Found'))
-                        : viewModel.detailModel!.course!.attendance!.isEmpty
+                        : viewModel.courseDetailModel == null
                             ? CourseScheduleView(typeOfUser: typeOfUser, courseId: courseId)
                             : viewModel.currentIndex == 0
-                                ? Column(
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                    children: [
-                                      Expanded(
-                                        flex: 3,
-                                        child: CourseDetailCard(
-                                            courseModel: viewModel.courseDetailModel!,
-                                            typeOfUser: typeOfUser),
-                                      ),
-                                      Expanded(
-                                        flex: 7,
-                                        child: CourseDetailCard(
-                                            courseModel: viewModel.courseDetailModel!,
-                                            typeOfUser: typeOfUser),
-                                      ),
-                                    ],
-                                  )
+                                ? buildObserverCourseInfoColumn(viewModel)
                                 : viewModel.currentIndex == 1
                                     ? buildStudentListView(viewModel)
                                     : buildAttendanceListView(viewModel);
@@ -84,6 +72,24 @@ class CourseDetailView extends StatelessWidget {
             ));
   }
 
+  Observer buildObserverCourseInfoColumn(CourseDetailViewModel viewModel) {
+    return Observer(builder: (_) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 4,
+            child: Observer(builder: (_) {
+              return CourseDetailCard(
+                  courseModel: viewModel.courseDetailModel!, typeOfUser: typeOfUser);
+            }),
+          ),
+          Spacer(flex: 6)
+        ],
+      );
+    });
+  }
+
   Center buildCenter() => Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, CourseDetailViewModel viewModel) {
@@ -96,10 +102,12 @@ class CourseDetailView extends StatelessWidget {
           icon: Icon(Icons.menu),
         ),
         actions: [
-          IconButton(
-              onPressed: () => viewModel.sendCourseDetailSettingsView(
-                  typeOfUser, viewModel.courseDetailModel!.id!),
-              icon: Icon(Icons.settings))
+          typeOfUser == 'teacher'
+              ? IconButton(
+                  onPressed: () => viewModel.sendCourseDetailSettingsView(
+                      typeOfUser, viewModel.courseDetailModel!.id!),
+                  icon: Icon(Icons.settings))
+              : SizedBox()
         ]);
   }
 
@@ -132,12 +140,19 @@ class CourseDetailView extends StatelessWidget {
                     viewModel.courseDetailModel!.attendance![index].date!,
                     textAlign: TextAlign.left,
                   ),
-                  Observer(builder: (_) {
-                    return IconButton(
-                        onPressed: () async => await showPicker(viewModel, context,
-                            viewModel.courseDetailModel!.attendance![index].date!),
-                        icon: Icon(Icons.edit));
-                  }),
+                  typeOfUser == 'teacher'
+                      ? Observer(builder: (_) {
+                          return IconButton(
+                              onPressed: () async => await showPicker(viewModel, context,
+                                  viewModel.courseDetailModel!.attendance![index].date!),
+                              icon: Icon(Icons.edit));
+                        })
+                      : Observer(builder: (_) {
+                          return viewModel.courseDetailModel!.attendance![index].attendanceStatus ==
+                                  true
+                              ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
+                              : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red);
+                        })
                 ],
               ),
             )),

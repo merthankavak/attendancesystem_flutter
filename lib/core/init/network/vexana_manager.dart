@@ -22,13 +22,13 @@ class VexanaManager {
     fileManager: LocalFile(),
     options: BaseOptions(
       baseUrl: Platform.isAndroid ? _androidBaseUrl : _iosBaseUrl,
-      receiveDataWhenStatusError: true,
+      //receiveDataWhenStatusError: true,
       connectTimeout: 30000,
       receiveTimeout: 30000,
-      validateStatus: (status) {
+      /* validateStatus: (status) {
         return status! < 500;
-      },
-      followRedirects: false,
+      },*/
+      //followRedirects: false,
     ),
   );
 }

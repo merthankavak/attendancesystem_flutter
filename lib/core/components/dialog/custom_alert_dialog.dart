@@ -11,11 +11,14 @@ class CustomAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: context.mediumCircularRadius),
+      shape: buildRoundedRectangleBorder(context),
       contentPadding: context.paddingLow,
       title: title,
       content: content,
       actions: actions,
     );
   }
+
+  RoundedRectangleBorder buildRoundedRectangleBorder(BuildContext context) =>
+      RoundedRectangleBorder(borderRadius: context.mediumCircularRadius);
 }

@@ -131,7 +131,10 @@
             },
             "attendance": {
                 "photo": "Photo Library",
-                "camera": "Camera"
+                "camera": "Camera",
+                "tot": "Total",
+                "participants": "Participants",
+                "absent": "Absent"
             }
 
         }

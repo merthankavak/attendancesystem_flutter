@@ -13,12 +13,13 @@ class LoginService extends ILoginService with ServiceHelper {
 
   @override
   Future<LoginResponseModel?> fetchLoginControl(LoginModel model, String typeOfUser) async {
-    final response = await manager.send<LoginResponseModel, LoginResponseModel>(
-        NetworkRoutes.AUTH.rawValue,
-        urlSuffix: typeOfUser + '/login',
-        parseModel: LoginResponseModel(),
-        method: RequestType.POST,
-        data: model);
+    final response =
+        await manager.send<LoginResponseModel, LoginResponseModel>(NetworkRoutes.AUTH.rawValue,
+            urlSuffix: typeOfUser + '/login',
+            parseModel: LoginResponseModel(),
+            method: RequestType.POST,
+            //options: Options(followRedirects: true, receiveDataWhenStatusError: false),
+            data: model);
 
     if (response.data is LoginResponseModel) {
       return response.data;

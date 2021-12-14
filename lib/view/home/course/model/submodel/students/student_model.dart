@@ -13,7 +13,7 @@ class StudentModel extends INetworkModel<StudentModel> {
   final String? email;
   final String? fullName;
   final StudentImageModel? studentImageModel;
-  final bool? attendanceStatus;
+  bool? attendanceStatus;
 
   StudentModel(
       {this.id,

@@ -12,6 +12,10 @@ class AutoLocaleText extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return buildAutoLocaleText();
+  }
+
+  AutoSizeText buildAutoLocaleText() {
     return AutoSizeText(
       value.locale,
       textAlign: textAlign,

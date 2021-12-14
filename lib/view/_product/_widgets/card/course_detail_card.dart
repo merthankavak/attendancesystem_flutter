@@ -22,37 +22,40 @@ class CourseDetailCard extends StatelessWidget {
       margin: context.paddingLow,
       child: Padding(
         padding: context.paddingLow,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 15,
-              child:
-                  Text(courseModel.courseShortName!, style: Theme.of(context).textTheme.headline6!),
-            ),
-            Spacer(flex: 10),
-            Expanded(
-              flex: 15,
-              child: Text(courseModel.courseName!, style: Theme.of(context).textTheme.subtitle2!),
-            ),
-            Spacer(flex: 10),
-            Expanded(
-              flex: 20,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [],
-              ),
-            ),
-            Spacer(flex: 10),
-            Expanded(
-                flex: 20,
-                child: Text(
-                    LocaleKeys.course_teacher_teacher.tr() + ' : ' + courseModel.teacher!.fullName!,
-                    style: Theme.of(context).textTheme.subtitle2!)),
-          ],
-        ),
+        child: buildCourseDetailColumn(context),
       ),
+    );
+  }
+
+  Column buildCourseDetailColumn(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 15,
+          child: Text(courseModel.courseShortName!, style: Theme.of(context).textTheme.headline6!),
+        ),
+        Spacer(flex: 10),
+        Expanded(
+          flex: 15,
+          child: Text(courseModel.courseName!, style: Theme.of(context).textTheme.subtitle2!),
+        ),
+        Spacer(flex: 10),
+        Expanded(
+          flex: 20,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [],
+          ),
+        ),
+        Spacer(flex: 10),
+        Expanded(
+            flex: 20,
+            child: Text(
+                LocaleKeys.course_teacher_teacher.tr() + ' : ' + courseModel.teacher!.fullName!,
+                style: Theme.of(context).textTheme.subtitle2!)),
+      ],
     );
   }
 }

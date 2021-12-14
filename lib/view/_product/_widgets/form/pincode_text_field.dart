@@ -11,19 +11,17 @@ class OtpPinCodeTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return buildPinCodeTextField(context);
+  }
+
+  PinCodeTextField buildPinCodeTextField(BuildContext context) {
     return PinCodeTextField(
       appContext: context,
       length: 6,
       obscureText: false,
       animationType: AnimationType.fade,
       validator: (value) => value!.isValidOtps ? null : 'Code does not valid',
-      pinTheme: PinTheme(
-        shape: PinCodeFieldShape.box,
-        selectedColor: context.theme.colorScheme.primaryVariant,
-        inactiveColor: context.theme.colorScheme.secondary,
-        activeFillColor: context.theme.colorScheme.primaryVariant,
-        inactiveFillColor: context.theme.colorScheme.primaryVariant,
-      ),
+      pinTheme: buildPinCodeTheme(context),
       cursorColor: context.theme.colorScheme.onSecondary,
       animationDuration: Duration(milliseconds: 300),
       textStyle: context.textTheme.headline6,
@@ -39,6 +37,16 @@ class OtpPinCodeTextField extends StatelessWidget {
       beforeTextPaste: (text) {
         return false;
       },
+    );
+  }
+
+  PinTheme buildPinCodeTheme(BuildContext context) {
+    return PinTheme(
+      shape: PinCodeFieldShape.box,
+      selectedColor: context.theme.colorScheme.primaryVariant,
+      inactiveColor: context.theme.colorScheme.secondary,
+      activeFillColor: context.theme.colorScheme.primaryVariant,
+      inactiveFillColor: context.theme.colorScheme.primaryVariant,
     );
   }
 }

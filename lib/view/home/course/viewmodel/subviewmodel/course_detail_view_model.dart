@@ -3,20 +3,20 @@
 import 'dart:io';
 
 import 'package:attendancesystem_flutter/core/extension/context_extension.dart';
+import 'package:attendancesystem_flutter/view/_product/_utility/decoration_helper.dart';
 import 'package:attendancesystem_flutter/view/home/attendance/model/manage_attendance_model.dart';
+import 'package:attendancesystem_flutter/view/home/course/model/submodel/course/course_model.dart';
+import 'package:attendancesystem_flutter/view/home/course/model/submodel/detail/detail_model.dart';
+import 'package:attendancesystem_flutter/view/home/course/service/ICourseService.dart';
+import 'package:attendancesystem_flutter/view/home/course/service/course_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_pickers/image_pickers.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../../core/base/model/base_view_model.dart';
-import '../../../../../core/constants/enums/preferences_keys_enum.dart';
-import '../../../../../core/constants/navigation/navigation_constants.dart';
-import '../../../../_product/_utility/decoration_helper.dart';
-import '../../model/submodel/course/course_model.dart';
-import '../../model/submodel/detail/detail_model.dart';
-import '../../service/ICourseService.dart';
-import '../../service/course_service.dart';
+import '../../../../../../core/base/model/base_view_model.dart';
+import '../../../../../../core/constants/enums/preferences_keys_enum.dart';
+import '../../../../../../core/constants/navigation/navigation_constants.dart';
 
 part 'course_detail_view_model.g.dart';
 
@@ -27,9 +27,8 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
   GlobalKey<ScaffoldState> detailScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> detailSettingsScaffoldKey = GlobalKey();
-  GlobalKey<ScaffoldState> scheduleScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> attendanceViewScaffoldKey = GlobalKey();
-
+  GlobalKey<ScaffoldState> courseScheduleViewScaffoldKey = GlobalKey();
   GlobalKey<FormState> courseScheduleFormKey = GlobalKey();
   GlobalKey<FormState> courseUpdateFormKey = GlobalKey();
   GlobalKey<FormState> courseDetailFormKey = GlobalKey();
@@ -54,7 +53,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   ManageAttendanceModel? get manageAttendanceModels => manageAttendanceModel!;
 
   @computed
-  CourseModel? get courseDetailModel => detailModel!.course!;
+  CourseModel? get courseDetailModel => detailModel!.course;
 
   @observable
   int currentIndex = 0;
@@ -98,14 +97,15 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
 
   @action
   Future<void> getCourseDetail(String typeOfUser, String courseId) async {
-    _changeLoading();
-    if (typeOfUser == 'student') {
-      detailModel = await courseService.getOneCourseStudentControl(id!, courseId, token!);
-    }
     if (typeOfUser == 'teacher') {
+      _changeLoading();
       detailModel = await courseService.getOneCourseTeacherControl(courseId, token!);
+      _changeLoading();
+    } else {
+      _changeLoading();
+      detailModel = await courseService.getOneCourseStudentControl(id!, courseId, token!);
+      _changeLoading();
     }
-    _changeLoading();
   }
 
   @action

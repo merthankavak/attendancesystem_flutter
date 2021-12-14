@@ -40,12 +40,14 @@ class NavigationRoute {
             courseId: args.arguments.toString().split(',')[1]));
       case NavigationConstants.COURSE_SCHEDULE_VIEW:
         return normalNavigate(CourseScheduleView(
-            typeOfUser: args.arguments.toString().split(',')[0],
-            courseId: args.arguments.toString().split(',')[1]));
+          typeOfUser: args.arguments.toString().split(',')[0],
+          courseId: args.arguments.toString().split(',')[1],
+        ));
       case NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW:
         return normalNavigate(CourseDetailSettingsView(
-            typeOfUser: args.arguments.toString().split(',')[0],
-            courseId: args.arguments.toString().split(',')[1]));
+          typeOfUser: args.arguments.toString().split(',')[0],
+          courseId: args.arguments.toString().split(',')[1],
+        ));
       case NavigationConstants.ATTENDANCE_VIEW:
         return normalNavigate(AttendanceView(
           typeOfUser: args.arguments.toString().split(',')[0],

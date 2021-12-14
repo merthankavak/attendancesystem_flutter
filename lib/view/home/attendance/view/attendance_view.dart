@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extension/context_extension.dart';
+import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/card/student_manage_attendance_card.dart';
 import '../../course/viewmodel/subviewmodel/course_detail_view_model.dart';
 
@@ -33,14 +35,18 @@ class AttendanceView extends StatelessWidget {
               ? buildCenter()
               : viewModel.manageAttendanceModels == null
                   ? Center(child: Text('Not Found'))
-                  : Column(
-                      children: [
-                        buildAttendanceStatusCard(context, viewModel),
-                        buildStudentListView(viewModel),
-                      ],
-                    );
+                  : buildColumn(context, viewModel);
         }),
       ),
+    );
+  }
+
+  Column buildColumn(BuildContext context, CourseDetailViewModel viewModel) {
+    return Column(
+      children: [
+        buildAttendanceStatusCard(context, viewModel),
+        buildStudentListView(viewModel),
+      ],
     );
   }
 
@@ -51,45 +57,52 @@ class AttendanceView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Total',
-                    style: context.textTheme.subtitle2!
-                        .copyWith(color: context.colorSchemeLight.blue)),
-                Text(viewModel.manageAttendanceModels!.totalStudent!,
-                    style: context.textTheme.bodyText2!
-                        .copyWith(color: context.colorSchemeLight.blue)),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Participate',
-                    style: context.textTheme.subtitle2!
-                        .copyWith(color: context.colorSchemeLight.green)),
-                Text(viewModel.manageAttendanceModels!.participateStudent!,
-                    style: context.textTheme.bodyText2!
-                        .copyWith(color: context.colorSchemeLight.green)),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Absent',
-                    style:
-                        context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.red)),
-                Text(viewModel.manageAttendanceModels!.absentStudent!,
-                    style:
-                        context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.red)),
-              ],
-            ),
+            buildAttendanceStatusTotalColumn(context, viewModel),
+            buildAttendanceStatusParticipantsColumn(context, viewModel),
+            buildAttendanceStatusAbsentColumn(context, viewModel),
           ],
         ),
       ),
+    );
+  }
+
+  Column buildAttendanceStatusAbsentColumn(BuildContext context, CourseDetailViewModel viewModel) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(LocaleKeys.course_teacher_attendance_absent.tr(),
+            style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.red)),
+        Text(viewModel.manageAttendanceModels!.absentStudent!,
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.red)),
+      ],
+    );
+  }
+
+  Column buildAttendanceStatusParticipantsColumn(
+      BuildContext context, CourseDetailViewModel viewModel) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(LocaleKeys.course_teacher_attendance_participants.tr(),
+            style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.green)),
+        Text(viewModel.manageAttendanceModels!.participateStudent!,
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.green)),
+      ],
+    );
+  }
+
+  Column buildAttendanceStatusTotalColumn(BuildContext context, CourseDetailViewModel viewModel) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(LocaleKeys.course_teacher_attendance_tot.tr(),
+            style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.blue)),
+        Text(viewModel.manageAttendanceModels!.totalStudent!,
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.blue)),
+      ],
     );
   }
 

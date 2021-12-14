@@ -16,18 +16,24 @@ class StudentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: context.paddingBitNormal,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(courseDetailViewModel.courseDetailModel!.students![index].email!),
-            CircleAvatar(child: ClipRect()),
-          ],
-        ),
-      ),
+    return Card(child: buildPadding(context));
+  }
+
+  Padding buildPadding(BuildContext context) {
+    return Padding(
+      padding: context.paddingBitNormal,
+      child: buildRow(),
+    );
+  }
+
+  Row buildRow() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(courseDetailViewModel.courseDetailModel!.students![index].email!),
+        CircleAvatar(child: ClipRect()),
+      ],
     );
   }
 

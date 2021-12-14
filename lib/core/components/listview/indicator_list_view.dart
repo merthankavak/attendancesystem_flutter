@@ -11,6 +11,10 @@ class IndicatorListView extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return buildListViewBuilder();
+  }
+
+  ListView buildListViewBuilder() {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,

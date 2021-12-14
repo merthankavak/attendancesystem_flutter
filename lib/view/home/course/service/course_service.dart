@@ -152,7 +152,8 @@ class CourseService extends ICourseService with ServiceHelper {
       NetworkRoutes.STUDENT.rawValue,
       urlSuffix: 'course/' + id,
       parseModel: DetailModel(),
-      method: RequestType.GET,
+      method: RequestType.POST,
+      data: {'studentId': studentId},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
