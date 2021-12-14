@@ -11,7 +11,7 @@ class AttendanceStatusModel extends INetworkModel<AttendanceStatusModel> {
   final String? id;
   final String? date;
   final String? time;
-  final bool? attendanceStatus;
+  bool? attendanceStatus;
   final List<StudentModel>? students;
 
   AttendanceStatusModel({this.id, this.date, this.time, this.attendanceStatus, this.students});

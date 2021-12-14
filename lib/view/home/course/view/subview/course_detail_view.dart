@@ -148,7 +148,7 @@ class CourseDetailView extends StatelessWidget {
                               icon: Icon(Icons.edit));
                         })
                       : Observer(builder: (_) {
-                          return viewModel.courseDetailModel!.attendance![index].attendanceStatus ==
+                          return viewModel.courseStudentAttendanceStatus![index].attendanceStatus ==
                                   true
                               ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
                               : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red);

@@ -24,6 +24,16 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
           Computed<CourseModel?>(() => super.courseDetailModel,
               name: '_CourseDetailViewModelBase.courseDetailModel'))
       .value;
+  Computed<List<AttendanceStatusModel>?>?
+      _$courseStudentAttendanceStatusComputed;
+
+  @override
+  List<AttendanceStatusModel>? get courseStudentAttendanceStatus =>
+      (_$courseStudentAttendanceStatusComputed ??= Computed<
+                  List<AttendanceStatusModel>?>(
+              () => super.courseStudentAttendanceStatus,
+              name: '_CourseDetailViewModelBase.courseStudentAttendanceStatus'))
+          .value;
 
   final _$detailModelAtom =
       Atom(name: '_CourseDetailViewModelBase.detailModel');
@@ -225,7 +235,8 @@ currentIndex: ${currentIndex},
 isLoading: ${isLoading},
 statusArray: ${statusArray},
 manageAttendanceModels: ${manageAttendanceModels},
-courseDetailModel: ${courseDetailModel}
+courseDetailModel: ${courseDetailModel},
+courseStudentAttendanceStatus: ${courseStudentAttendanceStatus}
     ''';
   }
 }
