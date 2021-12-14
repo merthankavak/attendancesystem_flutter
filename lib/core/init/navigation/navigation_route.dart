@@ -9,6 +9,7 @@ import '../../../view/home/course/view/course_view.dart';
 import '../../../view/home/course/view/subview/course_detail_settings_view.dart';
 import '../../../view/home/course/view/subview/course_detail_view.dart';
 import '../../../view/home/course/view/subview/course_schedule_view.dart';
+import '../../../view/home/profile/view/profile_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -54,6 +55,8 @@ class NavigationRoute {
           courseId: args.arguments.toString().split(',')[1],
           date: args.arguments.toString().split(',')[2],
         ));
+      case NavigationConstants.PROFILE_VIEW:
+        return normalNavigate(ProfileView(typeOfUser: args.arguments.toString()));
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),

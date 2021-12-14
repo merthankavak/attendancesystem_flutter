@@ -68,6 +68,12 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
     _changeLoading();
   }
 
+  void sendProfileView(String typeOfUser) async {
+    _changeLoading();
+    await navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW, data: typeOfUser);
+    _changeLoading();
+  }
+
   @action
   Future<void> getCoursesList(String typeOfUser) async {
     _changeLoading();

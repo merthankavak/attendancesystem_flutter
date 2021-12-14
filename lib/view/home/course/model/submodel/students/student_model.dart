@@ -13,6 +13,7 @@ class StudentModel extends INetworkModel<StudentModel> {
   final String? email;
   final String? fullName;
   final StudentImageModel? studentImageModel;
+  final String? imageUrl;
   bool? attendanceStatus;
 
   StudentModel(
@@ -21,6 +22,7 @@ class StudentModel extends INetworkModel<StudentModel> {
       this.email,
       this.fullName,
       this.studentImageModel,
+      this.imageUrl,
       this.attendanceStatus});
 
   @override

@@ -112,5 +112,19 @@ abstract class  LocaleKeys {
   static const course_teacher_attendance = 'course.teacher.attendance';
   static const course_teacher = 'course.teacher';
   static const course = 'course';
+  static const profile_appbar = 'profile.appbar';
+  static const profile_account_title = 'profile.account.title';
+  static const profile_account_photoTitle = 'profile.account.photoTitle';
+  static const profile_account_photoDesc = 'profile.account.photoDesc';
+  static const profile_account_passwordTitle = 'profile.account.passwordTitle';
+  static const profile_account_passwordDesc = 'profile.account.passwordDesc';
+  static const profile_account_password = 'profile.account.password';
+  static const profile_account_confirmPassword = 'profile.account.confirmPassword';
+  static const profile_account_fullName = 'profile.account.fullName';
+  static const profile_account_fullNameTitle = 'profile.account.fullNameTitle';
+  static const profile_account_fullNameDesc = 'profile.account.fullNameDesc';
+  static const profile_account_button = 'profile.account.button';
+  static const profile_account = 'profile.account';
+  static const profile = 'profile';
 
 }

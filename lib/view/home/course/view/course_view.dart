@@ -136,7 +136,7 @@ class CourseView extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                //viewModel.profile();
+                viewModel.sendProfileView(typeOfUser);
               },
               icon: Icon(FontAwesomeIcons.user))
         ]);

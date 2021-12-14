@@ -138,6 +138,22 @@
             }
 
         }
+    },
+    "profile": {
+        "appbar": "Profile",
+        "account": {
+            "title": "My Profile",
+            "photoTitle": "Change Profile Picture",
+            "photoDesc": "You can change your profile picture",
+            "passwordTitle": "Change Password",
+            "passwordDesc": "You can change your password",
+            "password": "New Password",
+            "confirmPassword": "Confirm Your New Password",
+            "fullName": "Full Name",
+            "usernameTitle": "Change Full Name",
+            "usernameDesc": "You can change your full name",
+            "button": "Update"
+        }
     }
 
 }
