@@ -117,7 +117,7 @@ class AttendanceView extends StatelessWidget {
               onPressed: () async {
                 await viewModel.manageAttendanceStatus(typeOfUser, date, courseId);
               },
-              icon: Icon(Icons.update));
+              icon: Icon(Icons.done));
         })
       ],
       leading: IconButton(

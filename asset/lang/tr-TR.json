@@ -4,156 +4,174 @@
     },
     "onBoard": {
         "page1": {
-            "title": "Page 1",
-            "desc": "Page 1 Description"
+            "title": "Yoklama Sistemi",
+            "desc": "Yoklama sistemi, önceden toplanan verilerle öğrencilerin katılımını analiz edecektir."
         },
         "page2": {
-            "title": "Page 2",
-            "desc": "Page 2 Description"
+            "title": "Yüz Tanıma",
+            "desc": "Kurslardaki öğrencilerin katılım durumu, öğrencilerin fotoğraflarını kullanarak yüz tanıma algoritmaları tarafından işlenir."
         },
         "page3": {
-            "title": "Page 3",
-            "desc": "Page 3 Description"
+            "title": "Kullanımı Kolay",
+            "desc": "Bu uygulama, öğrencilerin derslerdeki devamsızlıklarını kolayca kontrol etmelerini amaçlamaktadır."
+        }
+    },
+    "setting": {
+        "title": "Ayarlar",
+        "about": {
+            "title": "Hakkında",
+            "appInfo": "Uygulama Turu"
         },
-        "page4": {
-            "title": "Page 4",
-            "desc": "Page 4 Description"
+        "appSettings": {
+            "title": "Uygulama ayarları",
+            "themeTitle": "Tema",
+            "themeDesc": "Uygulama temasını değiştirebilirsiniz.",
+            "langTitle": "Dil",
+            "langDesc": "Uygulama dilini değiştirebilirsiniz."
         }
     },
 
     "login": {
-        "tab1": "Teacher",
-        "tab2": "Student",
-        "email": "Email",
-        "name": "Full Name",
-        "password": "Password",
-        "forgotText": "Forgot Password",
-        "login": "Login",
-        "dontAccount": "Don't have an account? ",
-        "alreadyAccount": "Already have an account? ",
-        "continueWithoutLogin": "Continue Without Login",
-        "terms": "Terms and Conditions",
-        "signup": "Sign Up",
+        "tab1": "Öğretmen",
+        "tab2": "Öğrenci",
+        "email": "E-posta",
+        "name": "Ad Soyad",
+        "password": "Parola",
+        "forgotText": "Parolanızı mı unuttunuz",
+        "login": "Giriş yapmak",
+        "dontAccount": "Hesabın yok mu? ",
+        "alreadyAccount": "Zaten hesabınız var mı? ",
+        "continueWithoutLogin": "Giriş yapmadan devam edin",
+        "terms": "Şartlar ve koşullar",
+        "signup": "Kayıt Ol",
         "alert": {
-            "title": " Verify Your Account",
-            "desc": "Verification link has been sent to your email address",
-            "button": "Okay"
+            "title": " Hesabınızı Doğrulayın",
+            "desc": "Doğrulama bağlantısı e-posta adresinize gönderildi",
+            "button": "Tamam"
         }
     },
 
     "forgotpassword": {
 
-        "title": "Forgot Your Password?\n\n",
-        "desc": "Enter your email and we will send you a code to reset your password",
-        "email": "Email",
-        "hint": "Enter your email",
-        "usertype": "Select your user type",
-        "send": "Send"
+        "title": "Parolanızı Mı Unuttunuz?\n\n",
+        "desc": "E-postanızı girin ve şifrenizi sıfırlamak için size bir kod gönderelim.",
+        "email": "E-posta",
+        "hint": "E-postanızı giriniz",
+        "usertype": "Kullanıcı türünüzü seçin",
+        "send": "Gönder"
     },
     "confirmotp": {
 
-        "title": "Confirm the Code\n\n",
-        "desc": "Enter the 6 digits code to reset your password",
-        "receive": "Did'nt receive the code? ",
-        "resend": "Resend",
-        "confirm": "Confirm",
-        "expired": "Code expires after ",
-        "second": " seconds",
+        "title": "Kodu Onayla\n\n",
+        "desc": "Şifrenizi sıfırlamak için 6 haneli kodu girin",
+        "receive": "Kodu almadın mı? ",
+        "resend": "Tekrar Yolla",
+        "confirm": "Doğrula",
+        "expired": "Kodun süresinin dolmasına  ",
+        "second": " saniye",
         "alert": {
-            "title": " Transaction Successfull",
-            "desc": "Code resend successfully",
-            "button": "Okay"
+            "title": " İşlem Başarılı",
+            "desc": "Kod başarıyla tekrar yollandı",
+            "button": "Tamam"
         }
     },
     "changepassword": {
 
-        "title": "Change Password\n\n",
-        "desc": "Enter your new password",
-        "password": "New Password",
-        "confirmpassword": "Confirm New Password",
-        "confirm": "Confirm",
+        "title": "Şifre Değiştir\n\n",
+        "desc": "Yeni şifrenizi giriniz",
+        "password": "Yeni Şifre",
+        "confirmpassword": "Yeni Şifreyi Onayla",
+        "confirm": "Onayla",
         "alert": {
-            "title": " Transaction Successfull",
-            "desc": "Your password successfully changed",
-            "button": "Okay"
+            "title": " İşlem Başarılı",
+            "desc": "Şifren başarıyla değişti",
+            "button": "Anasayfaya Git"
         }
     },
     "course": {
-        "title": "Attendance System",
+        "title": "Yoklama Sistemi",
         "detail": {
             "bottombar": {
-                "first": "Home",
-                "sec": "Students",
-                "third": "Attendance"
+                "first": "Anasayfa",
+                "sec": "Öğrenciler",
+                "third": "Yoklama"
             },
-            "time": "Time",
-            "code": "Course Code"
+            "time": "Zaman",
+            "code": "Kurs kodu"
         },
         "student": {
-            "student": "Student",
-            "title": "Join Course\n\n",
-            "tooltip": "Join Course",
+            "student": "Öğrenci",
+            "title": "Kursa Katıl\n\n",
+            "tooltip": "Kursa Katıl",
             "desc": {
-                "title": "To sign in with a course code",
-                "desc1": "• Ask your teacher for the course code, then enter it here\n",
-                "desc2": "• Use a course code with 6 letters or numbers, and no spaces or symbols\n"
+                "title": "Kurs koduyla giriş yapmak için",
+                "desc1": "• Öğretmeninizden kurs kodunu isteyin, sonra buraya girin.\n",
+                "desc2": "• Boşluk ve sembol içermeyen 6 karakter içeren bir kurs kodunu kullanın.\n"
             },
-            "button": "Join",
-            "hint": "Enter the course code",
-            "unenroll": "Unenroll"
+            "button": "Katıl",
+            "hint": "Kurs kodunu girin",
+            "unenroll": "Ayrıl"
         },
         "teacher": {
-            "teacher": "Teacher",
-            "title": "Create Course\n\n",
-            "tooltip": "Create Course",
+            "teacher": "Öğretmen",
+            "title": "Kurs Oluştur\n\n",
+            "tooltip": "Kurs Oluştur",
             "desc": {
-                "title": "To create course",
-                "desc1": "• Enter the course details\n"
+                "title": "Kurs oluşturmak için",
+                "desc1": "• Kurs ayrıntılarını girin\n"
             },
-            "button": "Create",
-            "coursenNameHint": "Enter the course name",
-            "coursenShortNameHint": "Enter the course short name",
-            "delete": "Delete Course",
-            "share": "Share Course Code",
+            "button": "Oluştur",
+            "coursenNameHint": "Kurs adını girin",
+            "coursenShortNameHint": "Kurs kısa adını girin",
+            "delete": "Kursu Sil",
+            "share": "Kurs Kodunu Paylaş",
             "schedule": {
-                "title": "Course Schedule",
-                "courseStartDate": "Enter the course start date",
-                "courseEndDate": "Enter the course end date",
-                "courseStartTime": "Enter the course start time",
-                "courseEndTime": "Enter the course end time",
-                "button": "Continue"
+                "title": "Kurs Zamanı",
+                "courseStartDate": "Kurs başlangıç tarihini girin",
+                "courseEndDate": "Kurs bitiş tarihini girin",
+                "courseStartTime": "Kurs başlangıç saatini girin",
+                "courseEndTime": "Kurs bitiş saatini girin",
+                "button": "Devam Et"
             },
             "settings": {
-                "title": "Course Settings",
-                "coursenNameHint": "Update the course name",
-                "coursenShortNameHint": "Update the course short name",
-                "button": "Update"
+                "title": "Kurs Ayarları",
+                "coursenNameHint": "Kurs adını güncelle",
+                "coursenShortNameHint": "Kurs kısa adını güncelle",
+                "button": "Güncelle"
             },
             "attendance": {
-                "photo": "Photo Library",
-                "camera": "Camera",
-                "tot": "Total",
-                "participants": "Participants",
-                "absent": "Absent"
+                "photo": "Fotoğraf Kütüphanesi",
+                "camera": "Kamera",
+                "tot": "Toplam",
+                "participants": "Katılanlar",
+                "absent": "Katılmayanlar"
             }
 
         }
     },
     "profile": {
-        "appbar": "Profile",
+        "appbar": "Profil",
         "account": {
-            "title": "My Profile",
-            "photoTitle": "Change Profile Picture",
-            "photoDesc": "You can change your profile picture",
-            "passwordTitle": "Change Password",
-            "passwordDesc": "You can change your password",
-            "password": "New Password",
-            "confirmPassword": "Confirm Your New Password",
-            "fullName": "Full Name",
-            "usernameTitle": "Change Full Name",
-            "usernameDesc": "You can change your full name",
-            "button": "Update"
+            "title": "Hesabım",
+            "photoTitle": "Profil Resmini Değiştir",
+            "photoDesc": "Profil resminizi değiştirebilirsiniz",
+            "passwordTitle": "Şifreni Değiştir",
+            "passwordDesc": "Şifrenizi değiştirebilirsiniz",
+            "password": "Yeni Şifre",
+            "confirmPassword": "Yeni şifrenizi onaylayın",
+            "fullName": "Ad Soyad",
+            "fullNameTitle": "Ad Soyad Değiştir",
+            "fullNameDesc": "Ad Soyadınızı değiştirebilirsiniz",
+            "button": "Güncelle"
+        },
+        "exit": {
+            "logout": "Çıkış Yap"
         }
+    },
+
+    "menu": {
+        "welcome": "Yoklama Sistemine Hoşgeldiniz.",
+        "logout": "Çıkış Yap"
     }
 
 }

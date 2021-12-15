@@ -9,6 +9,7 @@ import '../../../../../core/extension/context_extension.dart';
 import '../../../../../core/init/lang/locale_keys.g.dart';
 import '../../../../_product/_widgets/card/course_detail_card.dart';
 import '../../../../_product/_widgets/card/student_card.dart';
+import '../../../../menu/view/menu_view.dart';
 import '../../viewmodel/subviewmodel/course_detail_view_model.dart';
 import 'course_schedule_view.dart';
 
@@ -34,6 +35,7 @@ class CourseDetailView extends StatelessWidget {
         onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
               key: viewModel.detailScaffoldKey,
               appBar: buildAppBar(context, viewModel),
+              drawer: MenuView(),
               body: Observer(builder: (_) {
                 return viewModel.isLoading
                     ? buildCenter()
@@ -97,7 +99,7 @@ class CourseDetailView extends StatelessWidget {
         title: Text(LocaleKeys.course_title.tr()),
         leading: IconButton(
           onPressed: () {
-            //viewModel.menu();
+            viewModel.detailScaffoldKey.currentState!.openDrawer();
           },
           icon: Icon(Icons.menu),
         ),

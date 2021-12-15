@@ -32,13 +32,11 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   @override
   void init() {
     onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page1_title.tr(),
-        LocaleKeys.onBoard_page1_desc.tr(), SVGImagePaths.instance.onBoard1SVG));
+        LocaleKeys.onBoard_page1_desc.tr(), SVGImagePaths.instance.classSVG));
     onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page2_title.tr(),
-        LocaleKeys.onBoard_page2_desc.tr(), SVGImagePaths.instance.onBoard1SVG));
+        LocaleKeys.onBoard_page2_desc.tr(), SVGImagePaths.instance.faceSVG));
     onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page3_title.tr(),
-        LocaleKeys.onBoard_page3_desc.tr(), SVGImagePaths.instance.onBoard1SVG));
-    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page4_title.tr(),
-        LocaleKeys.onBoard_page4_desc.tr(), SVGImagePaths.instance.onBoard1SVG));
+        LocaleKeys.onBoard_page3_desc.tr(), SVGImagePaths.instance.teacherSVG));
   }
 
   @action

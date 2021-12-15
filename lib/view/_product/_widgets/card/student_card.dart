@@ -1,3 +1,5 @@
+import 'package:attendancesystem_flutter/core/init/theme/light/color_scheme_light.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extension/context_extension.dart';
@@ -31,8 +33,19 @@ class StudentCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(courseDetailViewModel.courseDetailModel!.students![index].email!),
-        CircleAvatar(child: ClipRect()),
+        Expanded(
+          flex: 2,
+          child: CircleAvatar(
+              backgroundColor: ColorSchemeLight.instance!.transparent,
+              child: Image(
+                  width: 50,
+                  height: 50,
+                  image: CachedNetworkImageProvider(
+                      courseDetailViewModel.courseDetailModel!.students![index].imageUrl!)),
+              radius: 30),
+        ),
+        Expanded(
+            flex: 8, child: Text(courseDetailViewModel.courseDetailModel!.students![index].email!)),
       ],
     );
   }

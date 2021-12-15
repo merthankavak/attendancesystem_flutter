@@ -161,4 +161,12 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
     }
     changeLoading();
   }
+
+  @action
+  Future<void> logutApp() async {
+    changeLoading();
+    await localeManager.clearAllSaveFirst();
+    await navigation.navigateToPageClear(path: NavigationConstants.LOGIN_VIEW);
+    changeLoading();
+  }
 }

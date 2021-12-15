@@ -4,12 +4,15 @@ import '../../../view/authenticate/forgot_password/view/forgot_password_view.dar
 import '../../../view/authenticate/forgot_password/view/subview/change_password_view.dart';
 import '../../../view/authenticate/forgot_password/view/subview/confirm_otp_view.dart';
 import '../../../view/authenticate/login/view/login_view.dart';
+import '../../../view/authenticate/onboard/view/onboard_view.dart';
+import '../../../view/authenticate/splash/view/splash_view.dart';
 import '../../../view/home/attendance/view/attendance_view.dart';
 import '../../../view/home/course/view/course_view.dart';
 import '../../../view/home/course/view/subview/course_detail_settings_view.dart';
 import '../../../view/home/course/view/subview/course_detail_view.dart';
 import '../../../view/home/course/view/subview/course_schedule_view.dart';
 import '../../../view/home/profile/view/profile_view.dart';
+import '../../../view/settings/view/settings_view.dart';
 import '../../components/card/not_found_card.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -21,6 +24,10 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
+      case NavigationConstants.DEFAULT:
+        return normalNavigate(SplashView());
+      case NavigationConstants.ONBOARD_VIEW:
+        return normalNavigate(OnBoardView());
       case NavigationConstants.LOGIN_VIEW:
         return normalNavigate(LoginView());
       case NavigationConstants.FORGOT_PASSWORD_VIEW:
@@ -57,6 +64,8 @@ class NavigationRoute {
         ));
       case NavigationConstants.PROFILE_VIEW:
         return normalNavigate(ProfileView(typeOfUser: args.arguments.toString()));
+      case NavigationConstants.SETTINGS_VIEW:
+        return normalNavigate(SettingsView(typeOfUser: args.arguments.toString()));
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),

@@ -118,6 +118,13 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.getUserInformation(typeOfUser));
   }
 
+  final _$logutAppAsyncAction = AsyncAction('_ProfileViewModelBase.logutApp');
+
+  @override
+  Future<void> logutApp() {
+    return _$logutAppAsyncAction.run(() => super.logutApp());
+  }
+
   final _$_ProfileViewModelBaseActionController =
       ActionController(name: '_ProfileViewModelBase');
 

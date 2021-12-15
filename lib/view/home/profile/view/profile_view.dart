@@ -11,6 +11,7 @@ import '../../../../core/components/button/title_text_button.dart';
 import '../../../../core/extension/string_extension.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../../core/init/theme/light/color_scheme_light.dart';
+import '../../../menu/view/menu_view.dart';
 import '../viewmodel/profile_view_model.dart';
 
 class ProfileView extends StatelessWidget {
@@ -29,6 +30,7 @@ class ProfileView extends StatelessWidget {
       onPageBuilder: (BuildContext context, ProfileViewModel viewModel) => Scaffold(
         key: viewModel.profileScaffoldKey,
         appBar: buildAppBar(context, viewModel),
+        drawer: MenuView(),
         body: Observer(
           builder: (_) {
             return viewModel.isLoading ? buildCenter() : buildUserColumn(context, viewModel);
@@ -45,7 +47,7 @@ class ProfileView extends StatelessWidget {
       title: Text(LocaleKeys.profile_appbar.tr()),
       leading: IconButton(
         onPressed: () {
-          //viewModel.menu();
+          viewModel.profileScaffoldKey.currentState!.openDrawer();
         },
         icon: Icon(Icons.menu),
       ),
@@ -84,6 +86,11 @@ class ProfileView extends StatelessWidget {
               ],
             ),
           ),
+          Divider(color: ColorSchemeLight.instance!.black),
+          Card(
+            color: context.colorScheme.primaryVariant,
+            child: buildLogOutListTile(context, viewModel),
+          ),
         ],
       ),
     );
@@ -107,6 +114,16 @@ class ProfileView extends StatelessWidget {
       subtitle: Text(LocaleKeys.profile_account_passwordDesc.tr()),
       onTap: () {
         showModalBottomSheetPassword(context, viewModel);
+      },
+    );
+  }
+
+  ListTile buildLogOutListTile(BuildContext context, ProfileViewModel viewModel) {
+    return ListTile(
+      leading: Icon(Icons.exit_to_app),
+      title: Text(LocaleKeys.profile_exit_logout.tr()),
+      onTap: () {
+        viewModel.logutApp();
       },
     );
   }
@@ -148,15 +165,15 @@ class ProfileView extends StatelessWidget {
                   )
                 : Expanded(
                     flex: 1,
-                    child: Image(
-                      image: CachedNetworkImageProvider(
-                        'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1024px-Image_created_with_a_mobile_phone.png',
-                      ),
-                    ),
+                    child: CircleAvatar(
+                        backgroundColor: ColorSchemeLight.instance!.black,
+                        child: Image(
+                            image: CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
+                        radius: 30),
                   ),
             Spacer(flex: 1),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +199,7 @@ class ProfileView extends StatelessWidget {
                 ],
               ),
             ),
-            Spacer(flex: 3)
+            Spacer(flex: 2)
           ],
         ),
       ),

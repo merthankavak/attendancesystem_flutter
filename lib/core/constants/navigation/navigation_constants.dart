@@ -12,4 +12,5 @@ class NavigationConstants {
   static const COURSE_DETAIL_SETTINGS_VIEW = '/coursedetailsettingsview';
   static const ATTENDANCE_VIEW = '/attendanceview';
   static const PROFILE_VIEW = '/profileview';
+  static const SETTINGS_VIEW = '/settingsview';
 }

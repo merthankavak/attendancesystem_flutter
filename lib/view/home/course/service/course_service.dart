@@ -96,12 +96,13 @@ class CourseService extends ICourseService with ServiceHelper {
   }
 
   @override
-  Future<DetailModel?> getOneCourseTeacherControl(String id, String token) async {
+  Future<DetailModel?> getOneCourseTeacherControl(String id, String teacherId, String token) async {
     final response = await manager.send<DetailModel, DetailModel>(
       NetworkRoutes.TEACHER.rawValue,
       urlSuffix: 'course/' + id,
       parseModel: DetailModel(),
-      method: RequestType.GET,
+      method: RequestType.POST,
+      data: {'teacherId': teacherId},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -118,7 +119,6 @@ class CourseService extends ICourseService with ServiceHelper {
       urlSuffix: 'course/list/' + teacherId,
       parseModel: CourseListModel(),
       method: RequestType.GET,
-      data: {},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -169,10 +169,10 @@ class CourseService extends ICourseService with ServiceHelper {
       String studentId, CourseModel courseModel, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: 'course/joincourse',
+      urlSuffix: 'course/joincourse/$studentId',
       parseModel: CourseModel(),
       method: RequestType.POST,
-      data: {'studentId': studentId, 'courseCode': courseModel.courseCode},
+      data: {'courseCode': courseModel.courseCode},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'

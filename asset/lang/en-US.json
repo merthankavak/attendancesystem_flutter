@@ -4,20 +4,31 @@
     },
     "onBoard": {
         "page1": {
-            "title": "Page 1",
-            "desc": "Page 1 Description"
+            "title": "Attendance System",
+            "desc": "Attendance system will analyze the students attendance with the data that is already collected."
         },
         "page2": {
-            "title": "Page 2",
-            "desc": "Page 2 Description"
+            "title": "Face Recognition",
+            "desc": "The attendance status of the students in the courses is processed by face recognition algorithms using the photos of the students."
         },
         "page3": {
-            "title": "Page 3",
-            "desc": "Page 3 Description"
+            "title": "Easy To Use",
+            "desc": "This application that aims to make it easier for lecturers to check the attendance status of students."
+        }
+       
+    },
+    "setting": {
+        "title": "Settings",
+        "about": {
+            "title": "About",
+            "appInfo": "Application Tour"
         },
-        "page4": {
-            "title": "Page 4",
-            "desc": "Page 4 Description"
+        "appSettings": {
+            "title": "Application Settings",
+            "themeTitle": "Theme",
+            "themeDesc": "You can change applicaton theme.",
+            "langTitle": "Language",
+            "langDesc": "You can change applicaton language."
         }
     },
 
@@ -144,7 +155,7 @@
     "profile": {
         "appbar": "Profile",
         "account": {
-            "title": "My Profile",
+            "title": "My Account",
             "photoTitle": "Change Profile Picture",
             "photoDesc": "You can change your profile picture",
             "passwordTitle": "Change Password",
@@ -155,7 +166,15 @@
             "fullNameTitle": "Change Full Name",
             "fullNameDesc": "You can change your full name",
             "button": "Update"
+        },
+        "exit": {
+            "logout": "Logout"
         }
+    },
+
+    "menu": {
+        "welcome": "Welcome To Attendance System",
+        "logout": "Logout"
     }
 
 }

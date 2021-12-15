@@ -12,10 +12,18 @@ abstract class  LocaleKeys {
   static const onBoard_page3_title = 'onBoard.page3.title';
   static const onBoard_page3_desc = 'onBoard.page3.desc';
   static const onBoard_page3 = 'onBoard.page3';
-  static const onBoard_page4_title = 'onBoard.page4.title';
-  static const onBoard_page4_desc = 'onBoard.page4.desc';
-  static const onBoard_page4 = 'onBoard.page4';
   static const onBoard = 'onBoard';
+  static const setting_title = 'setting.title';
+  static const setting_about_title = 'setting.about.title';
+  static const setting_about_appInfo = 'setting.about.appInfo';
+  static const setting_about = 'setting.about';
+  static const setting_appSettings_title = 'setting.appSettings.title';
+  static const setting_appSettings_themeTitle = 'setting.appSettings.themeTitle';
+  static const setting_appSettings_themeDesc = 'setting.appSettings.themeDesc';
+  static const setting_appSettings_langTitle = 'setting.appSettings.langTitle';
+  static const setting_appSettings_langDesc = 'setting.appSettings.langDesc';
+  static const setting_appSettings = 'setting.appSettings';
+  static const setting = 'setting';
   static const login_tab1 = 'login.tab1';
   static const login_tab2 = 'login.tab2';
   static const login_name = 'login.name';
@@ -125,6 +133,11 @@ abstract class  LocaleKeys {
   static const profile_account_fullNameDesc = 'profile.account.fullNameDesc';
   static const profile_account_button = 'profile.account.button';
   static const profile_account = 'profile.account';
+  static const profile_exit_logout = 'profile.exit.logout';
+  static const profile_exit = 'profile.exit';
   static const profile = 'profile';
+  static const menu_welcome = 'menu.welcome';
+  static const menu_logout = 'menu.logout';
+  static const menu = 'menu';
 
 }

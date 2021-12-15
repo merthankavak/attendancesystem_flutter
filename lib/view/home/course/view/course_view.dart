@@ -8,6 +8,7 @@ import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/button/title_text_button.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/card/course_list_card.dart';
+import '../../../menu/view/menu_view.dart';
 import '../viewmodel/course_view_model.dart';
 
 class CourseView extends StatelessWidget {
@@ -27,6 +28,7 @@ class CourseView extends StatelessWidget {
       onPageBuilder: (BuildContext context, CourseViewModel viewModel) => Scaffold(
         key: viewModel.scaffoldKey,
         appBar: buildAppBar(context, viewModel),
+        drawer: MenuView(),
         floatingActionButton: buildFloatingActionButton(context, viewModel),
         body: Observer(builder: (_) {
           return viewModel.isLoading
@@ -129,7 +131,7 @@ class CourseView extends StatelessWidget {
         title: Text(LocaleKeys.course_title.tr()),
         leading: IconButton(
           onPressed: () {
-            //viewModel.menu();
+            viewModel.scaffoldKey.currentState!.openDrawer();
           },
           icon: Icon(Icons.menu),
         ),

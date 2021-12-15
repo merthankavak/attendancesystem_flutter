@@ -11,6 +11,7 @@ import 'package:attendancesystem_flutter/view/home/course/model/submodel/course/
 import 'package:attendancesystem_flutter/view/home/course/model/submodel/detail/detail_model.dart';
 import 'package:attendancesystem_flutter/view/home/course/service/ICourseService.dart';
 import 'package:attendancesystem_flutter/view/home/course/service/course_service.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_pickers/image_pickers.dart';
@@ -104,7 +105,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   Future<void> getCourseDetail(String typeOfUser, String courseId) async {
     if (typeOfUser == 'teacher') {
       _changeLoading();
-      detailModel = await courseService.getOneCourseTeacherControl(courseId, token!);
+      detailModel = await courseService.getOneCourseTeacherControl(courseId, id!, token!);
       _changeLoading();
     } else {
       _changeLoading();
@@ -207,7 +208,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
                   Observer(builder: (_) {
                     return ListTile(
                         leading: Icon(Icons.check_box, color: context.colorSchemeLight.green),
-                        title: Text(LocaleKeys.course_teacher_attendance_participants),
+                        title: Text(LocaleKeys.course_teacher_attendance_participants.tr()),
                         onTap: () async {
                           if (navigation.navigatorKey.currentState!.canPop()) {
                             navigation.navigatorKey.currentState!.pop();
@@ -220,7 +221,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
                   Observer(builder: (_) {
                     return ListTile(
                       leading: Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red),
-                      title: Text(LocaleKeys.course_teacher_attendance_absent),
+                      title: Text(LocaleKeys.course_teacher_attendance_absent.tr()),
                       onTap: () async {
                         if (navigation.navigatorKey.currentState!.canPop()) {
                           navigation.navigatorKey.currentState!.pop();

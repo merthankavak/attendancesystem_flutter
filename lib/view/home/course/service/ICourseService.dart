@@ -20,7 +20,7 @@ abstract class ICourseService {
       String id, String courseStartDate, String courseEndDate, String courseTime, String token);
   Future<CourseModel?> updateCourseControl(CourseModel courseModel, String token);
   Future<CourseModel?> deleteCourseControl(String id, String token);
-  Future<DetailModel?> getOneCourseTeacherControl(String id, String token);
+  Future<DetailModel?> getOneCourseTeacherControl(String id, String teacherId, String token);
   Future<CourseListModel?> getCourseListTeacherControl(String teacherId, String token);
   Future<void> takeAttendance(String date, String id, String token, File file);
   Future<ManageAttendanceModel?> showAttendance(String date, String id, String token);

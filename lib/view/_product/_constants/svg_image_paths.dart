@@ -7,6 +7,8 @@ class SVGImagePaths {
   }
 
   SVGImagePaths._init();
-  final onBoard1SVG = 'onBoard1'.toSVG;
+  final faceSVG = 'face'.toSVG;
+  final classSVG = 'class'.toSVG;
+  final teacherSVG = 'teacher'.toSVG;
   final loginSVG = 'login'.toSVG;
 }

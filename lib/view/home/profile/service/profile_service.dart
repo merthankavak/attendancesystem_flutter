@@ -154,7 +154,7 @@ class ProfileService extends IProfileService with ServiceHelper {
   @override
   Future<TeacherProfileResponseModel?> showTeacherInfo(String token, String id) async {
     final response = await manager.send<TeacherProfileResponseModel, TeacherProfileResponseModel>(
-      NetworkRoutes.STUDENT.rawValue,
+      NetworkRoutes.TEACHER.rawValue,
       urlSuffix: 'show/$id',
       parseModel: TeacherProfileResponseModel(),
       method: RequestType.GET,

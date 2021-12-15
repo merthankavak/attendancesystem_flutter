@@ -1,4 +1,4 @@
-package com.example.attendancesystem_flutter;
+package com.nicetry.attendancesystem;
 
 import io.flutter.embedding.android.FlutterActivity;
 

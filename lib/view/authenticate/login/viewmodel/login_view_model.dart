@@ -64,6 +64,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
                 email: studentEmailController!.text, password: studentPasswordController!.text),
             typeOfUser);
         if (response != null) {
+          await localeManager.setStringValue(PreferencesKeys.TYPEOFUSER, typeOfUser);
           await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token!);
           await localeManager.setStringValue(PreferencesKeys.ID, response.user!.id!);
           await localeManager.setStringValue(PreferencesKeys.EMAIL, response.user!.email!);
@@ -78,6 +79,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
             typeOfUser);
 
         if (response != null) {
+          await localeManager.setStringValue(PreferencesKeys.TYPEOFUSER, typeOfUser);
           await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token!);
           await localeManager.setStringValue(PreferencesKeys.ID, response.user!.id!);
           await localeManager.setStringValue(PreferencesKeys.EMAIL, response.user!.email!);
