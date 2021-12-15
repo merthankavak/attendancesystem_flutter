@@ -122,8 +122,6 @@ class LoginView extends StatelessWidget {
             Spacer(flex: 2),
             buildTextRichSignIn(viewModel, context),
             Spacer(flex: 2),
-            buildTextRichTerms(context, viewModel),
-            Spacer(flex: 2),
           ],
         ),
       );
@@ -147,8 +145,6 @@ class LoginView extends StatelessWidget {
             buildElevatedButtonRegister(context, viewModel),
             Spacer(flex: 2),
             buildTextRichSignUp(context, viewModel),
-            Spacer(flex: 2),
-            buildTextRichTerms(context, viewModel),
             Spacer(flex: 2),
           ],
         ),
@@ -174,8 +170,6 @@ class LoginView extends StatelessWidget {
             Spacer(flex: 2),
             buildTextRichSignIn(viewModel, context),
             Spacer(flex: 2),
-            buildTextRichTerms(context, viewModel),
-            Spacer(flex: 2),
           ],
         ),
       );
@@ -199,8 +193,6 @@ class LoginView extends StatelessWidget {
             buildElevatedButtonRegister(context, viewModel),
             Spacer(flex: 2),
             buildTextRichSignUp(context, viewModel),
-            Spacer(flex: 2),
-            buildTextRichTerms(context, viewModel),
             Spacer(flex: 2),
           ],
         ),
@@ -315,17 +307,6 @@ class LoginView extends StatelessWidget {
         ],
       ));
     });
-  }
-
-  Text buildTextRichTerms(BuildContext context, LoginViewModel viewModel) {
-    return Text.rich(TextSpan(
-      children: [
-        TextSpan(
-            recognizer: TapGestureRecognizer()..onTap = () => viewModel.navigateToTerms(),
-            text: LocaleKeys.login_terms.tr(),
-            style: TextStyle(color: context.colorSchemeLight.blue.withOpacity(0.6))),
-      ],
-    ));
   }
 
   Widget buildElevatedButtonLogin(BuildContext context, LoginViewModel viewModel) {

@@ -23,7 +23,7 @@
             "appInfo": "Uygulama Turu"
         },
         "appSettings": {
-            "title": "Uygulama ayarları",
+            "title": "Uygulama Ayarları",
             "themeTitle": "Tema",
             "themeDesc": "Uygulama temasını değiştirebilirsiniz.",
             "langTitle": "Dil",
@@ -38,7 +38,7 @@
         "name": "Ad Soyad",
         "password": "Parola",
         "forgotText": "Parolanızı mı unuttunuz",
-        "login": "Giriş yapmak",
+        "login": "Giriş Yap",
         "dontAccount": "Hesabın yok mu? ",
         "alreadyAccount": "Zaten hesabınız var mı? ",
         "continueWithoutLogin": "Giriş yapmadan devam edin",
@@ -170,7 +170,7 @@
     },
 
     "menu": {
-        "welcome": "Yoklama Sistemine Hoşgeldiniz.",
+        "welcome": "Yoklama Sistemine Hoşgeldiniz",
         "logout": "Çıkış Yap"
     }
 
