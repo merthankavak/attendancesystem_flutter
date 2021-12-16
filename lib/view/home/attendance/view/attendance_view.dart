@@ -143,8 +143,8 @@ class AttendanceView extends StatelessWidget {
         })
       ],
       leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
+        onPressed: () async {
+          await viewModel.sendCourseDetailView(typeOfUser, courseId);
         },
         icon: Icon(FontAwesomeIcons.arrowLeft),
       ),

@@ -41,7 +41,7 @@ class CourseDetailView extends StatelessWidget {
                     ? buildCenter()
                     : viewModel.courseDetailModel == null
                         ? Center(child: Text('Not Found'))
-                        : viewModel.detailModel!.course!.attendance!.isEmpty
+                        : viewModel.courseDetailModel!.attendance!.isEmpty
                             ? CourseScheduleView(typeOfUser: typeOfUser, courseId: courseId)
                             : viewModel.currentIndex == 0
                                 ? buildObserverCourseInfoColumn(viewModel)
@@ -151,7 +151,7 @@ class CourseDetailView extends StatelessWidget {
                         })
                       : Observer(builder: (_) {
                           return viewModel.courseStudentAttendanceStatus![index].attendanceStatus ==
-                                  true
+                                  'true'
                               ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
                               : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red);
                         })
@@ -178,6 +178,14 @@ class CourseDetailView extends StatelessWidget {
                   children: <Widget>[
                     Observer(builder: (_) {
                       return ListTile(
+                          leading: Icon(Icons.edit),
+                          title: Text(LocaleKeys.course_teacher_attendance_edit.tr()),
+                          onTap: () async {
+                            await viewModel.sendCourseAttendanceView(typeOfUser, courseId, date);
+                          });
+                    }),
+                    Observer(builder: (_) {
+                      return ListTile(
                           leading: Icon(Icons.photo_library),
                           title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
                           onTap: () async {
@@ -186,7 +194,6 @@ class CourseDetailView extends StatelessWidget {
                               selectCount: 1,
                               showCamera: true,
                               showGif: false,
-                              compressSize: 50,
                             ).then((value) async => await viewModel.takeAttendanceStatus(
                                 typeOfUser, date, courseId, value.first));
                           });
@@ -198,7 +205,6 @@ class CourseDetailView extends StatelessWidget {
                         onTap: () async {
                           await ImagePickers.openCamera(
                             cameraMimeType: CameraMimeType.photo,
-                            compressSize: 50,
                           ).then((value) async => await viewModel.takeAttendanceStatus(
                               typeOfUser, date, courseId, value!));
                         },

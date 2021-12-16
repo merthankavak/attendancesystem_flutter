@@ -12,7 +12,7 @@ AttendanceStatusModel _$AttendanceStatusModelFromJson(
       id: json['_id'] as String?,
       date: json['date'] as String?,
       time: json['time'] as String?,
-      attendanceStatus: json['attendanceStatus'] as bool?,
+      attendanceStatus: json['attendanceStatus'] as String?,
       imageUrl: json['imageUrl'] as String?,
       students: (json['students'] as List<dynamic>?)
           ?.map((e) => StudentModel.fromJson(e as Map<String, dynamic>))

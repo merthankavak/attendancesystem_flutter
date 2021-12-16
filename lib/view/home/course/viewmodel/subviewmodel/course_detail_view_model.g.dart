@@ -124,6 +124,24 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.getCourseDetail(typeOfUser, courseId));
   }
 
+  final _$sendCourseDetailViewAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.sendCourseDetailView');
+
+  @override
+  Future<void> sendCourseDetailView(String typeOfUser, String courseId) {
+    return _$sendCourseDetailViewAsyncAction
+        .run(() => super.sendCourseDetailView(typeOfUser, courseId));
+  }
+
+  final _$sendCourseSchduleViewAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.sendCourseSchduleView');
+
+  @override
+  Future<void> sendCourseSchduleView(String typeOfUser, String courseId) {
+    return _$sendCourseSchduleViewAsyncAction
+        .run(() => super.sendCourseSchduleView(typeOfUser, courseId));
+  }
+
   final _$sendCourseDetailSettingsViewAsyncAction =
       AsyncAction('_CourseDetailViewModelBase.sendCourseDetailSettingsView');
 

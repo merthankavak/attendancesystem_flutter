@@ -115,6 +115,22 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   }
 
   @action
+  Future<void> sendCourseDetailView(String typeOfUser, String courseId) async {
+    _changeLoading();
+    await navigation.navigateToPage(
+        path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+    _changeLoading();
+  }
+
+  @action
+  Future<void> sendCourseSchduleView(String typeOfUser, String courseId) async {
+    _changeLoading();
+    await navigation.navigateToPage(
+        path: NavigationConstants.COURSE_SCHEDULE_VIEW, data: typeOfUser + ',' + courseId);
+    _changeLoading();
+  }
+
+  @action
   Future<void> sendCourseDetailSettingsView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
@@ -159,7 +175,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
           token!);
 
       if (response != null) {
-        await navigation.navigateToPage(
+        await navigation.navigateToPageClear(
             path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
       }
     }
@@ -174,7 +190,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     }
     var imageFile = await File(file.path!);
     await courseService.takeAttendance(date, id, token!, imageFile);
-    await navigation.navigateToPage(
+    await navigation.navigateToPageClear(
         path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + id + ',' + date);
     _changeLoading();
   }
@@ -214,7 +230,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
                             navigation.navigatorKey.currentState!.pop();
                           }
                           viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
-                              true;
+                              'true';
                           viewModel.statusArray[index] = 'true';
                         });
                   }),
@@ -227,7 +243,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
                           navigation.navigatorKey.currentState!.pop();
                         }
                         viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
-                            false;
+                            'false';
                         viewModel.statusArray[index] = 'false';
                       },
                     );

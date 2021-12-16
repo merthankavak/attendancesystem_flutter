@@ -16,7 +16,7 @@ StudentModel _$StudentModelFromJson(Map<String, dynamic> json) => StudentModel(
           : StudentImageModel.fromJson(
               json['studentImageModel'] as Map<String, dynamic>),
       imageUrl: json['imageUrl'] as String?,
-      attendanceStatus: json['attendanceStatus'] as bool?,
+      attendanceStatus: json['attendanceStatus'] as String?,
     );
 
 Map<String, dynamic> _$StudentModelToJson(StudentModel instance) =>

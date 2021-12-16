@@ -23,8 +23,8 @@ class CourseView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
-        model.getUserInformation(typeOfUser);
         model.getCoursesList(typeOfUser);
+        model.getUserInformation(typeOfUser);
       },
       onPageBuilder: (BuildContext context, CourseViewModel viewModel) => Scaffold(
         key: viewModel.scaffoldKey,

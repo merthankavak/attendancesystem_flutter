@@ -1,6 +1,6 @@
 {
     "splash": {
-        "welcome": "Welcome to Application"
+        "welcome": "Uygulamaya Hoşgeldiniz"
     },
     "onBoard": {
         "page1": {
@@ -147,6 +147,7 @@
             "attendance": {
                 "photo": "Fotoğraf Kütüphanesi",
                 "camera": "Kamera",
+                "edit": "Düzenle",
                 "tot": "Toplam",
                 "participants": "Katılanlar",
                 "absent": "Katılmayanlar"

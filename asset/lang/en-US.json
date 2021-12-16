@@ -149,6 +149,7 @@
             "attendance": {
                 "photo": "Photo Library",
                 "camera": "Camera",
+                "edit": "Edit",
                 "tot": "Total",
                 "participants": "Participants",
                 "absent": "Absent"

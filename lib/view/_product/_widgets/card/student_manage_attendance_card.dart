@@ -29,7 +29,7 @@ class StudentManageAttendanceCard extends StatelessWidget {
             typeOfUser == 'teacher'
                 ? courseDetailViewModel
                             .manageAttendanceModels!.studentsArray![index].attendanceStatus ==
-                        true
+                        'true'
                     ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
                     : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red)
                 : SizedBox(),

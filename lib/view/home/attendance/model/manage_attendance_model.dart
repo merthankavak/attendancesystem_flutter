@@ -11,7 +11,7 @@ class ManageAttendanceModel extends INetworkModel<ManageAttendanceModel> {
   final String? participateStudent;
   final String? absentStudent;
   final List<StudentsArray>? studentsArray;
-  final String? imageUrl;
+  String? imageUrl;
 
   ManageAttendanceModel(
       {this.totalStudent,

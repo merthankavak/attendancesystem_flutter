@@ -12,7 +12,7 @@ StudentsArray _$StudentsArrayFromJson(Map<String, dynamic> json) =>
       stdId: json['stdId'] as String?,
       email: json['email'] as String?,
       fullName: json['fullName'] as String?,
-      attendanceStatus: json['attendanceStatus'] as bool?,
+      attendanceStatus: json['attendanceStatus'] as String?,
     );
 
 Map<String, dynamic> _$StudentsArrayToJson(StudentsArray instance) =>

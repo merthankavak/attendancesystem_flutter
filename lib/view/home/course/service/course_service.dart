@@ -48,6 +48,11 @@ class CourseService extends ICourseService with ServiceHelper {
       NetworkRoutes.TEACHER.rawValue,
       urlSuffix: 'course/addschedule/$id',
       parseModel: CourseModel(),
+      data: {
+        'courseStartDate': courseStartDate,
+        'courseEndDate': courseEndDate,
+        'courseTime': courseTime
+      },
       method: RequestType.POST,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',

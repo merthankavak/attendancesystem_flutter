@@ -25,9 +25,6 @@ class VexanaManager {
       receiveDataWhenStatusError: true,
       connectTimeout: 30000,
       receiveTimeout: 30000,
-      /*validateStatus: (status) {
-        return status! < 500;
-      },*/
       followRedirects: false,
     ),
   );

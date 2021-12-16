@@ -15,7 +15,7 @@ class CourseModel extends INetworkModel<CourseModel> {
   final String? courseShortName;
   final String? courseName;
   final List<StudentModel>? students;
-  final List<AttendanceStatusModel>? attendance;
+  List<AttendanceStatusModel>? attendance;
   final String? courseCode;
   final String? createdAt;
   final String? updatedAt;

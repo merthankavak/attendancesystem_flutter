@@ -118,6 +118,7 @@ abstract class  LocaleKeys {
   static const course_teacher_settings = 'course.teacher.settings';
   static const course_teacher_attendance_photo = 'course.teacher.attendance.photo';
   static const course_teacher_attendance_camera = 'course.teacher.attendance.camera';
+  static const course_teacher_attendance_edit = 'course.teacher.attendance.edit';
   static const course_teacher_attendance_tot = 'course.teacher.attendance.tot';
   static const course_teacher_attendance_participants = 'course.teacher.attendance.participants';
   static const course_teacher_attendance_absent = 'course.teacher.attendance.absent';

@@ -14,7 +14,7 @@ class StudentModel extends INetworkModel<StudentModel> {
   final String? fullName;
   final StudentImageModel? studentImageModel;
   final String? imageUrl;
-  bool? attendanceStatus;
+  String? attendanceStatus;
 
   StudentModel(
       {this.id,
