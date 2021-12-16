@@ -86,6 +86,10 @@ abstract class  LocaleKeys {
   static const course_student_desc_desc2 = 'course.student.desc.desc2';
   static const course_student_desc = 'course.student.desc';
   static const course_student_button = 'course.student.button';
+  static const course_student_alert_title = 'course.student.alert.title';
+  static const course_student_alert_desc = 'course.student.alert.desc';
+  static const course_student_alert_button = 'course.student.alert.button';
+  static const course_student_alert = 'course.student.alert';
   static const course_student_hint = 'course.student.hint';
   static const course_student_unenroll = 'course.student.unenroll';
   static const course_student = 'course.student';

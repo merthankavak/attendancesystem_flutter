@@ -15,6 +15,7 @@ ManageAttendanceModel _$ManageAttendanceModelFromJson(
       studentsArray: (json['studentsArray'] as List<dynamic>?)
           ?.map((e) => StudentsArray.fromJson(e as Map<String, dynamic>))
           .toList(),
+      imageUrl: json['imageUrl'] as String?,
     );
 
 Map<String, dynamic> _$ManageAttendanceModelToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$ManageAttendanceModelToJson(
       'participateStudent': instance.participateStudent,
       'absentStudent': instance.absentStudent,
       'studentsArray': instance.studentsArray,
+      'imageUrl': instance.imageUrl,
     };

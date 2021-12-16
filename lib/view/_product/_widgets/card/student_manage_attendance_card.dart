@@ -24,7 +24,7 @@ class StudentManageAttendanceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(courseDetailViewModel.manageAttendanceModels!.studentsArray![index].fullName!),
+            Text(courseDetailViewModel.courseDetailModel!.students![index].fullName!),
             Spacer(),
             typeOfUser == 'teacher'
                 ? courseDetailViewModel

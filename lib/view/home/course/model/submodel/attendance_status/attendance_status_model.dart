@@ -12,9 +12,11 @@ class AttendanceStatusModel extends INetworkModel<AttendanceStatusModel> {
   final String? date;
   final String? time;
   bool? attendanceStatus;
+  final String? imageUrl;
   final List<StudentModel>? students;
 
-  AttendanceStatusModel({this.id, this.date, this.time, this.attendanceStatus, this.students});
+  AttendanceStatusModel(
+      {this.id, this.date, this.time, this.attendanceStatus, this.imageUrl, this.students});
 
   @override
   AttendanceStatusModel fromJson(Map<String, dynamic> json) {

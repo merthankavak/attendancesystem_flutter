@@ -56,9 +56,9 @@ class MenuView extends StatelessWidget {
           leading: viewModel.menuItems[index].leading,
           title: Text(viewModel.menuItems[index].title.tr()),
           trailing: Icon(Icons.arrow_right),
-          onTap: () {
-            viewModel.changeIndex(index);
-            viewModel.sendToPage(viewModel.menuItems[index].navigationPath);
+          onTap: () async {
+            await viewModel.changeIndex(index);
+            await viewModel.sendToPage(viewModel.menuItems[index].navigationPath);
           },
         ),
       );

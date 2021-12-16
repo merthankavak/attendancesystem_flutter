@@ -15,7 +15,7 @@
             "title": "Easy To Use",
             "desc": "This application that aims to make it easier for lecturers to check the attendance status of students."
         }
-       
+
     },
     "setting": {
         "title": "Settings",
@@ -111,6 +111,11 @@
                 "desc2": "• Use a course code with 6 letters or numbers, and no spaces or symbols\n"
             },
             "button": "Join",
+            "alert": {
+                "title": " Warning",
+                "desc": "First you need to upload a photo!",
+                "button": "Go to Profile"
+            },
             "hint": "Enter the course code",
             "unenroll": "Unenroll"
         },

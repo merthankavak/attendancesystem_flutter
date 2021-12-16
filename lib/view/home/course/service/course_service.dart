@@ -2,6 +2,8 @@
 
 import 'dart:io';
 
+import 'package:attendancesystem_flutter/view/home/profile/model/student_profile_response_model.dart';
+import 'package:attendancesystem_flutter/view/home/profile/model/teacher_profile_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -25,14 +27,10 @@ class CourseService extends ICourseService with ServiceHelper {
       String teacherId, CourseModel courseModel, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: 'course/addcourse',
+      urlSuffix: 'course/addcourse/$teacherId',
       parseModel: CourseModel(),
       method: RequestType.POST,
-      data: {
-        'teacherId': teacherId,
-        'courseShortName': courseModel.courseShortName,
-        'courseName': courseModel.courseName
-      },
+      data: {'courseShortName': courseModel.courseShortName, 'courseName': courseModel.courseName},
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -265,6 +263,38 @@ class CourseService extends ICourseService with ServiceHelper {
     final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
       NetworkRoutes.TEACHER.rawValue + '/course/showattendance/$id/$date',
       parseModel: ManageAttendanceModel(),
+      method: RequestType.GET,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      }),
+    );
+    showMessage(scaffoldyKey, response.error);
+    return response.data;
+  }
+
+  @override
+  Future<StudentProfileResponseModel?> showStudentInfo(String token, String id) async {
+    final response = await manager.send<StudentProfileResponseModel, StudentProfileResponseModel>(
+      NetworkRoutes.STUDENT.rawValue,
+      urlSuffix: 'show/$id',
+      parseModel: StudentProfileResponseModel(),
+      method: RequestType.GET,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      }),
+    );
+    showMessage(scaffoldyKey, response.error);
+    return response.data;
+  }
+
+  @override
+  Future<TeacherProfileResponseModel?> showTeacherInfo(String token, String id) async {
+    final response = await manager.send<TeacherProfileResponseModel, TeacherProfileResponseModel>(
+      NetworkRoutes.TEACHER.rawValue,
+      urlSuffix: 'show/$id',
+      parseModel: TeacherProfileResponseModel(),
       method: RequestType.GET,
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: 'application/json',

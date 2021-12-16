@@ -23,6 +23,7 @@ class CourseView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
+        model.getUserInformation(typeOfUser);
         model.getCoursesList(typeOfUser);
       },
       onPageBuilder: (BuildContext context, CourseViewModel viewModel) => Scaffold(
@@ -33,7 +34,7 @@ class CourseView extends StatelessWidget {
         body: Observer(builder: (_) {
           return viewModel.isLoading
               ? buildCenter()
-              : viewModel.courseListModel == null
+              : viewModel.courseList == null
                   ? Center(child: Text('Not Found'))
                   : buildListView(viewModel);
         }),
@@ -213,7 +214,7 @@ class CourseView extends StatelessWidget {
     return Observer(builder: (_) {
       return TitleTextButton(
           onPressed: () {
-            viewModel.floatingButtonControl(typeOfUser);
+            viewModel.floatingButtonControl(context, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
             shape: StadiumBorder(),
@@ -230,7 +231,7 @@ class CourseView extends StatelessWidget {
     return Observer(builder: (_) {
       return TitleTextButton(
           onPressed: () {
-            viewModel.floatingButtonControl(typeOfUser);
+            viewModel.floatingButtonControl(context, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
             shape: StadiumBorder(),

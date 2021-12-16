@@ -24,6 +24,21 @@ mixin _$SplashViewModel on _SplashViewModelBase, Store {
     });
   }
 
+  final _$typeOfUserAtom = Atom(name: '_SplashViewModelBase.typeOfUser');
+
+  @override
+  String? get typeOfUser {
+    _$typeOfUserAtom.reportRead();
+    return super.typeOfUser;
+  }
+
+  @override
+  set typeOfUser(String? value) {
+    _$typeOfUserAtom.reportWrite(value, super.typeOfUser, () {
+      super.typeOfUser = value;
+    });
+  }
+
   final _$isFirstOpenAtom = Atom(name: '_SplashViewModelBase.isFirstOpen');
 
   @override
@@ -72,6 +87,7 @@ mixin _$SplashViewModel on _SplashViewModelBase, Store {
   String toString() {
     return '''
 token: ${token},
+typeOfUser: ${typeOfUser},
 isFirstOpen: ${isFirstOpen},
 isFirstInit: ${isFirstInit}
     ''';

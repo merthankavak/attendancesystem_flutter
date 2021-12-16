@@ -67,9 +67,10 @@ abstract class _MenuViewModelBase with Store, BaseViewModel {
     changeLoading();
   }
 
+  @action
   Future<void> sendToPage(String path) async {
     changeLoading();
-    await navigation.navigateToPageClear(path: path, data: typeOfUsers);
+    await navigation.navigateToPage(path: path, data: typeOfUsers);
     changeLoading();
   }
 

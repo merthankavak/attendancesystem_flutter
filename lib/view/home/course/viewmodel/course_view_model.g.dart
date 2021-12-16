@@ -9,6 +9,20 @@ part of 'course_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CourseViewModel on _CourseViewModelBase, Store {
+  Computed<StudentModel?>? _$studentModelComputed;
+
+  @override
+  StudentModel? get studentModel => (_$studentModelComputed ??=
+          Computed<StudentModel?>(() => super.studentModel,
+              name: '_CourseViewModelBase.studentModel'))
+      .value;
+  Computed<TeacherModel?>? _$teacherModelComputed;
+
+  @override
+  TeacherModel? get teacherModel => (_$teacherModelComputed ??=
+          Computed<TeacherModel?>(() => super.teacherModel,
+              name: '_CourseViewModelBase.teacherModel'))
+      .value;
   Computed<List<CourseModel>?>? _$courseListComputed;
 
   @override
@@ -30,6 +44,40 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
   set courseListModel(CourseListModel? value) {
     _$courseListModelAtom.reportWrite(value, super.courseListModel, () {
       super.courseListModel = value;
+    });
+  }
+
+  final _$studentProfileResponseModelAtom =
+      Atom(name: '_CourseViewModelBase.studentProfileResponseModel');
+
+  @override
+  StudentProfileResponseModel? get studentProfileResponseModel {
+    _$studentProfileResponseModelAtom.reportRead();
+    return super.studentProfileResponseModel;
+  }
+
+  @override
+  set studentProfileResponseModel(StudentProfileResponseModel? value) {
+    _$studentProfileResponseModelAtom
+        .reportWrite(value, super.studentProfileResponseModel, () {
+      super.studentProfileResponseModel = value;
+    });
+  }
+
+  final _$teacherProfileResponseModelAtom =
+      Atom(name: '_CourseViewModelBase.teacherProfileResponseModel');
+
+  @override
+  TeacherProfileResponseModel? get teacherProfileResponseModel {
+    _$teacherProfileResponseModelAtom.reportRead();
+    return super.teacherProfileResponseModel;
+  }
+
+  @override
+  set teacherProfileResponseModel(TeacherProfileResponseModel? value) {
+    _$teacherProfileResponseModelAtom
+        .reportWrite(value, super.teacherProfileResponseModel, () {
+      super.teacherProfileResponseModel = value;
     });
   }
 
@@ -75,13 +123,22 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.leaveCourse(courseId, typeOfUser));
   }
 
+  final _$getUserInformationAsyncAction =
+      AsyncAction('_CourseViewModelBase.getUserInformation');
+
+  @override
+  Future<void> getUserInformation(String typeOfUser) {
+    return _$getUserInformationAsyncAction
+        .run(() => super.getUserInformation(typeOfUser));
+  }
+
   final _$floatingButtonControlAsyncAction =
       AsyncAction('_CourseViewModelBase.floatingButtonControl');
 
   @override
-  Future<void> floatingButtonControl(String typeOfUser) {
+  Future<void> floatingButtonControl(BuildContext context, String typeOfUser) {
     return _$floatingButtonControlAsyncAction
-        .run(() => super.floatingButtonControl(typeOfUser));
+        .run(() => super.floatingButtonControl(context, typeOfUser));
   }
 
   final _$_CourseViewModelBaseActionController =
@@ -102,7 +159,11 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
   String toString() {
     return '''
 courseListModel: ${courseListModel},
+studentProfileResponseModel: ${studentProfileResponseModel},
+teacherProfileResponseModel: ${teacherProfileResponseModel},
 isLoading: ${isLoading},
+studentModel: ${studentModel},
+teacherModel: ${teacherModel},
 courseList: ${courseList}
     ''';
   }

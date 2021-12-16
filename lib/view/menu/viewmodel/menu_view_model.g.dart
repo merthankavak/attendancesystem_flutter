@@ -9,6 +9,14 @@ part of 'menu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$MenuViewModel on _MenuViewModelBase, Store {
+  Computed<String>? _$typeOfUsersComputed;
+
+  @override
+  String get typeOfUsers =>
+      (_$typeOfUsersComputed ??= Computed<String>(() => super.typeOfUsers,
+              name: '_MenuViewModelBase.typeOfUsers'))
+          .value;
+
   final _$currentIndexAtom = Atom(name: '_MenuViewModelBase.currentIndex');
 
   @override
@@ -39,6 +47,28 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
     });
   }
 
+  final _$typeOfUserAtom = Atom(name: '_MenuViewModelBase.typeOfUser');
+
+  @override
+  String get typeOfUser {
+    _$typeOfUserAtom.reportRead();
+    return super.typeOfUser;
+  }
+
+  @override
+  set typeOfUser(String value) {
+    _$typeOfUserAtom.reportWrite(value, super.typeOfUser, () {
+      super.typeOfUser = value;
+    });
+  }
+
+  final _$getTokenAsyncAction = AsyncAction('_MenuViewModelBase.getToken');
+
+  @override
+  Future<void> getToken() {
+    return _$getTokenAsyncAction.run(() => super.getToken());
+  }
+
   final _$changeIndexAsyncAction =
       AsyncAction('_MenuViewModelBase.changeIndex');
 
@@ -53,6 +83,13 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
   @override
   Future<void> completeToMenu() {
     return _$completeToMenuAsyncAction.run(() => super.completeToMenu());
+  }
+
+  final _$sendToPageAsyncAction = AsyncAction('_MenuViewModelBase.sendToPage');
+
+  @override
+  Future<void> sendToPage(String path) {
+    return _$sendToPageAsyncAction.run(() => super.sendToPage(path));
   }
 
   final _$logutAppAsyncAction = AsyncAction('_MenuViewModelBase.logutApp');
@@ -80,7 +117,9 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
   String toString() {
     return '''
 currentIndex: ${currentIndex},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+typeOfUser: ${typeOfUser},
+typeOfUsers: ${typeOfUsers}
     ''';
   }
 }

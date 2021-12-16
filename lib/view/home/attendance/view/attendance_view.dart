@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -25,6 +26,7 @@ class AttendanceView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
+        model.getCourseDetail(typeOfUser, courseId);
         model.showAttendanceStatus(date, courseId);
       },
       onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
@@ -33,9 +35,11 @@ class AttendanceView extends StatelessWidget {
         body: Observer(builder: (_) {
           return viewModel.isLoading
               ? buildCenter()
-              : viewModel.manageAttendanceModels == null
+              : viewModel.manageAttendanceModel == null
                   ? Center(child: Text('Not Found'))
-                  : buildColumn(context, viewModel);
+                  : viewModel.detailModel == null
+                      ? Center(child: Text('Not Found'))
+                      : buildColumn(context, viewModel);
         }),
       ),
     );
@@ -44,8 +48,18 @@ class AttendanceView extends StatelessWidget {
   Column buildColumn(BuildContext context, CourseDetailViewModel viewModel) {
     return Column(
       children: [
-        buildAttendanceStatusCard(context, viewModel),
-        buildStudentListView(viewModel),
+        Expanded(flex: 2, child: buildAttendanceStatusCard(context, viewModel)),
+        viewModel.manageAttendanceModels!.imageUrl == null
+            ? SizedBox()
+            : Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Expanded(flex: 1, child: Text('Attendance Image:')),
+                    Expanded(flex: 9, child: buildAttendanceImageCard(context, viewModel)),
+                  ],
+                )),
+        Expanded(flex: 5, child: buildStudentListView(viewModel)),
       ],
     );
   }
@@ -64,6 +78,14 @@ class AttendanceView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Image buildAttendanceImageCard(BuildContext context, CourseDetailViewModel viewModel) {
+    return Image(
+        fit: BoxFit.fitWidth,
+        image: CachedNetworkImageProvider(
+          viewModel.manageAttendanceModels!.imageUrl!,
+        ));
   }
 
   Column buildAttendanceStatusAbsentColumn(BuildContext context, CourseDetailViewModel viewModel) {

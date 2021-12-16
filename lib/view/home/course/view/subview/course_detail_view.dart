@@ -41,7 +41,7 @@ class CourseDetailView extends StatelessWidget {
                     ? buildCenter()
                     : viewModel.courseDetailModel == null
                         ? Center(child: Text('Not Found'))
-                        : viewModel.courseDetailModel == null
+                        : viewModel.detailModel!.course!.attendance!.isEmpty
                             ? CourseScheduleView(typeOfUser: typeOfUser, courseId: courseId)
                             : viewModel.currentIndex == 0
                                 ? buildObserverCourseInfoColumn(viewModel)
@@ -182,15 +182,13 @@ class CourseDetailView extends StatelessWidget {
                           title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
                           onTap: () async {
                             await ImagePickers.pickerPaths(
-                                    galleryMode: GalleryMode.image,
-                                    selectCount: 1,
-                                    showCamera: true,
-                                    showGif: false,
-                                    compressSize: 50,
-                                    cropConfig:
-                                        CropConfig(enableCrop: true, width: 1024, height: 1024))
-                                .then((value) async => await viewModel.takeAttendanceStatus(
-                                    typeOfUser, date, courseId, value.first));
+                              galleryMode: GalleryMode.image,
+                              selectCount: 1,
+                              showCamera: true,
+                              showGif: false,
+                              compressSize: 50,
+                            ).then((value) async => await viewModel.takeAttendanceStatus(
+                                typeOfUser, date, courseId, value.first));
                           });
                     }),
                     Observer(builder: (_) {
@@ -199,12 +197,10 @@ class CourseDetailView extends StatelessWidget {
                         title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
                         onTap: () async {
                           await ImagePickers.openCamera(
-                                  cameraMimeType: CameraMimeType.photo,
-                                  compressSize: 50,
-                                  cropConfig:
-                                      CropConfig(enableCrop: true, width: 1024, height: 1024))
-                              .then((value) async => await viewModel.takeAttendanceStatus(
-                                  typeOfUser, date, courseId, value!));
+                            cameraMimeType: CameraMimeType.photo,
+                            compressSize: 50,
+                          ).then((value) async => await viewModel.takeAttendanceStatus(
+                              typeOfUser, date, courseId, value!));
                         },
                       );
                     }),

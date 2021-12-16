@@ -108,6 +108,11 @@
                 "desc1": "• Öğretmeninizden kurs kodunu isteyin, sonra buraya girin.\n",
                 "desc2": "• Boşluk ve sembol içermeyen 6 karakter içeren bir kurs kodunu kullanın.\n"
             },
+            "alert": {
+                "title": " Uyarı",
+                "desc": " Öncelikle fotoğraf yüklemelisiniz!",
+                "button": "Profile Git"
+            },
             "button": "Katıl",
             "hint": "Kurs kodunu girin",
             "unenroll": "Ayrıl"

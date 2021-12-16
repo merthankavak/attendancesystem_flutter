@@ -1,8 +1,8 @@
-import 'package:attendancesystem_flutter/core/init/theme/light/color_scheme_light.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extension/context_extension.dart';
+import '../../../../core/init/theme/light/color_scheme_light.dart';
 import '../../../home/course/viewmodel/subviewmodel/course_detail_view_model.dart';
 
 class StudentCard extends StatelessWidget {
@@ -45,7 +45,8 @@ class StudentCard extends StatelessWidget {
               radius: 30),
         ),
         Expanded(
-            flex: 8, child: Text(courseDetailViewModel.courseDetailModel!.students![index].email!)),
+            flex: 8,
+            child: Text(courseDetailViewModel.courseDetailModel!.students![index].fullName!)),
       ],
     );
   }

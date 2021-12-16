@@ -11,13 +11,14 @@ class ManageAttendanceModel extends INetworkModel<ManageAttendanceModel> {
   final String? participateStudent;
   final String? absentStudent;
   final List<StudentsArray>? studentsArray;
+  final String? imageUrl;
 
-  ManageAttendanceModel({
-    this.totalStudent,
-    this.participateStudent,
-    this.absentStudent,
-    this.studentsArray,
-  });
+  ManageAttendanceModel(
+      {this.totalStudent,
+      this.participateStudent,
+      this.absentStudent,
+      this.studentsArray,
+      this.imageUrl});
 
   @override
   ManageAttendanceModel fromJson(Map<String, dynamic> json) {

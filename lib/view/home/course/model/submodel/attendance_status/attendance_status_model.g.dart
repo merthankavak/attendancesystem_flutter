@@ -13,6 +13,7 @@ AttendanceStatusModel _$AttendanceStatusModelFromJson(
       date: json['date'] as String?,
       time: json['time'] as String?,
       attendanceStatus: json['attendanceStatus'] as bool?,
+      imageUrl: json['imageUrl'] as String?,
       students: (json['students'] as List<dynamic>?)
           ?.map((e) => StudentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,5 +26,6 @@ Map<String, dynamic> _$AttendanceStatusModelToJson(
       'date': instance.date,
       'time': instance.time,
       'attendanceStatus': instance.attendanceStatus,
+      'imageUrl': instance.imageUrl,
       'students': instance.students,
     };

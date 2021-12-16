@@ -163,14 +163,24 @@ class ProfileView extends StatelessWidget {
                         child: Text(viewModel.teacherModel!.fullName.toString().characters.first),
                         radius: 30),
                   )
-                : Expanded(
-                    flex: 1,
-                    child: CircleAvatar(
-                        backgroundColor: ColorSchemeLight.instance!.black,
-                        child: Image(
-                            image: CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
-                        radius: 30),
-                  ),
+                : viewModel.studentModel!.imageUrl == null
+                    ? Expanded(
+                        flex: 1,
+                        child: CircleAvatar(
+                            backgroundColor: ColorSchemeLight.instance!.black,
+                            child:
+                                Text(viewModel.studentModel!.fullName.toString().characters.first),
+                            radius: 30),
+                      )
+                    : Expanded(
+                        flex: 1,
+                        child: CircleAvatar(
+                            backgroundColor: ColorSchemeLight.instance!.black,
+                            child: Image(
+                                image:
+                                    CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
+                            radius: 30),
+                      ),
             Spacer(flex: 1),
             Expanded(
               flex: 6,
