@@ -150,7 +150,8 @@
                 "edit": "Düzenle",
                 "tot": "Toplam",
                 "participants": "Katılanlar",
-                "absent": "Katılmayanlar"
+                "absent": "Katılmayanlar",
+                "confidence": "Doğruluk"
             }
 
         }

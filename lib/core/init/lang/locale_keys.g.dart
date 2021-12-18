@@ -122,6 +122,7 @@ abstract class  LocaleKeys {
   static const course_teacher_attendance_tot = 'course.teacher.attendance.tot';
   static const course_teacher_attendance_participants = 'course.teacher.attendance.participants';
   static const course_teacher_attendance_absent = 'course.teacher.attendance.absent';
+  static const course_teacher_attendance_accuracy = 'course.teacher.attendance.accuracy';
   static const course_teacher_attendance = 'course.teacher.attendance';
   static const course_teacher = 'course.teacher';
   static const course = 'course';

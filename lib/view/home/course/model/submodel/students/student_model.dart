@@ -1,3 +1,4 @@
+import 'package:attendancesystem_flutter/view/home/course/model/submodel/image/boundingBox/bounding_box_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
@@ -14,16 +15,21 @@ class StudentModel extends INetworkModel<StudentModel> {
   final String? fullName;
   final StudentImageModel? studentImageModel;
   final String? imageUrl;
+  BoundingBoxModel? boundingBoxModel;
   String? attendanceStatus;
+  String? confidence;
 
-  StudentModel(
-      {this.id,
-      this.stdId,
-      this.email,
-      this.fullName,
-      this.studentImageModel,
-      this.imageUrl,
-      this.attendanceStatus});
+  StudentModel({
+    this.id,
+    this.stdId,
+    this.email,
+    this.fullName,
+    this.studentImageModel,
+    this.imageUrl,
+    this.boundingBoxModel,
+    this.attendanceStatus,
+    this.confidence,
+  });
 
   @override
   StudentModel fromJson(Map<String, dynamic> json) {

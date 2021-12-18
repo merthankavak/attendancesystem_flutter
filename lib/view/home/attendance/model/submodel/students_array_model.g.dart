@@ -13,6 +13,11 @@ StudentsArray _$StudentsArrayFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       fullName: json['fullName'] as String?,
       attendanceStatus: json['attendanceStatus'] as String?,
+      boundingBoxModel: json['boundingBoxModel'] == null
+          ? null
+          : BoundingBoxModel.fromJson(
+              json['boundingBoxModel'] as Map<String, dynamic>),
+      confidence: json['confidence'] as String?,
     );
 
 Map<String, dynamic> _$StudentsArrayToJson(StudentsArray instance) =>
@@ -22,4 +27,6 @@ Map<String, dynamic> _$StudentsArrayToJson(StudentsArray instance) =>
       'email': instance.email,
       'fullName': instance.fullName,
       'attendanceStatus': instance.attendanceStatus,
+      'boundingBoxModel': instance.boundingBoxModel,
+      'confidence': instance.confidence,
     };

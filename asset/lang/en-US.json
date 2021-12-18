@@ -152,7 +152,8 @@
                 "edit": "Edit",
                 "tot": "Total",
                 "participants": "Participants",
-                "absent": "Absent"
+                "absent": "Absent",
+                "accuracy": "Accuracy"
             }
 
         }

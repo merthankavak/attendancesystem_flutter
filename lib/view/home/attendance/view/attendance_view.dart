@@ -55,7 +55,7 @@ class AttendanceView extends StatelessWidget {
                 flex: 3,
                 child: Column(
                   children: [
-                    Expanded(flex: 1, child: Text('Attendance Image:')),
+                    Expanded(flex: 1, child: Text('Attendance Image:', textAlign: TextAlign.left)),
                     Expanded(flex: 9, child: buildAttendanceImageCard(context, viewModel)),
                   ],
                 )),
@@ -82,10 +82,9 @@ class AttendanceView extends StatelessWidget {
 
   Image buildAttendanceImageCard(BuildContext context, CourseDetailViewModel viewModel) {
     return Image(
-        fit: BoxFit.fitWidth,
         image: CachedNetworkImageProvider(
-          viewModel.manageAttendanceModels!.imageUrl!,
-        ));
+      viewModel.manageAttendanceModels!.imageUrl!,
+    ));
   }
 
   Column buildAttendanceStatusAbsentColumn(BuildContext context, CourseDetailViewModel viewModel) {
