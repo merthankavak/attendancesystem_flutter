@@ -151,7 +151,8 @@
                 "tot": "Toplam",
                 "participants": "Katılanlar",
                 "absent": "Katılmayanlar",
-                "confidence": "Doğruluk"
+                "confidence": "Doğruluk",
+                "attendancePhoto": "Yoklama Fotoğrafı"
             }
 
         }

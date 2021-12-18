@@ -22,43 +22,22 @@ class StudentManageAttendanceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: context.paddingBitNormal,
+        padding: context.paddingLow,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Expanded(flex: 1, child: buildClipOval(context)),
+            Spacer(flex: 1),
+            Expanded(flex: 3, child: buildFullNameText(context)),
             Expanded(
-                flex: 10,
-                child: Image(
-                    image: CachedNetworkImageProvider(
-                  courseDetailViewModel.courseDetailModel!.students![index].imageUrl!,
-                ))),
-            Spacer(flex: 5),
-            Expanded(
-                flex: 30,
-                child: Text(
-                  courseDetailViewModel.courseDetailModel!.students![index].fullName!,
-                  style: Theme.of(context).textTheme.bodyText2!,
-                )),
-            Expanded(
-                flex: 20,
+                flex: 3,
                 child: courseDetailViewModel
                             .manageAttendanceModels!.studentsArray![index].confidence ==
                         ''
                     ? SizedBox()
-                    : Text(LocaleKeys.course_teacher_attendance_accuracy.tr() + ': ')),
+                    : buildAccuracyTextRich()),
             Expanded(
-              flex: 20,
-              child:
-                  courseDetailViewModel.manageAttendanceModels!.studentsArray![index].confidence ==
-                          ''
-                      ? SizedBox()
-                      : Text(courseDetailViewModel
-                              .manageAttendanceModels!.studentsArray![index].confidence! +
-                          '%'),
-            ),
-            Expanded(
-              flex: 10,
+              flex: 1,
               child: typeOfUser == 'teacher'
                   ? courseDetailViewModel
                               .manageAttendanceModels!.studentsArray![index].attendanceStatus ==
@@ -67,21 +46,55 @@ class StudentManageAttendanceCard extends StatelessWidget {
                       : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red)
                   : SizedBox(),
             ),
-            Expanded(
-                flex: 10,
-                child: typeOfUser == 'teacher'
-                    ? Observer(builder: (_) {
-                        return IconButton(
-                            onPressed: () async {
-                              await courseDetailViewModel.showPicker(
-                                  courseDetailViewModel, context, index);
-                            },
-                            icon: Icon(Icons.edit));
-                      })
-                    : SizedBox())
+            typeOfUser == 'teacher'
+                ? Expanded(flex: 1, child: buildObserverEdit(context))
+                : SizedBox()
           ],
         ),
       ),
+    );
+  }
+
+  Observer buildObserverEdit(BuildContext context) {
+    return Observer(builder: (_) {
+      return IconButton(
+          onPressed: () async {
+            await courseDetailViewModel.showPicker(courseDetailViewModel, context, index);
+          },
+          icon: Icon(Icons.edit));
+    });
+  }
+
+  Text buildAccuracyTextRich() {
+    return Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(text: LocaleKeys.course_teacher_attendance_accuracy.tr() + ': '),
+            TextSpan(
+                text: courseDetailViewModel
+                        .manageAttendanceModels!.studentsArray![index].confidence! +
+                    '%')
+          ],
+        ),
+        textAlign: TextAlign.center);
+  }
+
+  Text buildFullNameText(BuildContext context) {
+    return Text(
+      courseDetailViewModel.courseDetailModel!.students![index].fullName!,
+      style: Theme.of(context).textTheme.bodyText2!,
+    );
+  }
+
+  ClipOval buildClipOval(BuildContext context) {
+    return ClipOval(
+      child: Image(
+          fit: BoxFit.fill,
+          height: context.height * 0.06,
+          width: context.width * 0.06,
+          image: CachedNetworkImageProvider(
+            courseDetailViewModel.courseDetailModel!.students![index].imageUrl!,
+          )),
     );
   }
 

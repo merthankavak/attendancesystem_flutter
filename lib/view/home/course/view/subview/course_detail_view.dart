@@ -49,29 +49,33 @@ class CourseDetailView extends StatelessWidget {
                                     ? buildStudentListView(viewModel)
                                     : buildAttendanceListView(viewModel);
               }),
-              bottomNavigationBar: Observer(builder: (_) {
-                return BottomNavigationBar(
-                  items: const <BottomNavigationBarItem>[
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.home),
-                      label: 'Home',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(FontAwesomeIcons.users),
-                      label: 'Students',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.school),
-                      label: 'Attendance',
-                    ),
-                  ],
-                  currentIndex: viewModel.currentIndex,
-                  onTap: (value) {
-                    viewModel.changeIndex(value);
-                  },
-                );
-              }),
+              bottomNavigationBar: buildBottomNavigationBar(viewModel),
             ));
+  }
+
+  Observer buildBottomNavigationBar(CourseDetailViewModel viewModel) {
+    return Observer(builder: (_) {
+      return BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.users),
+            label: 'Students',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Attendance',
+          ),
+        ],
+        currentIndex: viewModel.currentIndex,
+        onTap: (value) {
+          viewModel.changeIndex(value);
+        },
+      );
+    });
   }
 
   Observer buildObserverCourseInfoColumn(CourseDetailViewModel viewModel) {
@@ -147,7 +151,7 @@ class CourseDetailView extends StatelessWidget {
                           return IconButton(
                               onPressed: () async => await showPicker(viewModel, context,
                                   viewModel.courseDetailModel!.attendance![index].date!),
-                              icon: Icon(Icons.edit));
+                              icon: Icon(Icons.more_vert_rounded));
                         })
                       : Observer(builder: (_) {
                           return viewModel.courseStudentAttendanceStatus![index].attendanceStatus ==
@@ -159,9 +163,7 @@ class CourseDetailView extends StatelessWidget {
               ),
             )),
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(
-            color: Colors.black,
-          );
+          return Divider(color: Colors.black);
         },
       );
     });

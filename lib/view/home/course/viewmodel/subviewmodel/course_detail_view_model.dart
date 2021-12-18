@@ -107,7 +107,8 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
       _changeLoading();
       detailModel = await courseService.getOneCourseTeacherControl(courseId, id!, token!);
       _changeLoading();
-    } else {
+    }
+    if (typeOfUser == 'student') {
       _changeLoading();
       detailModel = await courseService.getOneCourseStudentControl(id!, courseId, token!);
       _changeLoading();

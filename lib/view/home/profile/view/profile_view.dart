@@ -58,12 +58,14 @@ class ProfileView extends StatelessWidget {
     return Column(
       children: <Widget>[
         Expanded(flex: 20, child: buildUserContainer(context, viewModel)),
-        Expanded(
-            flex: 80,
-            child: SingleChildScrollView(child: buildProfileDetailContainer(context, viewModel)))
+        Expanded(flex: 80, child: buildSingleChildScrollView(context, viewModel))
       ],
     );
   }
+
+  SingleChildScrollView buildSingleChildScrollView(
+          BuildContext context, ProfileViewModel viewModel) =>
+      SingleChildScrollView(child: buildProfileDetailContainer(context, viewModel));
 
   Container buildProfileDetailContainer(BuildContext context, ProfileViewModel viewModel) {
     return Container(
@@ -161,8 +163,7 @@ class ProfileView extends StatelessWidget {
                     child: CircleAvatar(
                         backgroundColor: ColorSchemeLight.instance!.transparent,
                         child: Text(viewModel.teacherModel!.fullName.toString().characters.first),
-                        radius: 30),
-                  )
+                        radius: 30))
                 : viewModel.studentModel!.imageUrl == null
                     ? Expanded(
                         flex: 1,
@@ -170,17 +171,16 @@ class ProfileView extends StatelessWidget {
                             backgroundColor: ColorSchemeLight.instance!.black,
                             child:
                                 Text(viewModel.studentModel!.fullName.toString().characters.first),
-                            radius: 30),
-                      )
+                            radius: 30))
                     : Expanded(
                         flex: 1,
-                        child: CircleAvatar(
-                            backgroundColor: ColorSchemeLight.instance!.black,
-                            child: Image(
-                                image:
-                                    CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
-                            radius: 30),
-                      ),
+                        child: ClipOval(
+                          child: Image(
+                              fit: BoxFit.fill,
+                              height: context.height * 0.06,
+                              width: context.width * 0.06,
+                              image: CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
+                        )),
             Spacer(flex: 1),
             Expanded(
               flex: 6,

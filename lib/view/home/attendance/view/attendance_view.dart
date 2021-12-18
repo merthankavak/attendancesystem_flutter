@@ -55,7 +55,10 @@ class AttendanceView extends StatelessWidget {
                 flex: 3,
                 child: Column(
                   children: [
-                    Expanded(flex: 1, child: Text('Attendance Image:', textAlign: TextAlign.left)),
+                    Expanded(
+                        flex: 1,
+                        child:
+                            Text(LocaleKeys.course_teacher_attendance_attendancePhoto.tr() + ': ')),
                     Expanded(flex: 9, child: buildAttendanceImageCard(context, viewModel)),
                   ],
                 )),
@@ -73,7 +76,7 @@ class AttendanceView extends StatelessWidget {
           children: [
             buildAttendanceStatusTotalColumn(context, viewModel),
             buildAttendanceStatusParticipantsColumn(context, viewModel),
-            buildAttendanceStatusAbsentColumn(context, viewModel),
+            buildAttendanceStatusAbsentColumn(context, viewModel)
           ],
         ),
       ),
@@ -95,7 +98,7 @@ class AttendanceView extends StatelessWidget {
         Text(LocaleKeys.course_teacher_attendance_absent.tr(),
             style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.red)),
         Text(viewModel.manageAttendanceModels!.absentStudent!,
-            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.red)),
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.red))
       ],
     );
   }
@@ -109,7 +112,7 @@ class AttendanceView extends StatelessWidget {
         Text(LocaleKeys.course_teacher_attendance_participants.tr(),
             style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.green)),
         Text(viewModel.manageAttendanceModels!.participateStudent!,
-            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.green)),
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.green))
       ],
     );
   }
@@ -122,7 +125,7 @@ class AttendanceView extends StatelessWidget {
         Text(LocaleKeys.course_teacher_attendance_tot.tr(),
             style: context.textTheme.subtitle2!.copyWith(color: context.colorSchemeLight.blue)),
         Text(viewModel.manageAttendanceModels!.totalStudent!,
-            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.blue)),
+            style: context.textTheme.bodyText2!.copyWith(color: context.colorSchemeLight.blue))
       ],
     );
   }
@@ -142,11 +145,10 @@ class AttendanceView extends StatelessWidget {
         })
       ],
       leading: IconButton(
-        onPressed: () async {
-          await viewModel.sendCourseDetailView(typeOfUser, courseId);
-        },
-        icon: Icon(FontAwesomeIcons.arrowLeft),
-      ),
+          onPressed: () async {
+            await viewModel.sendCourseDetailView(typeOfUser, courseId);
+          },
+          icon: Icon(FontAwesomeIcons.arrowLeft)),
     );
   }
 
