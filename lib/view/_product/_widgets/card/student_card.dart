@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:full_screen_image/full_screen_image.dart';
 
 import '../../../../core/extension/context_extension.dart';
 import '../../../home/course/viewmodel/subviewmodel/course_detail_view_model.dart';
@@ -26,13 +28,18 @@ class StudentCard extends StatelessWidget {
               children: [
                 Expanded(
                     flex: 1,
-                    child: ClipOval(
-                      child: Image(
-                          fit: BoxFit.fill,
-                          height: context.height * 0.06,
-                          width: context.width * 0.06,
-                          image: CachedNetworkImageProvider(
-                              courseDetailViewModel.courseDetailModel!.students![index].imageUrl!)),
+                    child: FullScreenWidget(
+                      child: Hero(
+                        tag: courseDetailViewModel.courseDetailModel!.students![index].id!,
+                        child: ClipOval(
+                          child: Image(
+                              fit: BoxFit.fill,
+                              height: context.height * 0.06,
+                              width: context.width * 0.06,
+                              image: CachedNetworkImageProvider(courseDetailViewModel
+                                  .courseDetailModel!.students![index].imageUrl!)),
+                        ),
+                      ),
                     )),
                 Spacer(flex: 1),
                 Expanded(

@@ -357,6 +357,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  full_screen_image:
+    dependency: "direct main"
+    description:
+      name: full_screen_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   glob:
     dependency: transitive
     description:

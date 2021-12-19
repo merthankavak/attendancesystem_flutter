@@ -64,6 +64,8 @@ dependencies:
   dio: ^4.0.4
   image_pickers: ^2.0.0+2
   cached_network_image: ^3.2.0
+  full_screen_image: any
+
   
 
 

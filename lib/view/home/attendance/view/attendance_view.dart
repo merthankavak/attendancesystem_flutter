@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:full_screen_image/full_screen_image.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extension/context_extension.dart';
@@ -48,21 +50,20 @@ class AttendanceView extends StatelessWidget {
   Column buildColumn(BuildContext context, CourseDetailViewModel viewModel) {
     return Column(
       children: [
-        Expanded(flex: 2, child: buildAttendanceStatusCard(context, viewModel)),
+        Expanded(flex: 20, child: buildAttendanceStatusCard(context, viewModel)),
         viewModel.manageAttendanceModels!.imageUrl == null
             ? SizedBox()
             : Expanded(
-                flex: 3,
+                flex: 35,
                 child: Column(
                   children: [
                     Expanded(
-                        flex: 1,
-                        child:
-                            Text(LocaleKeys.course_teacher_attendance_attendancePhoto.tr() + ': ')),
-                    Expanded(flex: 9, child: buildAttendanceImageCard(context, viewModel)),
+                        flex: 10,
+                        child: Text(LocaleKeys.course_teacher_attendance_attendancePhoto.tr())),
+                    Expanded(flex: 90, child: buildAttendanceImageCard(context, viewModel)),
                   ],
                 )),
-        Expanded(flex: 5, child: buildStudentListView(viewModel)),
+        Expanded(flex: 45, child: buildStudentListView(viewModel)),
       ],
     );
   }
@@ -83,11 +84,16 @@ class AttendanceView extends StatelessWidget {
     );
   }
 
-  Image buildAttendanceImageCard(BuildContext context, CourseDetailViewModel viewModel) {
-    return Image(
-        image: CachedNetworkImageProvider(
-      viewModel.manageAttendanceModels!.imageUrl!,
-    ));
+  FullScreenWidget buildAttendanceImageCard(BuildContext context, CourseDetailViewModel viewModel) {
+    return FullScreenWidget(
+      child: Hero(
+        tag: viewModel.manageAttendanceModels!.imageUrl!,
+        child: Image(
+            image: CachedNetworkImageProvider(
+          viewModel.manageAttendanceModels!.imageUrl!,
+        )),
+      ),
+    );
   }
 
   Column buildAttendanceStatusAbsentColumn(BuildContext context, CourseDetailViewModel viewModel) {
@@ -141,7 +147,7 @@ class AttendanceView extends StatelessWidget {
               onPressed: () async {
                 await viewModel.manageAttendanceStatus(typeOfUser, date, courseId);
               },
-              icon: Icon(Icons.done));
+              icon: Icon(FontAwesomeIcons.save));
         })
       ],
       leading: IconButton(

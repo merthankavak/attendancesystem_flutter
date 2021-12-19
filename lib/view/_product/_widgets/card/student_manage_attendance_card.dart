@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:full_screen_image/full_screen_image.dart';
 
 import '../../../../core/extension/context_extension.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
@@ -32,10 +34,24 @@ class StudentManageAttendanceCard extends StatelessWidget {
             Expanded(
                 flex: 3,
                 child: courseDetailViewModel
-                            .manageAttendanceModels!.studentsArray![index].confidence ==
-                        ''
+                                .manageAttendanceModels!.studentsArray![index].confidence ==
+                            null ||
+                        courseDetailViewModel
+                                .manageAttendanceModels!.studentsArray![index].confidence ==
+                            ''
                     ? SizedBox()
-                    : buildAccuracyTextRich()),
+                    : Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                                text: LocaleKeys.course_teacher_attendance_accuracy.tr() + ': '),
+                            TextSpan(
+                                text: courseDetailViewModel
+                                        .manageAttendanceModels!.studentsArray![index].confidence! +
+                                    '%')
+                          ],
+                        ),
+                        textAlign: TextAlign.center)),
             Expanded(
               flex: 1,
               child: typeOfUser == 'teacher'
@@ -65,20 +81,6 @@ class StudentManageAttendanceCard extends StatelessWidget {
     });
   }
 
-  Text buildAccuracyTextRich() {
-    return Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(text: LocaleKeys.course_teacher_attendance_accuracy.tr() + ': '),
-            TextSpan(
-                text: courseDetailViewModel
-                        .manageAttendanceModels!.studentsArray![index].confidence! +
-                    '%')
-          ],
-        ),
-        textAlign: TextAlign.center);
-  }
-
   Text buildFullNameText(BuildContext context) {
     return Text(
       courseDetailViewModel.courseDetailModel!.students![index].fullName!,
@@ -86,15 +88,20 @@ class StudentManageAttendanceCard extends StatelessWidget {
     );
   }
 
-  ClipOval buildClipOval(BuildContext context) {
-    return ClipOval(
-      child: Image(
-          fit: BoxFit.fill,
-          height: context.height * 0.06,
-          width: context.width * 0.06,
-          image: CachedNetworkImageProvider(
-            courseDetailViewModel.courseDetailModel!.students![index].imageUrl!,
-          )),
+  FullScreenWidget buildClipOval(BuildContext context) {
+    return FullScreenWidget(
+      child: Hero(
+        tag: courseDetailViewModel.courseDetailModel!.students![index].id!,
+        child: ClipOval(
+          child: Image(
+              fit: BoxFit.fill,
+              height: context.height * 0.06,
+              width: context.width * 0.06,
+              image: CachedNetworkImageProvider(
+                courseDetailViewModel.courseDetailModel!.students![index].imageUrl!,
+              )),
+        ),
+      ),
     );
   }
 

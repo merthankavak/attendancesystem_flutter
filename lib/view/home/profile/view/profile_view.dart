@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:image_pickers/image_pickers.dart';
 import 'package:kartal/src/context_extension.dart';
 
@@ -174,12 +176,18 @@ class ProfileView extends StatelessWidget {
                             radius: 30))
                     : Expanded(
                         flex: 1,
-                        child: ClipOval(
-                          child: Image(
-                              fit: BoxFit.fill,
-                              height: context.height * 0.06,
-                              width: context.width * 0.06,
-                              image: CachedNetworkImageProvider(viewModel.studentModel!.imageUrl!)),
+                        child: FullScreenWidget(
+                          child: Hero(
+                            tag: viewModel.studentModel!.id!,
+                            child: ClipOval(
+                              child: Image(
+                                  fit: BoxFit.fill,
+                                  height: context.height * 0.06,
+                                  width: context.width * 0.06,
+                                  image: CachedNetworkImageProvider(
+                                      viewModel.studentModel!.imageUrl!)),
+                            ),
+                          ),
                         )),
             Spacer(flex: 1),
             Expanded(
