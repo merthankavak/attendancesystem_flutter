@@ -14,10 +14,6 @@
 * Cache
 * Network Layer
 
-## System Software Architecture
-
-#
-
 ## How to Use 
 
 **Step 1:**
@@ -51,7 +47,7 @@ flutter run
 
 # Screenshots
 ## Splash Screen
-![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/splash_screen.jpg)
+![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/splash_screen.jpg) ![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/onboard.jpg)
 
 
 ## Team NiceTRY -- Members:
