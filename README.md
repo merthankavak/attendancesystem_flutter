@@ -1,5 +1,5 @@
 # Attendance System / Flutter App
-> A Deep Learning Based Attendance System is a mobile application that aims to make it easier for lecturers to check the attendance status of students which are attending the course.With the Deep Learning based attendance system, the data of each student in class will be uploaded to the system for the face recognition system. The Deep Learning based attendance system will analyze the students attendance with the data that is already collected and guide the teacher on the attendance process.
+> A Deep Learning Based Attendance System is a mobile application that aims to make it easier for lecturers to check the attendance status of students which are attending the course. With the Deep Learning based attendance system, the data of each student in class will be uploaded to the system for the face recognition system. The Deep Learning based attendance system will analyze the students attendance with the data that is already collected and guide the teacher on the attendance process.
 #
 
 ## Architecture of Project:
