@@ -16,6 +16,10 @@
 
 ## How to Use 
 
+First things first: you must properly set the following environment variable (/asset/app/.env):
+
+- APP_API_SITE  (The backend service URL)
+
 **Step 1:**
 
 Download or clone this repo by using the link below:
