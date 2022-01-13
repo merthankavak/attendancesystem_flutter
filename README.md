@@ -46,9 +46,9 @@ flutter run
 ```
 
 # Screenshots
-## Splash Screen
-![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/splash_screen.jpg) ![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/onboard.jpg)
-
+## How It Works
+![How It Works](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/how1.png)
+![How It Works](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/how2.png)
 
 ## Team NiceTRY -- Members:
 ### [Merthan **Kavak**](https://github.com/merthankavak)  
