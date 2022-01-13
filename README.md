@@ -51,7 +51,7 @@ flutter run
 
 # Screenshots
 ## Splash Screen
-![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/splash screen.png)
+![Splash Screen](https://raw.githubusercontent.com/merthankavak/attendancesystem_flutter/master/screenshots/splash_screen.png)
 
 
 ## Team NiceTRY -- Members:
