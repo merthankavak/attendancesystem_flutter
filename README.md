@@ -18,7 +18,13 @@
 
 First things first: you must properly set the following environment variable (/asset/app/.env):
 
-- APP_API_SITE  (The backend service URL)
+- APP_API_SITE  (The backend service URL) 
+
+**Attendance System Backend Service:**
+
+```
+https://github.com/merthankavak/attendance_system
+```
 
 **Step 1:**
 
