@@ -7,6 +7,7 @@ import '../../../authenticate/forgot_password/viewmodel/subviewmodel/confirm_otp
 
 class OtpPinCodeTextField extends StatelessWidget {
   final ConfirmOtpViewModel viewModel;
+  final String _validatorText = 'Code does not valid';
   const OtpPinCodeTextField({Key? key, required this.viewModel}) : super(key: key);
 
   @override
@@ -20,20 +21,17 @@ class OtpPinCodeTextField extends StatelessWidget {
       length: 6,
       obscureText: false,
       animationType: AnimationType.fade,
-      validator: (value) => value!.isValidOtps ? null : 'Code does not valid',
+      validator: (value) => value!.isValidOtps ? null : _validatorText,
       pinTheme: buildPinCodeTheme(context),
       cursorColor: context.theme.colorScheme.onSecondary,
-      animationDuration: Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 300),
       textStyle: context.textTheme.headline6,
       backgroundColor: context.theme.scaffoldBackgroundColor,
       enableActiveFill: true,
       controller: viewModel.otpCodeController,
       errorTextSpace: 40,
       keyboardType: TextInputType.number,
-      onChanged: (value) {
-        print(value);
-        viewModel.currentText = value;
-      },
+      onChanged: (value) => viewModel.currentText = value,
       beforeTextPaste: (text) {
         return false;
       },
@@ -42,11 +40,10 @@ class OtpPinCodeTextField extends StatelessWidget {
 
   PinTheme buildPinCodeTheme(BuildContext context) {
     return PinTheme(
-      shape: PinCodeFieldShape.box,
-      selectedColor: context.theme.colorScheme.primaryVariant,
-      inactiveColor: context.theme.colorScheme.secondary,
-      activeFillColor: context.theme.colorScheme.primaryVariant,
-      inactiveFillColor: context.theme.colorScheme.primaryVariant,
-    );
+        shape: PinCodeFieldShape.box,
+        selectedColor: context.theme.colorScheme.primaryContainer,
+        inactiveColor: context.theme.colorScheme.secondary,
+        activeFillColor: context.theme.colorScheme.primaryContainer,
+        inactiveFillColor: context.theme.colorScheme.primaryContainer);
   }
 }

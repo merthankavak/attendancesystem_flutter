@@ -33,7 +33,7 @@ class CourseDetailSettingsView extends StatelessWidget {
           return viewModel.isLoading
               ? buildCenter()
               : viewModel.courseDetailModel == null
-                  ? Center(child: Text('Not Found'))
+                  ? const Center(child: Text('Not Found'))
                   : SingleChildScrollView(
                       padding: context.paddingBitNormal,
                       child: buildCourseSettingsForm(viewModel, context));
@@ -42,7 +42,7 @@ class CourseDetailSettingsView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, CourseDetailViewModel viewModel) {
     return AppBar(
@@ -51,7 +51,7 @@ class CourseDetailSettingsView extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: Icon(FontAwesomeIcons.arrowLeft),
+        icon: const Icon(FontAwesomeIcons.arrowLeft),
       ),
     );
   }
@@ -97,9 +97,9 @@ class CourseDetailSettingsView extends StatelessWidget {
             viewModel.updateCourse(courseId, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            onPrimary: context.colors.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.course_teacher_settings_button.tr(),

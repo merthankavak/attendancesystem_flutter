@@ -12,34 +12,34 @@ class ColorSchemeLight {
   final Brightness brightnessLight = Brightness.light;
   final SystemUiOverlayStyle systemUiOverlayLight = SystemUiOverlayStyle.light;
 
-  final Color veryLightBlue = Color(0xffF2F6F8);
-  final Color lightBlue = Color(0xff6184D8);
-  final Color blue = Color(0xff0055FF);
-  final Color darkBlue = Color(0xff153678);
+  final Color veryLightBlue = const Color(0xffF2F6F8);
+  final Color lightBlue = const Color(0xff6184D8);
+  final Color blue = const Color(0xff0055FF);
+  final Color darkBlue = const Color(0xff153678);
 
-  final Color white = Color(0xffffffff);
+  final Color white = const Color(0xffffffff);
 
-  final Color lightGray = Color(0xfff1f3f8);
+  final Color lightGray = const Color(0xfff1f3f8);
 
-  final Color gray = Color(0xffa5a6ae);
-  final Color darkGray = Color(0xff676870);
+  final Color gray = const Color(0xffa5a6ae);
+  final Color darkGray = const Color(0xff676870);
 
-  final Color black = Color(0xff020306);
-  final Color black12 = Color(0x1f000000);
+  final Color black = const Color(0xff020306);
+  final Color black12 = const Color(0x1f000000);
 
-  final Color red = Color(0xffc70137);
-  final Color darkRed = Color(0x80c70137);
+  final Color red = const Color(0xffc70137);
+  final Color darkRed = const Color(0x80c70137);
 
-  final Color lightGreen = Color(0xff00C569);
-  final Color forestGreen = Color(0xff228B22);
-  final Color green = Color(0xff008000);
-  final Color darkGreen = Color(0xff1B512D);
+  final Color lightGreen = const Color(0xff00C569);
+  final Color forestGreen = const Color(0xff228B22);
+  final Color green = const Color(0xff008000);
+  final Color darkGreen = const Color(0xff1B512D);
 
-  final Color transparent = Color(0xAAffffff);
-  final Color transparentBlack = Color(0xde000000);
+  final Color transparent = const Color(0xAAffffff);
+  final Color transparentBlack = const Color(0xde000000);
 
   final Color orange = Colors.orange;
-  final Color yellow = Color(0xFFcbd90a);
-  final Color blackShadow = Color(0x3d000000);
+  final Color yellow = const Color(0xFFcbd90a);
+  final Color blackShadow = const Color(0x3d000000);
   final Color black26 = Colors.black26;
 }

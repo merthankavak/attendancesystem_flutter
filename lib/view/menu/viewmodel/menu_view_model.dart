@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobx/mobx.dart';
@@ -32,19 +34,19 @@ abstract class _MenuViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    menuItems.add(MenuModel(
-        LocaleKeys.course_title, Icon(FontAwesomeIcons.home), NavigationConstants.COURSE_VIEW));
-    menuItems.add(MenuModel(LocaleKeys.profile_appbar, Icon(FontAwesomeIcons.userAlt),
+    menuItems.add(MenuModel(LocaleKeys.course_title, const Icon(FontAwesomeIcons.home),
+        NavigationConstants.COURSE_VIEW));
+    menuItems.add(MenuModel(LocaleKeys.profile_appbar, const Icon(FontAwesomeIcons.userAlt),
         NavigationConstants.PROFILE_VIEW));
     menuItems.add(
-      MenuModel(
-          LocaleKeys.setting_title, Icon(FontAwesomeIcons.cog), NavigationConstants.SETTINGS_VIEW),
+      MenuModel(LocaleKeys.setting_title, const Icon(FontAwesomeIcons.cog),
+          NavigationConstants.SETTINGS_VIEW),
     );
   }
 
   @action
-  Future<void> getToken() async {
-    typeOfUser = await localeManager.getStringValue(PreferencesKeys.TYPEOFUSER).toString();
+  void getToken() {
+    typeOfUser = localeManager.getStringValue(PreferencesKeys.TYPEOFUSER).toString();
   }
 
   @action
@@ -62,7 +64,7 @@ abstract class _MenuViewModelBase with Store, BaseViewModel {
   @action
   Future<void> completeToMenu() async {
     changeLoading();
-    currentIndex = await localeManager.getIntegerValue(PreferencesKeys.INDEX);
+    currentIndex = localeManager.getIntegerValue(PreferencesKeys.INDEX);
     await localeManager.setIntegerValue(PreferencesKeys.INDEX, 0);
     changeLoading();
   }

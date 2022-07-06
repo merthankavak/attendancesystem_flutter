@@ -8,10 +8,6 @@ class NormalButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: child,
-      onPressed: onPressed,
-      style: style,
-    );
+    return ElevatedButton(onPressed: onPressed, style: style, child: child);
   }
 }

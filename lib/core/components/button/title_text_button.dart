@@ -13,10 +13,6 @@ class TitleTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NormalButton(
-      child: child,
-      onPressed: onPressed,
-      style: style,
-    );
+    return NormalButton(onPressed: onPressed, style: style, child: child);
   }
 }

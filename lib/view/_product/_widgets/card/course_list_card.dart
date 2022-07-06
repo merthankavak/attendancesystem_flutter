@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/extension/context_extension.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
@@ -58,19 +58,17 @@ class CourseListCard extends StatelessWidget {
           child: Text(courseList[itemIndex].courseShortName!,
               style: Theme.of(context).textTheme.headline6!),
         ),
-        Spacer(flex: 1),
+        const Spacer(flex: 1),
         Expanded(
           flex: 2,
           child: Text(courseList[itemIndex].courseName!,
               style: Theme.of(context).textTheme.subtitle1!),
         ),
-        Spacer(flex: 3),
+        const Spacer(flex: 3),
         Expanded(
           flex: 2,
           child: Text(
-              LocaleKeys.course_teacher_teacher.tr() +
-                  ' : ' +
-                  courseList[itemIndex].teacher!.fullName!,
+              '${LocaleKeys.course_teacher_teacher.tr()} : ${courseList[itemIndex].teacher!.fullName!}',
               style: Theme.of(context).textTheme.subtitle1!),
         ),
       ],
@@ -84,7 +82,7 @@ class CourseListCard extends StatelessWidget {
             onPressed: () {
               buildShowModalBottomSheet(context);
             },
-            icon: Icon(Icons.more_vert_rounded)),
+            icon: const Icon(Icons.more_vert_rounded)),
       ],
     );
   }
@@ -104,14 +102,14 @@ class CourseListCard extends StatelessWidget {
       children: <Widget>[
         typeOfUser == 'student'
             ? ListTile(
-                leading: Icon(FontAwesomeIcons.signOutAlt),
+                leading: const Icon(FontAwesomeIcons.signOutAlt),
                 title: Text(LocaleKeys.course_student_unenroll.tr()),
                 onTap: () {
                   courseViewModel.leaveCourse(courseList[itemIndex].id!, typeOfUser);
                 },
               )
             : ListTile(
-                leading: Icon(Icons.delete),
+                leading: const Icon(Icons.delete),
                 title: Text(LocaleKeys.course_teacher_delete.tr()),
                 onTap: () {
                   courseViewModel.deleteCourse(courseList[itemIndex].id!, typeOfUser);
@@ -119,13 +117,13 @@ class CourseListCard extends StatelessWidget {
               ),
         typeOfUser == 'teacher'
             ? ListTile(
-                leading: Icon(Icons.share_outlined),
+                leading: const Icon(Icons.share_outlined),
                 title: Text(LocaleKeys.course_teacher_share.tr()),
                 onTap: () {
                   Share.share(courseList[itemIndex].courseCode!);
                 },
               )
-            : SizedBox(),
+            : const SizedBox(),
       ],
     );
   }

@@ -8,9 +8,9 @@ class FormColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Spacer(flex: 1),
+        const Spacer(flex: 1),
         Expanded(flex: 8, child: Column(children: children)),
-        Spacer(flex: 1),
+        const Spacer(flex: 1)
       ],
     );
   }

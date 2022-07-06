@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, library_private_types_in_public_api
 
 import 'dart:io';
 
@@ -11,7 +11,7 @@ import 'package:attendancesystem_flutter/view/home/course/model/submodel/course/
 import 'package:attendancesystem_flutter/view/home/course/model/submodel/detail/detail_model.dart';
 import 'package:attendancesystem_flutter/view/home/course/service/ICourseService.dart';
 import 'package:attendancesystem_flutter/view/home/course/service/course_service.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_pickers/image_pickers.dart';
@@ -119,7 +119,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   Future<void> sendCourseDetailView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
-        path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+        path: NavigationConstants.COURSE_DETAIL_VIEW, data: '$typeOfUser,$courseId');
     _changeLoading();
   }
 
@@ -127,7 +127,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   Future<void> sendCourseSchduleView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
-        path: NavigationConstants.COURSE_SCHEDULE_VIEW, data: typeOfUser + ',' + courseId);
+        path: NavigationConstants.COURSE_SCHEDULE_VIEW, data: '$typeOfUser,$courseId');
     _changeLoading();
   }
 
@@ -135,7 +135,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   Future<void> sendCourseDetailSettingsView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
-        path: NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW, data: typeOfUser + ',' + courseId);
+        path: NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW, data: '$typeOfUser,$courseId');
     _changeLoading();
   }
 
@@ -143,7 +143,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   Future<void> sendCourseAttendanceView(String typeOfUser, String courseId, String date) async {
     _changeLoading();
     await navigation.navigateToPage(
-        path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + courseId + ',' + date);
+        path: NavigationConstants.ATTENDANCE_VIEW, data: '$typeOfUser,$courseId,$date');
     _changeLoading();
   }
 
@@ -158,7 +158,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
           token!);
       if (response != null) {
         await navigation.navigateToPage(
-            path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+            path: NavigationConstants.COURSE_DETAIL_VIEW, data: '$typeOfUser,$courseId');
       }
     }
     _changeLoading();
@@ -172,12 +172,12 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
           courseId,
           courseStartDateController!.text,
           courseEndDateController!.text,
-          courseStartTimeController!.text + '-' + courseEndTimeController!.text,
+          '${courseStartTimeController!.text}-${courseEndTimeController!.text}',
           token!);
 
       if (response != null) {
         await navigation.navigateToPageClear(
-            path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+            path: NavigationConstants.COURSE_DETAIL_VIEW, data: '$typeOfUser,$courseId');
       }
     }
     _changeLoading();
@@ -189,10 +189,10 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
     if (navigation.navigatorKey.currentState!.canPop()) {
       navigation.navigatorKey.currentState!.pop();
     }
-    var imageFile = await File(file.path!);
+    var imageFile = File(file.path!);
     await courseService.takeAttendance(date, id, token!, imageFile);
     await navigation.navigateToPageClear(
-        path: NavigationConstants.ATTENDANCE_VIEW, data: typeOfUser + ',' + id + ',' + date);
+        path: NavigationConstants.ATTENDANCE_VIEW, data: '$typeOfUser,$id,$date');
     _changeLoading();
   }
 
@@ -219,38 +219,36 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
         context: context,
         builder: (context) {
           return SafeArea(
-            child: Container(
-              child: Wrap(
-                children: <Widget>[
-                  Observer(builder: (_) {
-                    return ListTile(
-                        leading: Icon(Icons.check_box, color: context.colorSchemeLight.green),
-                        title: Text(LocaleKeys.course_teacher_attendance_participants.tr()),
-                        onTap: () async {
-                          if (navigation.navigatorKey.currentState!.canPop()) {
-                            navigation.navigatorKey.currentState!.pop();
-                          }
-                          viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
-                              'true';
-                          viewModel.statusArray[index] = 'true';
-                        });
-                  }),
-                  Observer(builder: (_) {
-                    return ListTile(
-                      leading: Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red),
-                      title: Text(LocaleKeys.course_teacher_attendance_absent.tr()),
+            child: Wrap(
+              children: <Widget>[
+                Observer(builder: (_) {
+                  return ListTile(
+                      leading: Icon(Icons.check_box, color: context.colorSchemeLight.green),
+                      title: Text(LocaleKeys.course_teacher_attendance_participants.tr()),
                       onTap: () async {
                         if (navigation.navigatorKey.currentState!.canPop()) {
                           navigation.navigatorKey.currentState!.pop();
                         }
                         viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
-                            'false';
-                        viewModel.statusArray[index] = 'false';
-                      },
-                    );
-                  }),
-                ],
-              ),
+                            'true';
+                        viewModel.statusArray[index] = 'true';
+                      });
+                }),
+                Observer(builder: (_) {
+                  return ListTile(
+                    leading: Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red),
+                    title: Text(LocaleKeys.course_teacher_attendance_absent.tr()),
+                    onTap: () async {
+                      if (navigation.navigatorKey.currentState!.canPop()) {
+                        navigation.navigatorKey.currentState!.pop();
+                      }
+                      viewModel.manageAttendanceModel!.studentsArray![index].attendanceStatus =
+                          'false';
+                      viewModel.statusArray[index] = 'false';
+                    },
+                  );
+                }),
+              ],
             ),
           );
         });

@@ -29,20 +29,20 @@ class CourseView extends StatelessWidget {
       onPageBuilder: (BuildContext context, CourseViewModel viewModel) => Scaffold(
         key: viewModel.scaffoldKey,
         appBar: buildAppBar(context, viewModel),
-        drawer: MenuView(),
+        drawer: const MenuView(),
         floatingActionButton: buildFloatingActionButton(context, viewModel),
         body: Observer(builder: (_) {
           return viewModel.isLoading
               ? buildCenter()
               : viewModel.courseList == null
-                  ? Center(child: Text('Not Found'))
+                  ? const Center(child: Text('Not Found'))
                   : buildListView(viewModel);
         }),
       ),
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   Observer buildListView(CourseViewModel viewModel) {
     return Observer(builder: (_) {
@@ -83,8 +83,8 @@ class CourseView extends StatelessWidget {
           ? LocaleKeys.course_teacher_tooltip.tr()
           : LocaleKeys.course_student_tooltip.tr(),
       child: typeOfUser == 'teacher'
-          ? Icon(Icons.add, color: Colors.white)
-          : Icon(FontAwesomeIcons.arrowRight, color: Colors.white),
+          ? const Icon(Icons.add, color: Colors.white)
+          : const Icon(FontAwesomeIcons.arrowRight, color: Colors.white),
     );
   }
 
@@ -134,14 +134,14 @@ class CourseView extends StatelessWidget {
           onPressed: () {
             viewModel.scaffoldKey.currentState!.openDrawer();
           },
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
         ),
         actions: [
           IconButton(
               onPressed: () {
                 viewModel.sendProfileView(typeOfUser);
               },
-              icon: Icon(FontAwesomeIcons.user))
+              icon: const Icon(FontAwesomeIcons.user))
         ]);
   }
 
@@ -217,9 +217,9 @@ class CourseView extends StatelessWidget {
             viewModel.floatingButtonControl(context, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: Colors.blue,
-            onPrimary: context.appTheme.colorScheme.primaryVariant,
+            onPrimary: context.appTheme.colorScheme.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.course_student_button.tr(),
@@ -234,9 +234,9 @@ class CourseView extends StatelessWidget {
             viewModel.floatingButtonControl(context, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: Colors.blue,
-            onPrimary: context.appTheme.colorScheme.primaryVariant,
+            onPrimary: context.appTheme.colorScheme.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.course_teacher_button.tr(),
@@ -251,10 +251,10 @@ class CourseView extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: LocaleKeys.course_student_desc_title.tr() + '\n\n',
+                  text: '${LocaleKeys.course_student_desc_title.tr()}\n\n',
                   style: Theme.of(context).textTheme.subtitle1!),
               TextSpan(
-                  text: LocaleKeys.course_student_desc_desc1.tr() + '\n',
+                  text: '${LocaleKeys.course_student_desc_desc1.tr()}\n',
                   style: Theme.of(context).textTheme.subtitle2!),
               TextSpan(
                   text: LocaleKeys.course_student_desc_desc2.tr(),
@@ -272,7 +272,7 @@ class CourseView extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: LocaleKeys.course_teacher_desc_title.tr() + '\n\n',
+                  text: '${LocaleKeys.course_teacher_desc_title.tr()}\n\n',
                   style: Theme.of(context).textTheme.subtitle1!),
               TextSpan(
                   text: LocaleKeys.course_teacher_desc_desc1.tr(),

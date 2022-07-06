@@ -38,9 +38,9 @@ class AttendanceView extends StatelessWidget {
           return viewModel.isLoading
               ? buildCenter()
               : viewModel.manageAttendanceModel == null
-                  ? Center(child: Text('Not Found'))
+                  ? const Center(child: Text('Not Found'))
                   : viewModel.detailModel == null
-                      ? Center(child: Text('Not Found'))
+                      ? const Center(child: Text('Not Found'))
                       : buildColumn(context, viewModel);
         }),
       ),
@@ -52,7 +52,7 @@ class AttendanceView extends StatelessWidget {
       children: [
         Expanded(flex: 20, child: buildAttendanceStatusCard(context, viewModel)),
         viewModel.manageAttendanceModels!.imageUrl == null
-            ? SizedBox()
+            ? const SizedBox()
             : Expanded(
                 flex: 35,
                 child: Column(
@@ -136,7 +136,7 @@ class AttendanceView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, CourseDetailViewModel viewModel) {
     return AppBar(
@@ -147,14 +147,14 @@ class AttendanceView extends StatelessWidget {
               onPressed: () async {
                 await viewModel.manageAttendanceStatus(typeOfUser, date, courseId);
               },
-              icon: Icon(FontAwesomeIcons.save));
+              icon: const Icon(FontAwesomeIcons.save));
         })
       ],
       leading: IconButton(
           onPressed: () async {
             await viewModel.sendCourseDetailView(typeOfUser, courseId);
           },
-          icon: Icon(FontAwesomeIcons.arrowLeft)),
+          icon: const Icon(FontAwesomeIcons.arrowLeft)),
     );
   }
 

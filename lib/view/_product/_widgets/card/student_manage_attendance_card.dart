@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -29,7 +29,7 @@ class StudentManageAttendanceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(flex: 1, child: buildClipOval(context)),
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
             Expanded(flex: 3, child: buildFullNameText(context)),
             Expanded(
                 flex: 3,
@@ -39,16 +39,15 @@ class StudentManageAttendanceCard extends StatelessWidget {
                         courseDetailViewModel
                                 .manageAttendanceModels!.studentsArray![index].confidence ==
                             ''
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                                text: LocaleKeys.course_teacher_attendance_accuracy.tr() + ': '),
+                                text: '${LocaleKeys.course_teacher_attendance_accuracy.tr()}: '),
                             TextSpan(
-                                text: courseDetailViewModel
-                                        .manageAttendanceModels!.studentsArray![index].confidence! +
-                                    '%')
+                                text:
+                                    '${courseDetailViewModel.manageAttendanceModels!.studentsArray![index].confidence!}%')
                           ],
                         ),
                         textAlign: TextAlign.center)),
@@ -60,11 +59,11 @@ class StudentManageAttendanceCard extends StatelessWidget {
                           'true'
                       ? Icon(Icons.check_box, color: context.colorSchemeLight.green)
                       : Icon(Icons.cancel_outlined, color: context.colorSchemeLight.red)
-                  : SizedBox(),
+                  : const SizedBox(),
             ),
             typeOfUser == 'teacher'
                 ? Expanded(flex: 1, child: buildObserverEdit(context))
-                : SizedBox()
+                : const SizedBox()
           ],
         ),
       ),
@@ -77,7 +76,7 @@ class StudentManageAttendanceCard extends StatelessWidget {
           onPressed: () async {
             await courseDetailViewModel.showPicker(courseDetailViewModel, context, index);
           },
-          icon: Icon(Icons.edit));
+          icon: const Icon(Icons.edit));
     });
   }
 
@@ -105,5 +104,5 @@ class StudentManageAttendanceCard extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 }

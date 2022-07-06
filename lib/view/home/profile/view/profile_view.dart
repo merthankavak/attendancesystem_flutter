@@ -1,12 +1,13 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:full_screen_image/full_screen_image.dart';
 import 'package:image_pickers/image_pickers.dart';
-import 'package:kartal/src/context_extension.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/button/title_text_button.dart';
@@ -32,7 +33,7 @@ class ProfileView extends StatelessWidget {
       onPageBuilder: (BuildContext context, ProfileViewModel viewModel) => Scaffold(
         key: viewModel.profileScaffoldKey,
         appBar: buildAppBar(context, viewModel),
-        drawer: MenuView(),
+        drawer: const MenuView(),
         body: Observer(
           builder: (_) {
             return viewModel.isLoading ? buildCenter() : buildUserColumn(context, viewModel);
@@ -42,7 +43,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, ProfileViewModel viewModel) {
     return AppBar(
@@ -51,7 +52,7 @@ class ProfileView extends StatelessWidget {
         onPressed: () {
           viewModel.profileScaffoldKey.currentState!.openDrawer();
         },
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
       ),
     );
   }
@@ -81,10 +82,10 @@ class ProfileView extends StatelessWidget {
           ),
           Divider(color: ColorSchemeLight.instance!.black),
           Card(
-            color: context.colorScheme.primaryVariant,
+            color: context.colorScheme.primaryContainer,
             child: Column(
               children: [
-                typeOfUser == 'student' ? buildProfilePhotoListTile(viewModel) : SizedBox(),
+                typeOfUser == 'student' ? buildProfilePhotoListTile(viewModel) : const SizedBox(),
                 buildUsernameChangeListTile(context, viewModel),
                 buildPasswordChangeListTile(context, viewModel),
               ],
@@ -92,7 +93,7 @@ class ProfileView extends StatelessWidget {
           ),
           Divider(color: ColorSchemeLight.instance!.black),
           Card(
-            color: context.colorScheme.primaryVariant,
+            color: context.colorScheme.primaryContainer,
             child: buildLogOutListTile(context, viewModel),
           ),
         ],
@@ -102,7 +103,7 @@ class ProfileView extends StatelessWidget {
 
   ListTile buildUsernameChangeListTile(BuildContext context, ProfileViewModel viewModel) {
     return ListTile(
-      leading: Icon(FontAwesomeIcons.idBadge),
+      leading: const Icon(FontAwesomeIcons.idBadge),
       title: Text(LocaleKeys.profile_account_fullNameTitle.tr()),
       subtitle: Text(LocaleKeys.profile_account_fullNameDesc.tr()),
       onTap: () {
@@ -113,7 +114,7 @@ class ProfileView extends StatelessWidget {
 
   ListTile buildPasswordChangeListTile(BuildContext context, ProfileViewModel viewModel) {
     return ListTile(
-      leading: Icon(Icons.password_rounded),
+      leading: const Icon(Icons.password_rounded),
       title: Text(LocaleKeys.profile_account_passwordTitle.tr()),
       subtitle: Text(LocaleKeys.profile_account_passwordDesc.tr()),
       onTap: () {
@@ -124,7 +125,7 @@ class ProfileView extends StatelessWidget {
 
   ListTile buildLogOutListTile(BuildContext context, ProfileViewModel viewModel) {
     return ListTile(
-      leading: Icon(Icons.exit_to_app),
+      leading: const Icon(Icons.exit_to_app),
       title: Text(LocaleKeys.profile_exit_logout.tr()),
       onTap: () {
         viewModel.logutApp();
@@ -134,7 +135,7 @@ class ProfileView extends StatelessWidget {
 
   ListTile buildProfilePhotoListTile(ProfileViewModel viewModel) {
     return ListTile(
-      leading: Icon(Icons.photo),
+      leading: const Icon(Icons.photo),
       title: Text(LocaleKeys.profile_account_photoTitle.tr()),
       subtitle: Text(LocaleKeys.profile_account_photoDesc.tr()),
       onTap: () async {
@@ -154,7 +155,7 @@ class ProfileView extends StatelessWidget {
   Card buildUserContainer(BuildContext context, ProfileViewModel viewModel) {
     return Card(
       margin: context.paddingLow,
-      color: context.colorScheme.primaryVariant,
+      color: context.colorScheme.primaryContainer,
       child: Padding(
         padding: context.paddingNormal,
         child: Row(
@@ -164,16 +165,16 @@ class ProfileView extends StatelessWidget {
                     flex: 1,
                     child: CircleAvatar(
                         backgroundColor: ColorSchemeLight.instance!.transparent,
-                        child: Text(viewModel.teacherModel!.fullName.toString().characters.first),
-                        radius: 30))
+                        radius: 30,
+                        child: Text(viewModel.teacherModel!.fullName.toString().characters.first)))
                 : viewModel.studentModel!.imageUrl == null
                     ? Expanded(
                         flex: 1,
                         child: CircleAvatar(
                             backgroundColor: ColorSchemeLight.instance!.black,
+                            radius: 30,
                             child:
-                                Text(viewModel.studentModel!.fullName.toString().characters.first),
-                            radius: 30))
+                                Text(viewModel.studentModel!.fullName.toString().characters.first)))
                     : Expanded(
                         flex: 1,
                         child: FullScreenWidget(
@@ -189,7 +190,7 @@ class ProfileView extends StatelessWidget {
                             ),
                           ),
                         )),
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
             Expanded(
               flex: 6,
               child: Column(
@@ -217,7 +218,7 @@ class ProfileView extends StatelessWidget {
                 ],
               ),
             ),
-            Spacer(flex: 2)
+            const Spacer(flex: 2)
           ],
         ),
       ),
@@ -278,7 +279,8 @@ class ProfileView extends StatelessWidget {
       validator: (value) =>
           value!.isValidPasswords ? null : 'Min 8 characters, 1 uppercase, 1 lowercase, 1 number',
       decoration: InputDecoration(
-          labelText: LocaleKeys.profile_account_password.tr(), prefixIcon: Icon(Icons.password)),
+          labelText: LocaleKeys.profile_account_password.tr(),
+          prefixIcon: const Icon(Icons.password)),
     );
   }
 
@@ -296,7 +298,7 @@ class ProfileView extends StatelessWidget {
       },
       decoration: InputDecoration(
           labelText: LocaleKeys.profile_account_confirmPassword.tr(),
-          prefixIcon: Icon(Icons.password)),
+          prefixIcon: const Icon(Icons.password)),
     );
   }
 
@@ -355,9 +357,9 @@ class ProfileView extends StatelessWidget {
                   viewModel.changePassword(context, typeOfUser);
                 },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: ColorSchemeLight.instance!.blue,
-            onPrimary: context.colorScheme.primaryVariant,
+            onPrimary: context.colorScheme.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.profile_account_button.tr(),
@@ -377,9 +379,9 @@ class ProfileView extends StatelessWidget {
                       : viewModel.updateStudentFullName(typeOfUser);
                 },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: ColorSchemeLight.instance!.blue,
-            onPrimary: context.colorScheme.primaryVariant,
+            onPrimary: context.colorScheme.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.profile_account_button.tr(),

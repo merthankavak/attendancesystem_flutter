@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vexana/vexana.dart';
 
@@ -21,11 +20,10 @@ class VexanaManager {
     isEnableLogger: true,
     fileManager: LocalFile(),
     options: BaseOptions(
-      baseUrl: Platform.isAndroid ? _androidBaseUrl : _iosBaseUrl,
-      receiveDataWhenStatusError: true,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-      followRedirects: false,
-    ),
+        baseUrl: Platform.isAndroid ? _androidBaseUrl : _iosBaseUrl,
+        receiveDataWhenStatusError: true,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+        followRedirects: false),
   );
 }

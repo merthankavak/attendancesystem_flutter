@@ -14,7 +14,7 @@ class OnBoardIndicator extends StatelessWidget {
       currentIndex: currentIndex,
       itemCount: itemCount,
       onListItem: (int index) {
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

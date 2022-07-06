@@ -26,7 +26,7 @@ class OnBoardView extends StatelessWidget {
           padding: context.paddingMediumHorizontal,
           child: Column(
             children: [
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
               Expanded(flex: 5, child: buildPageView(viewModel)),
               Expanded(flex: 2, child: buildRowFooter(viewModel, context)),
             ],
@@ -52,7 +52,7 @@ class OnBoardView extends StatelessWidget {
       children: [
         buildObserverCircle(viewModel),
         Expanded(child: Center(child: Observer(builder: (_) {
-          return Visibility(visible: viewModel.isLoading, child: CircularProgressIndicator());
+          return Visibility(visible: viewModel.isLoading, child: const CircularProgressIndicator());
         }))),
         buildFloatingActionButtonSkip(context, viewModel)
       ],
@@ -72,7 +72,7 @@ class OnBoardView extends StatelessWidget {
       backgroundColor: context.colorSchemeLight.blue,
       child: Icon(
         FontAwesomeIcons.angleRight,
-        color: context.colors.primaryVariant,
+        color: context.colors.primaryContainer,
       ),
       onPressed: () => viewModel.completeToOnBoard(),
     );

@@ -35,12 +35,12 @@ class CourseDetailView extends StatelessWidget {
         onPageBuilder: (BuildContext context, CourseDetailViewModel viewModel) => Scaffold(
               key: viewModel.detailScaffoldKey,
               appBar: buildAppBar(context, viewModel),
-              drawer: MenuView(),
+              drawer: const MenuView(),
               body: Observer(builder: (_) {
                 return viewModel.isLoading
                     ? buildCenter()
                     : viewModel.courseDetailModel == null
-                        ? Center(child: Text('Not Found'))
+                        ? const Center(child: Text('Not Found'))
                         : viewModel.courseDetailModel!.attendance!.isEmpty
                             ? CourseScheduleView(typeOfUser: typeOfUser, courseId: courseId)
                             : viewModel.currentIndex == 0
@@ -90,13 +90,13 @@ class CourseDetailView extends StatelessWidget {
                   courseModel: viewModel.courseDetailModel!, typeOfUser: typeOfUser);
             }),
           ),
-          Spacer(flex: 6)
+          const Spacer(flex: 6)
         ],
       );
     });
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, CourseDetailViewModel viewModel) {
     return AppBar(
@@ -105,15 +105,15 @@ class CourseDetailView extends StatelessWidget {
           onPressed: () {
             viewModel.detailScaffoldKey.currentState!.openDrawer();
           },
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
         ),
         actions: [
           typeOfUser == 'teacher'
               ? IconButton(
                   onPressed: () => viewModel.sendCourseDetailSettingsView(
                       typeOfUser, viewModel.courseDetailModel!.id!),
-                  icon: Icon(Icons.settings))
-              : SizedBox()
+                  icon: const Icon(Icons.settings))
+              : const SizedBox()
         ]);
   }
 
@@ -151,7 +151,7 @@ class CourseDetailView extends StatelessWidget {
                           return IconButton(
                               onPressed: () async => await showPicker(viewModel, context,
                                   viewModel.courseDetailModel!.attendance![index].date!),
-                              icon: Icon(Icons.more_vert_rounded));
+                              icon: const Icon(Icons.more_vert_rounded));
                         })
                       : Observer(builder: (_) {
                           return viewModel.courseStudentAttendanceStatus![index].attendanceStatus ==
@@ -163,7 +163,7 @@ class CourseDetailView extends StatelessWidget {
               ),
             )),
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(color: Colors.black);
+          return const Divider(color: Colors.black);
         },
       );
     });
@@ -175,45 +175,43 @@ class CourseDetailView extends StatelessWidget {
           context: context,
           builder: (context) {
             return SafeArea(
-              child: Container(
-                child: Wrap(
-                  children: <Widget>[
-                    Observer(builder: (_) {
-                      return ListTile(
-                          leading: Icon(Icons.edit),
-                          title: Text(LocaleKeys.course_teacher_attendance_edit.tr()),
-                          onTap: () async {
-                            await viewModel.sendCourseAttendanceView(typeOfUser, courseId, date);
-                          });
-                    }),
-                    Observer(builder: (_) {
-                      return ListTile(
-                          leading: Icon(Icons.photo_library),
-                          title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
-                          onTap: () async {
-                            await ImagePickers.pickerPaths(
-                              galleryMode: GalleryMode.image,
-                              selectCount: 1,
-                              showCamera: true,
-                              showGif: false,
-                            ).then((value) async => await viewModel.takeAttendanceStatus(
-                                typeOfUser, date, courseId, value.first));
-                          });
-                    }),
-                    Observer(builder: (_) {
-                      return ListTile(
-                        leading: Icon(Icons.photo_camera),
-                        title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
+              child: Wrap(
+                children: <Widget>[
+                  Observer(builder: (_) {
+                    return ListTile(
+                        leading: const Icon(Icons.edit),
+                        title: Text(LocaleKeys.course_teacher_attendance_edit.tr()),
                         onTap: () async {
-                          await ImagePickers.openCamera(
-                            cameraMimeType: CameraMimeType.photo,
+                          await viewModel.sendCourseAttendanceView(typeOfUser, courseId, date);
+                        });
+                  }),
+                  Observer(builder: (_) {
+                    return ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(LocaleKeys.course_teacher_attendance_photo.tr()),
+                        onTap: () async {
+                          await ImagePickers.pickerPaths(
+                            galleryMode: GalleryMode.image,
+                            selectCount: 1,
+                            showCamera: true,
+                            showGif: false,
                           ).then((value) async => await viewModel.takeAttendanceStatus(
-                              typeOfUser, date, courseId, value!));
-                        },
-                      );
-                    }),
-                  ],
-                ),
+                              typeOfUser, date, courseId, value.first));
+                        });
+                  }),
+                  Observer(builder: (_) {
+                    return ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(LocaleKeys.course_teacher_attendance_camera.tr()),
+                      onTap: () async {
+                        await ImagePickers.openCamera(
+                          cameraMimeType: CameraMimeType.photo,
+                        ).then((value) async => await viewModel.takeAttendanceStatus(
+                            typeOfUser, date, courseId, value!));
+                      },
+                    );
+                  }),
+                ],
               ),
             );
           });

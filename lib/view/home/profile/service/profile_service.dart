@@ -4,11 +4,9 @@ import 'dart:io';
 
 import 'package:attendancesystem_flutter/view/home/profile/model/student_profile_response_model.dart';
 import 'package:attendancesystem_flutter/view/home/profile/model/teacher_profile_response_model.dart';
-import 'package:flutter/src/material/scaffold.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:vexana/src/interface/INetworkService.dart';
 import 'package:vexana/vexana.dart';
 
 import '../../../_product/_enum/network_route_enum.dart';
@@ -23,44 +21,26 @@ class ProfileService extends IProfileService with ServiceHelper {
   @override
   Future<ProfileResponseModel?> updateStudentProfilePhoto(
       File file, String token, String id) async {
-    final mimeType = await file.path.toString().trim().split('.').last;
-    final originalFile = await file.path.toString().trim().split('/').last;
+    final mimeType = file.path.toString().trim().split('.').last;
+    final originalFile = file.path.toString().trim().split('/').last;
     final formData = FormData.fromMap({
       "image": await MultipartFile.fromFile(file.path,
           filename: originalFile, contentType: MediaType("image", mimeType))
     });
 
-    try {
-      final baseUrl = dotenv.env['APP_API_SITE'].toString();
-      await manager.uploadFile(
-        baseUrl + NetworkRoutes.STUDENT.rawValue + "update/$id",
-        formData,
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $token',
-          HttpHeaders.acceptHeader: '*/*',
-          HttpHeaders.acceptEncodingHeader: 'gzip, deflate, br',
-          HttpHeaders.connectionHeader: 'keep-alive',
-        },
-      );
-    } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
-        print('Catched');
-      }
-      if (e.type == DioErrorType.connectTimeout) {
-        print('Check your connection');
-      }
+    final baseUrl = dotenv.env['APP_API_SITE'].toString();
+    await manager.uploadFile(
+      "$baseUrl${NetworkRoutes.STUDENT.rawValue}update/$id",
+      formData,
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.acceptHeader: '*/*',
+        HttpHeaders.acceptEncodingHeader: 'gzip, deflate, br',
+        HttpHeaders.connectionHeader: 'keep-alive',
+      },
+    );
 
-      if (e.type == DioErrorType.receiveTimeout) {
-        print('Unable to connect to the server');
-      }
-
-      if (e.type == DioErrorType.other) {
-        print('Something went wrong');
-      }
-      print(e);
-    } catch (e) {
-      print(e);
-    }
+    return null;
   }
 
   @override

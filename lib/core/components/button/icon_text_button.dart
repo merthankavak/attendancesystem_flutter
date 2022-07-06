@@ -21,10 +21,9 @@ class IconTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      style: style,
-      onPressed: onPressed,
-      icon: Center(child: Icon(icon, color: iconColor)),
-      label: Center(child: Text(text, style: textStyle)),
-    );
+        style: style,
+        onPressed: onPressed,
+        icon: Center(child: Icon(icon, color: iconColor)),
+        label: Center(child: Text(text, style: textStyle)));
   }
 }

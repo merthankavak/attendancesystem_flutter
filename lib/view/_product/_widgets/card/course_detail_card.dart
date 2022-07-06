@@ -35,25 +35,25 @@ class CourseDetailCard extends StatelessWidget {
           flex: 15,
           child: Text(courseModel.courseShortName!, style: Theme.of(context).textTheme.headline6!),
         ),
-        Spacer(flex: 10),
+        const Spacer(flex: 10),
         Expanded(
           flex: 15,
           child: Text(courseModel.courseName!, style: Theme.of(context).textTheme.subtitle2!),
         ),
-        Spacer(flex: 10),
+        const Spacer(flex: 10),
         Expanded(
           flex: 20,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [],
+            children: const [],
           ),
         ),
-        Spacer(flex: 10),
+        const Spacer(flex: 10),
         Expanded(
             flex: 20,
             child: Text(
-                LocaleKeys.course_teacher_teacher.tr() + ' : ' + courseModel.teacher!.fullName!,
+                '${LocaleKeys.course_teacher_teacher.tr()} : ${courseModel.teacher!.fullName!}',
                 style: Theme.of(context).textTheme.subtitle2!)),
       ],
     );

@@ -26,17 +26,17 @@ class DecorationHelper {
 
   BoxShadow get boxShadowLeft => BoxShadow(
       color: context!.colorSchemeLight.blackShadow,
-      offset: Offset(-3, 3),
+      offset: const Offset(-3, 3),
       blurRadius: context!.normalBlur);
 
   BoxShadow get boxShadowRight => BoxShadow(
       color: context!.colorSchemeLight.blackShadow,
-      offset: Offset(3, 3),
+      offset: const Offset(3, 3),
       blurRadius: context!.normalBlur);
 
   BoxShadow get boxShadowUp => BoxShadow(
       color: context!.colorSchemeLight.black26,
-      offset: Offset(0.0, 0.0),
+      offset: const Offset(0.0, 0.0),
       blurRadius: context!.normalBlur);
 
   InputDecoration get outlineInputDecoration => InputDecoration(
@@ -93,7 +93,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -101,7 +101,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -109,7 +109,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -117,7 +117,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -125,7 +125,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
@@ -133,7 +133,7 @@ class DecorationHelper {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
       );
 }

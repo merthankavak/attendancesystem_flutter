@@ -40,7 +40,7 @@ class ConfirmOtpView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, ConfirmOtpViewModel viewModel) {
     return AppBar(
@@ -48,7 +48,7 @@ class ConfirmOtpView extends StatelessWidget {
           onPressed: () {
             viewModel.sendToLoginView();
           },
-          icon: Icon(FontAwesomeIcons.arrowLeft)),
+          icon: const Icon(FontAwesomeIcons.arrowLeft)),
     );
   }
 
@@ -58,11 +58,11 @@ class ConfirmOtpView extends StatelessWidget {
       key: viewModel.formStateConfirmOtp,
       child: Column(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildTextRichOtp(context, viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           OtpPinCodeTextField(viewModel: viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           Countdown(
               seconds: 300,
               build: (BuildContext context, double time) => Text(
@@ -70,15 +70,15 @@ class ConfirmOtpView extends StatelessWidget {
                       time.toInt().toString() +
                       LocaleKeys.confirmotp_second.tr(),
                   style: context.textTheme.subtitle1),
-              interval: Duration(seconds: 1),
+              interval: const Duration(seconds: 1),
               onFinished: () {
                 viewModel.sendToLoginView();
               }),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildTextRichResend(context, viewModel),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildElevatedButtonConfirm(context, viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
         ],
       ),
     );
@@ -143,9 +143,9 @@ class ConfirmOtpView extends StatelessWidget {
                   viewModel.fetchConfirmOtpCode(viewModel.currentText.toString(), typeOfUser);
                 },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            onPrimary: context.colors.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.confirmotp_confirm.tr(),

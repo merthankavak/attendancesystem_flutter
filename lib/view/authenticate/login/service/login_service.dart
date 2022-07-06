@@ -13,26 +13,9 @@ class LoginService extends ILoginService with ServiceHelper {
 
   @override
   Future<LoginResponseModel?> fetchLoginControl(LoginModel model, String typeOfUser) async {
-    final response =
-        await manager.send<LoginResponseModel, LoginResponseModel>(NetworkRoutes.AUTH.rawValue,
-            urlSuffix: typeOfUser + '/login',
-            parseModel: LoginResponseModel(),
-            method: RequestType.POST,
-            //options: Options(followRedirects: true, receiveDataWhenStatusError: false),
-            data: model);
-
-    if (response.data is LoginResponseModel) {
-      return response.data;
-    } else {
-      showMessage(scaffoldyKey, response.error);
-    }
-  }
-
-  @override
-  Future<LoginResponseModel?> fetchRegisterControl(LoginModel model, String typeOfUser) async {
     final response = await manager.send<LoginResponseModel, LoginResponseModel>(
         NetworkRoutes.AUTH.rawValue,
-        urlSuffix: typeOfUser + '/register',
+        urlSuffix: '$typeOfUser/login',
         parseModel: LoginResponseModel(),
         method: RequestType.POST,
         data: model);
@@ -42,5 +25,23 @@ class LoginService extends ILoginService with ServiceHelper {
     } else {
       showMessage(scaffoldyKey, response.error);
     }
+    return null;
+  }
+
+  @override
+  Future<LoginResponseModel?> fetchRegisterControl(LoginModel model, String typeOfUser) async {
+    final response = await manager.send<LoginResponseModel, LoginResponseModel>(
+        NetworkRoutes.AUTH.rawValue,
+        urlSuffix: '$typeOfUser/register',
+        parseModel: LoginResponseModel(),
+        method: RequestType.POST,
+        data: model);
+
+    if (response.data is LoginResponseModel) {
+      return response.data;
+    } else {
+      showMessage(scaffoldyKey, response.error);
+    }
+    return null;
   }
 }

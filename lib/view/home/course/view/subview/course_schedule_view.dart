@@ -32,7 +32,7 @@ class CourseScheduleView extends StatelessWidget {
           return viewModel.isLoading
               ? buildCenter()
               : viewModel.courseDetailModel == null
-                  ? Center(child: Text('Not Found'))
+                  ? const Center(child: Text('Not Found'))
                   : SingleChildScrollView(
                       padding: context.paddingBitNormal,
                       child: buildCourseScheduleForm(viewModel, context));
@@ -41,7 +41,7 @@ class CourseScheduleView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   Form buildCourseScheduleForm(CourseDetailViewModel viewModel, BuildContext context) {
     return Form(
@@ -112,9 +112,9 @@ class CourseScheduleView extends StatelessWidget {
             viewModel.addCourseSchedule(courseId, typeOfUser);
           },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            onPrimary: context.colors.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.course_teacher_schedule_button.tr(),

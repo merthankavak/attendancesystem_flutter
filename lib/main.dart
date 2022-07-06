@@ -17,25 +17,26 @@ Future<void> main() async {
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
-      child: MyApp(),
       supportedLocales: LanguageManager.instance.supportedLocales,
       path: ApplicationConstants.LANG_ASSET_PATH,
       startLocale: LanguageManager.instance.enLocale,
+      child: const MyApp(),
     ),
   ));
 }
 
 Future<void> _init() async {
   await dotenv.load(fileName: './asset/app/.env');
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.preferencesInit();
   await EasyLocalization.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -47,7 +49,7 @@ abstract class _ConfirmOtpViewModelBase with Store, BaseViewModel {
           ForgotPasswordModel(otpCode: otpCode), typeOfUser);
       if (response != null) {
         await navigation.navigateToPage(
-            path: NavigationConstants.CHANGE_PASSWORD_VIEW, data: otpCode + ',' + typeOfUser);
+            path: NavigationConstants.CHANGE_PASSWORD_VIEW, data: '$otpCode,$typeOfUser');
       }
     }
     _changeLoading();

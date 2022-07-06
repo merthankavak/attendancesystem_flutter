@@ -62,13 +62,6 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
     });
   }
 
-  final _$getTokenAsyncAction = AsyncAction('_MenuViewModelBase.getToken');
-
-  @override
-  Future<void> getToken() {
-    return _$getTokenAsyncAction.run(() => super.getToken());
-  }
-
   final _$changeIndexAsyncAction =
       AsyncAction('_MenuViewModelBase.changeIndex');
 
@@ -101,6 +94,17 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
 
   final _$_MenuViewModelBaseActionController =
       ActionController(name: '_MenuViewModelBase');
+
+  @override
+  void getToken() {
+    final _$actionInfo = _$_MenuViewModelBaseActionController.startAction(
+        name: '_MenuViewModelBase.getToken');
+    try {
+      return super.getToken();
+    } finally {
+      _$_MenuViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeLoading() {

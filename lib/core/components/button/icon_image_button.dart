@@ -21,10 +21,6 @@ class IconImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      style: style,
-      onPressed: onPressed,
-      icon: SvgPicture.asset(assetName),
-      label: child,
-    );
+        style: style, onPressed: onPressed, icon: SvgPicture.asset(assetName), label: child);
   }
 }

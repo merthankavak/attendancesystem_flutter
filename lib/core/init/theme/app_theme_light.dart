@@ -58,7 +58,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
     return DialogTheme(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: colorSchemeLight!.white, width: 0, style: BorderStyle.none),
-        borderRadius: BorderRadius.all(Radius.circular(0.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(0.0)),
       ),
     );
   }
@@ -119,7 +119,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -127,7 +127,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
       focusedErrorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -135,7 +135,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
       disabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -143,7 +143,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -151,7 +151,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
       border: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -159,7 +159,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       ),
     );
   }
@@ -176,7 +176,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(2.0)),
       ),
       alignedDropdown: false,
       buttonColor: colorSchemeLight!.blue,
@@ -202,7 +202,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(2.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(2.0)),
         ),
       ),
     );
@@ -218,7 +218,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
         padding: insets.mediumPaddingAll,
         alignment: Alignment.center,
         elevation: 10,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(2.0)),
         ),
       ),
@@ -239,7 +239,7 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
             width: 2,
             style: BorderStyle.solid,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(2.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(2.0)),
         ),
       ),
     );
@@ -350,19 +350,18 @@ class AppThemeLight extends AppTheme with LightThemeInterface {
 
   ColorScheme get _appColorScheme {
     return ColorScheme(
-      primary: colorSchemeLight!.blue, //xx
-      primaryVariant: colorSchemeLight!.white, //xx
-      secondary: colorSchemeLight!.darkBlue, //xx
-      secondaryVariant: colorSchemeLight!.lightBlue,
-      surface: colorSchemeLight!.white, //xx
-      background: colorSchemeLight!.lightBlue, //xx
-      error: colorSchemeLight!.red, //xx
-      onPrimary: colorSchemeLight!.blue,
-      onSecondary: colorSchemeLight!.black, //xx
-      onSurface: colorSchemeLight!.lightGray, //xx
-      onBackground: colorSchemeLight!.gray,
-      onError: colorSchemeLight!.orange, //xx
-      brightness: colorSchemeLight!.brightnessLight,
-    );
+        primary: colorSchemeLight!.blue, //xx
+        primaryContainer: colorSchemeLight!.white, //xx
+        secondary: colorSchemeLight!.darkBlue, //xx
+        secondaryContainer: colorSchemeLight!.lightBlue,
+        surface: colorSchemeLight!.white, //xx
+        background: colorSchemeLight!.lightBlue, //xx
+        error: colorSchemeLight!.red, //xx
+        onPrimary: colorSchemeLight!.blue,
+        onSecondary: colorSchemeLight!.black, //xx
+        onSurface: colorSchemeLight!.lightGray, //xx
+        onBackground: colorSchemeLight!.gray,
+        onError: colorSchemeLight!.orange, //xx
+        brightness: colorSchemeLight!.brightnessLight);
   }
 }

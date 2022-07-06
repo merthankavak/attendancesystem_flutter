@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -55,7 +55,7 @@ class MenuView extends StatelessWidget {
           selected: index == viewModel.currentIndex,
           leading: viewModel.menuItems[index].leading,
           title: Text(viewModel.menuItems[index].title.tr()),
-          trailing: Icon(Icons.arrow_right),
+          trailing: const Icon(Icons.arrow_right),
           onTap: () async {
             await viewModel.changeIndex(index);
             await viewModel.sendToPage(viewModel.menuItems[index].navigationPath);
@@ -67,6 +67,7 @@ class MenuView extends StatelessWidget {
 
   DrawerHeader buildDrawerHeader(BuildContext context) {
     return DrawerHeader(
+        decoration: BoxDecoration(color: context.colorSchemeLight.blue),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -79,9 +80,8 @@ class MenuView extends StatelessWidget {
                 onTap: null,
                 onLongPress: null)
           ],
-        ),
-        decoration: BoxDecoration(color: context.colorSchemeLight.blue));
+        ));
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 }

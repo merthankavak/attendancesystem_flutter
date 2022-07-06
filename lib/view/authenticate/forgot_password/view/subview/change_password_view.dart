@@ -40,7 +40,7 @@ class ChangePasswordView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(BuildContext context, ChangePasswordViewModel viewModel) {
     return AppBar(
@@ -48,7 +48,7 @@ class ChangePasswordView extends StatelessWidget {
           onPressed: () {
             viewModel.sendToLoginView();
           },
-          icon: Icon(FontAwesomeIcons.arrowLeft)),
+          icon: const Icon(FontAwesomeIcons.arrowLeft)),
     );
   }
 
@@ -58,14 +58,14 @@ class ChangePasswordView extends StatelessWidget {
       key: viewModel.formStateChangePassword,
       child: Column(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildTextRichChangePassword(context, viewModel),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildTextFormFieldPassword(viewModel),
           buildTextFormFieldConfirmPassword(viewModel),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buildElevatedButtonConfirm(context, viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
         ],
       ),
     );
@@ -77,7 +77,8 @@ class ChangePasswordView extends StatelessWidget {
       validator: (value) =>
           value!.isValidPasswords ? null : 'Min 8 characters, 1 uppercase, 1 lowercase, 1 number',
       decoration: InputDecoration(
-          labelText: LocaleKeys.changepassword_password.tr(), prefixIcon: Icon(Icons.password)),
+          labelText: LocaleKeys.changepassword_password.tr(),
+          prefixIcon: const Icon(Icons.password)),
     );
   }
 
@@ -95,7 +96,7 @@ class ChangePasswordView extends StatelessWidget {
       },
       decoration: InputDecoration(
           labelText: LocaleKeys.changepassword_confirmpassword.tr(),
-          prefixIcon: Icon(Icons.password)),
+          prefixIcon: const Icon(Icons.password)),
     );
   }
 
@@ -130,9 +131,9 @@ class ChangePasswordView extends StatelessWidget {
                   viewModel.fetchConfirmChangePassword(context, otpCode, typeOfUser);
                 },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            onPrimary: context.colors.primaryContainer,
           ),
           child: Center(
               child: Text(LocaleKeys.changepassword_confirm.tr(),

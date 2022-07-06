@@ -41,7 +41,7 @@ class StudentCard extends StatelessWidget {
                         ),
                       ),
                     )),
-                Spacer(flex: 1),
+                const Spacer(flex: 1),
                 Expanded(
                     flex: 8,
                     child:
@@ -50,5 +50,5 @@ class StudentCard extends StatelessWidget {
             )));
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 }

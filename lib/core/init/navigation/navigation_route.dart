@@ -25,11 +25,11 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.DEFAULT:
-        return normalNavigate(SplashView());
+        return normalNavigate(const SplashView());
       case NavigationConstants.ONBOARD_VIEW:
-        return normalNavigate(OnBoardView());
+        return normalNavigate(const OnBoardView());
       case NavigationConstants.LOGIN_VIEW:
-        return normalNavigate(LoginView());
+        return normalNavigate(const LoginView());
       case NavigationConstants.FORGOT_PASSWORD_VIEW:
         return normalNavigate(ForgotPasswordView(typeOfUser: args.arguments.toString()));
       case NavigationConstants.CONFIRM_OTP_VIEW:
@@ -48,28 +48,23 @@ class NavigationRoute {
             courseId: args.arguments.toString().split(',')[1]));
       case NavigationConstants.COURSE_SCHEDULE_VIEW:
         return normalNavigate(CourseScheduleView(
-          typeOfUser: args.arguments.toString().split(',')[0],
-          courseId: args.arguments.toString().split(',')[1],
-        ));
+            typeOfUser: args.arguments.toString().split(',')[0],
+            courseId: args.arguments.toString().split(',')[1]));
       case NavigationConstants.COURSE_DETAIL_SETTINGS_VIEW:
         return normalNavigate(CourseDetailSettingsView(
-          typeOfUser: args.arguments.toString().split(',')[0],
-          courseId: args.arguments.toString().split(',')[1],
-        ));
+            typeOfUser: args.arguments.toString().split(',')[0],
+            courseId: args.arguments.toString().split(',')[1]));
       case NavigationConstants.ATTENDANCE_VIEW:
         return normalNavigate(AttendanceView(
-          typeOfUser: args.arguments.toString().split(',')[0],
-          courseId: args.arguments.toString().split(',')[1],
-          date: args.arguments.toString().split(',')[2],
-        ));
+            typeOfUser: args.arguments.toString().split(',')[0],
+            courseId: args.arguments.toString().split(',')[1],
+            date: args.arguments.toString().split(',')[2]));
       case NavigationConstants.PROFILE_VIEW:
         return normalNavigate(ProfileView(typeOfUser: args.arguments.toString()));
       case NavigationConstants.SETTINGS_VIEW:
         return normalNavigate(SettingsView(typeOfUser: args.arguments.toString()));
       default:
-        return MaterialPageRoute(
-          builder: (context) => NotFoundNavigationWidget(),
-        );
+        return MaterialPageRoute(builder: (context) => const NotFoundNavigationWidget());
     }
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -81,7 +83,7 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
   void sendCourseDetailView(String typeOfUser, String courseId) async {
     _changeLoading();
     await navigation.navigateToPage(
-        path: NavigationConstants.COURSE_DETAIL_VIEW, data: typeOfUser + ',' + courseId);
+        path: NavigationConstants.COURSE_DETAIL_VIEW, data: '$typeOfUser,$courseId');
     _changeLoading();
   }
 

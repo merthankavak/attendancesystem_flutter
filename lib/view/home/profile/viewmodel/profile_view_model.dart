@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -110,7 +112,7 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   Future<void> updateStudentProfilePicture(String typeOfUser, Media file) async {
     changeLoading();
 
-    var imageFile = await File(file.path!);
+    var imageFile = File(file.path!);
     await profileService.updateStudentProfilePhoto(imageFile, token!, id!);
     await navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW, data: typeOfUser);
     changeLoading();

@@ -73,7 +73,7 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   Container buildSVGImageContainer(BuildContext context) {
     return Container(
@@ -88,7 +88,7 @@ class LoginView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: context.colors.surface,
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(50))),
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(50))),
       child: Padding(
         padding: EdgeInsets.only(
             left: context.width * 0.1, right: context.width * 0.1, bottom: context.width * 0.01),
@@ -111,17 +111,17 @@ class LoginView extends StatelessWidget {
         key: viewModel.formStateTeacherLogin,
         child: Column(
           children: [
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextFormFieldEmail(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldPassword(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichForgot(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildElevatedButtonLogin(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichSignIn(viewModel, context),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
           ],
         ),
       );
@@ -135,17 +135,17 @@ class LoginView extends StatelessWidget {
         key: viewModel.formStateTeacherRegister,
         child: Column(
           children: [
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
             buildTextFormFieldName(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldEmail(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldPassword(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildElevatedButtonRegister(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichSignUp(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
           ],
         ),
       );
@@ -159,17 +159,17 @@ class LoginView extends StatelessWidget {
         key: viewModel.formStateStudentLogin,
         child: Column(
           children: [
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextFormFieldEmail(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldPassword(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichForgot(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildElevatedButtonLogin(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichSignIn(viewModel, context),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
           ],
         ),
       );
@@ -183,17 +183,17 @@ class LoginView extends StatelessWidget {
         key: viewModel.formStateStudentRegister,
         child: Column(
           children: [
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
             buildTextFormFieldName(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldEmail(context, viewModel),
-            Spacer(),
+            const Spacer(),
             buildTextFormFieldPassword(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildElevatedButtonRegister(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             buildTextRichSignUp(context, viewModel),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
           ],
         ),
       );
@@ -322,14 +322,14 @@ class LoginView extends StatelessWidget {
                 }
               },
         style: ElevatedButton.styleFrom(
-          shape: StadiumBorder(),
+          shape: const StadiumBorder(),
           primary: context.colorSchemeLight.blue,
-          onPrimary: context.colors.primaryVariant,
+          onPrimary: context.colors.primaryContainer,
         ),
         child: Center(
             child: Text(
           LocaleKeys.login_login.tr(),
-          style: context.textTheme.headline6!.copyWith(color: context.colors.primaryVariant),
+          style: context.textTheme.headline6!.copyWith(color: context.colors.primaryContainer),
         )),
       );
     });
@@ -348,14 +348,14 @@ class LoginView extends StatelessWidget {
                 }
               },
         style: ElevatedButton.styleFrom(
-          shape: StadiumBorder(),
+          shape: const StadiumBorder(),
           primary: context.colorSchemeLight.blue,
-          onPrimary: context.colors.primaryVariant,
+          onPrimary: context.colors.primaryContainer,
         ),
         child: Center(
             child: Text(
           LocaleKeys.login_signup.tr(),
-          style: context.textTheme.headline6!.copyWith(color: context.colors.primaryVariant),
+          style: context.textTheme.headline6!.copyWith(color: context.colors.primaryContainer),
         )),
       );
     });

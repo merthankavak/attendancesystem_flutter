@@ -12,8 +12,8 @@ class IconNormalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NormalButton(
-      child: Center(child: Icon(icon, color: iconColor)),
       onPressed: onPressed,
+      child: Center(child: Icon(icon, color: iconColor)),
     );
   }
 }

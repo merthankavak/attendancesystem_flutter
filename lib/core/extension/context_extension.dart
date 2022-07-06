@@ -57,10 +57,10 @@ extension PageExtension on BuildContext {
 }
 
 extension DurationExtension on BuildContext {
-  Duration get lowDuration => Duration(microseconds: 500);
-  Duration get normalDuration => Duration(microseconds: 1000);
-  Duration get mediumDuration => Duration(seconds: 1);
-  Duration get highDuration => Duration(seconds: 3);
+  Duration get lowDuration => const Duration(microseconds: 500);
+  Duration get normalDuration => const Duration(microseconds: 1000);
+  Duration get mediumDuration => const Duration(seconds: 1);
+  Duration get highDuration => const Duration(seconds: 3);
 }
 
 extension BorderRadiusCircularExtension on BuildContext {
@@ -72,11 +72,11 @@ extension BorderRadiusCircularExtension on BuildContext {
 }
 
 extension RadiusExtension on BuildContext {
-  Radius get lowRadius => Radius.circular(5.0);
-  Radius get normalRadius => Radius.circular(10.0);
-  Radius get mediumRadius => Radius.circular(15.0);
-  Radius get highRadius => Radius.circular(30.0);
-  Radius get veryHighRadius => Radius.circular(60.0);
+  Radius get lowRadius => const Radius.circular(5.0);
+  Radius get normalRadius => const Radius.circular(10.0);
+  Radius get mediumRadius => const Radius.circular(15.0);
+  Radius get highRadius => const Radius.circular(30.0);
+  Radius get veryHighRadius => const Radius.circular(60.0);
 }
 
 extension BlurRadiusExtension on BuildContext {

@@ -1,9 +1,9 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kartal/kartal.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/constants/enums/app_theme_enum.dart';
@@ -31,7 +31,7 @@ class SettingsView extends StatelessWidget {
           return Scaffold(
               key: viewModel.scaffoldKey,
               appBar: buildAppBar(context, viewModel),
-              drawer: MenuView(),
+              drawer: const MenuView(),
               body: viewModel.isLoading
                   ? buildCenter()
                   : SingleChildScrollView(child: buildSettingsContainer(context, viewModel)));
@@ -76,29 +76,29 @@ class SettingsView extends StatelessWidget {
 
   Card buildApplicationTourCard(BuildContext context, SettingsViewModel viewModel) {
     return Card(
-      color: context.colorScheme.primaryVariant,
+      color: context.colorScheme.primaryContainer,
       child: ListTile(
         onTap: viewModel.navigateToOnBoard,
         title: Text(LocaleKeys.setting_about_appInfo.tr()),
-        trailing: Icon(Icons.arrow_right),
+        trailing: const Icon(Icons.arrow_right),
       ),
     );
   }
 
   Card buildChangeLanguageCard(BuildContext context, SettingsViewModel viewModel) {
     return Card(
-      color: context.colorScheme.primaryVariant,
+      color: context.colorScheme.primaryContainer,
       child: ListTile(
         title: Text(LocaleKeys.setting_appSettings_langTitle.tr()),
         subtitle: Text(LocaleKeys.setting_appSettings_langDesc.tr()),
         trailing: Observer(builder: (_) {
           return DropdownButton<Locale>(items: [
             DropdownMenuItem(
-                child: Text(LanguageManager.instance.trLocale.languageCode.toUpperCase()),
-                value: LanguageManager.instance.trLocale),
+                value: LanguageManager.instance.trLocale,
+                child: Text(LanguageManager.instance.trLocale.languageCode.toUpperCase())),
             DropdownMenuItem(
-                child: Text(LanguageManager.instance.enLocale.languageCode.toUpperCase()),
-                value: LanguageManager.instance.enLocale),
+                value: LanguageManager.instance.enLocale,
+                child: Text(LanguageManager.instance.enLocale.languageCode.toUpperCase())),
           ], onChanged: viewModel.changeAppLocalization, value: viewModel.appLocale);
         }),
       ),
@@ -107,7 +107,7 @@ class SettingsView extends StatelessWidget {
 
   Card buildChangeThemeCard(BuildContext context, SettingsViewModel viewModel) {
     return Card(
-      color: context.colorScheme.primaryVariant,
+      color: context.colorScheme.primaryContainer,
       child: ListTile(
         title: Text(LocaleKeys.setting_appSettings_themeTitle.tr()),
         subtitle: Text(LocaleKeys.setting_appSettings_themeDesc.tr()),
@@ -131,8 +131,8 @@ class SettingsView extends StatelessWidget {
             onPressed: () {
               viewModel.scaffoldKey.currentState!.openDrawer();
             },
-            icon: Icon(FontAwesomeIcons.alignLeft)));
+            icon: const Icon(FontAwesomeIcons.alignLeft)));
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 }

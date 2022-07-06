@@ -11,6 +11,7 @@ import '../../../../core/init/lang/locale_keys.g.dart';
 import '../viewmodel/forgot_password_view_model.dart';
 
 class ForgotPasswordView extends StatelessWidget {
+  final String _validatorText = 'Email does not valid';
   final String typeOfUser;
   const ForgotPasswordView({Key? key, required this.typeOfUser}) : super(key: key);
 
@@ -37,7 +38,7 @@ class ForgotPasswordView extends StatelessWidget {
     );
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar(ForgotPasswordViewModel viewModel) {
     return AppBar(
@@ -45,7 +46,7 @@ class ForgotPasswordView extends StatelessWidget {
             onPressed: () {
               viewModel.sendToLoginView();
             },
-            icon: Icon(FontAwesomeIcons.arrowLeft)));
+            icon: const Icon(FontAwesomeIcons.arrowLeft)));
   }
 
   Form buildForm(ForgotPasswordViewModel viewModel, BuildContext context) {
@@ -55,13 +56,13 @@ class ForgotPasswordView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
           buildTextRichForgot(context, viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           buildTextFormFieldEmail(viewModel),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           buildElevatedButtonSend(context, viewModel, typeOfUser),
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
         ],
       ),
     );
@@ -71,9 +72,9 @@ class ForgotPasswordView extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       controller: viewModel.emailController,
-      validator: (value) => value!.isValidEmails ? null : 'Email does not valid',
+      validator: (value) => value!.isValidEmails ? null : _validatorText,
       decoration: InputDecoration(
-          labelText: LocaleKeys.forgotpassword_email.tr(), prefixIcon: Icon(Icons.email)),
+          labelText: LocaleKeys.forgotpassword_email.tr(), prefixIcon: const Icon(Icons.email)),
     );
   }
 
@@ -110,12 +111,12 @@ class ForgotPasswordView extends StatelessWidget {
                   viewModel.fetchSendOtpCodeToEmail(typeOfUser);
                 },
           style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             primary: context.colorSchemeLight.blue,
-            onPrimary: context.colors.primaryVariant,
+            onPrimary: context.colors.primaryContainer,
           ),
           child: Center(
-              child: Text('${LocaleKeys.forgotpassword_send.tr()}',
+              child: Text(LocaleKeys.forgotpassword_send.tr(),
                   style: context.textTheme.headline6!
                       .copyWith(color: context.colorSchemeLight.white))));
     });

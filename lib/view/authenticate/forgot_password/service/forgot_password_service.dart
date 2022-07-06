@@ -1,5 +1,4 @@
-import 'package:flutter/src/material/scaffold.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:vexana/vexana.dart';
 
 import '../../../_product/_enum/network_route_enum.dart';
@@ -16,7 +15,7 @@ class ForgotPasswordService extends IForgotPasswordService with ServiceHelper {
       ForgotPasswordModel model, String otpCode, String typeOfUser) async {
     final response = await manager.send<ForgotPasswordModel, ForgotPasswordModel>(
       NetworkRoutes.AUTH.rawValue,
-      urlSuffix: typeOfUser + '/reset/' + otpCode,
+      urlSuffix: '$typeOfUser/reset/$otpCode',
       parseModel: ForgotPasswordModel(),
       method: RequestType.POST,
       data: model,
@@ -27,13 +26,14 @@ class ForgotPasswordService extends IForgotPasswordService with ServiceHelper {
     } else {
       showMessage(scaffoldKey, response.error);
     }
+    return null;
   }
 
   @override
   Future<ForgotPasswordModel?> confirmOtpCode(ForgotPasswordModel model, String typeOfUser) async {
     final response = await manager.send<ForgotPasswordModel, ForgotPasswordModel>(
       NetworkRoutes.AUTH.rawValue,
-      urlSuffix: typeOfUser + '/reset',
+      urlSuffix: '$typeOfUser/reset',
       parseModel: ForgotPasswordModel(),
       method: RequestType.POST,
       data: model,
@@ -44,6 +44,7 @@ class ForgotPasswordService extends IForgotPasswordService with ServiceHelper {
     } else {
       showMessage(scaffoldKey, response.error);
     }
+    return null;
   }
 
   @override
@@ -51,7 +52,7 @@ class ForgotPasswordService extends IForgotPasswordService with ServiceHelper {
       ForgotPasswordModel model, String typeOfUser) async {
     final response = await manager.send<ForgotPasswordModel, ForgotPasswordModel>(
       NetworkRoutes.AUTH.rawValue,
-      urlSuffix: typeOfUser + '/recover',
+      urlSuffix: '$typeOfUser/recover',
       parseModel: ForgotPasswordModel(),
       method: RequestType.POST,
       data: model,

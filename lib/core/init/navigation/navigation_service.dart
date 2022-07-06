@@ -9,7 +9,7 @@ class NavigationService implements INavigationService {
   NavigationService._init();
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
-  final removeAllOldRoutes = (Route<dynamic> route) => false;
+  bool removeAllOldRoutes(Route<dynamic> route) => false;
 
   @override
   Future<void> navigateToPage({String? path, Object? data}) async {

@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:attendancesystem_flutter/view/home/profile/model/student_profile_response_model.dart';
 import 'package:attendancesystem_flutter/view/home/profile/model/teacher_profile_response_model.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_parser/http_parser.dart';
@@ -68,7 +67,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<CourseModel?> updateCourseControl(CourseModel courseModel, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: 'course/update/' + courseModel.id!,
+      urlSuffix: 'course/update/${courseModel.id!}',
       parseModel: CourseModel(),
       method: RequestType.POST,
       options: Options(headers: {
@@ -85,7 +84,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<CourseModel?> deleteCourseControl(String id, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: 'course/deletecourse/' + id,
+      urlSuffix: 'course/deletecourse/$id',
       parseModel: CourseModel(),
       method: RequestType.DELETE,
       options: Options(headers: {
@@ -102,7 +101,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<DetailModel?> getOneCourseTeacherControl(String id, String teacherId, String token) async {
     final response = await manager.send<DetailModel, DetailModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: 'course/' + id,
+      urlSuffix: 'course/$id',
       parseModel: DetailModel(),
       method: RequestType.POST,
       data: {'teacherId': teacherId},
@@ -119,7 +118,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<CourseListModel?> getCourseListTeacherControl(String teacherId, String token) async {
     final response = await manager.send<CourseListModel, CourseListModel>(
       NetworkRoutes.TEACHER.rawValue,
-      urlSuffix: 'course/list/' + teacherId,
+      urlSuffix: 'course/list/$teacherId',
       parseModel: CourseListModel(),
       method: RequestType.GET,
       options: Options(headers: {
@@ -136,7 +135,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<CourseListModel?> getCourseListStudentControl(String studentId, String token) async {
     final response = await manager.send<CourseListModel, CourseListModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: 'course/list/' + studentId,
+      urlSuffix: 'course/list/$studentId',
       parseModel: CourseListModel(),
       method: RequestType.GET,
       options: Options(headers: {
@@ -153,7 +152,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<DetailModel?> getOneCourseStudentControl(String studentId, String id, String token) async {
     final response = await manager.send<DetailModel, DetailModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: 'course/' + id,
+      urlSuffix: 'course/$id',
       parseModel: DetailModel(),
       method: RequestType.POST,
       data: {'studentId': studentId},
@@ -190,7 +189,7 @@ class CourseService extends ICourseService with ServiceHelper {
   Future<CourseModel?> leaveCourseControl(String id, String courseId, String token) async {
     final response = await manager.send<CourseModel, CourseModel>(
       NetworkRoutes.STUDENT.rawValue,
-      urlSuffix: 'course/leave/' + id,
+      urlSuffix: 'course/leave/$id',
       parseModel: CourseModel(),
       method: RequestType.DELETE,
       data: {'courseId': courseId},
@@ -224,49 +223,30 @@ class CourseService extends ICourseService with ServiceHelper {
 
   @override
   Future<void> takeAttendance(String date, String id, String token, File file) async {
-    final mimeType = await file.path.toString().trim().split('.').last;
-    final originalFile = await file.path.toString().trim().split('/').last;
+    final mimeType = file.path.toString().trim().split('.').last;
+    final originalFile = file.path.toString().trim().split('/').last;
     final formData = FormData.fromMap({
       "image": await MultipartFile.fromFile(file.path,
           filename: originalFile, contentType: MediaType("image", mimeType)),
     });
-    try {
-      final baseUrl = dotenv.env['APP_API_SITE'].toString();
-      await manager.uploadFile(
-        baseUrl + NetworkRoutes.TEACHER.rawValue + "course/takeattendance/$id/$date",
-        formData,
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $token',
-          HttpHeaders.acceptHeader: '*/*',
-          HttpHeaders.acceptEncodingHeader: 'gzip, deflate, br',
-          HttpHeaders.connectionHeader: 'keep-alive',
-        },
-      );
-    } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
-        print('Catched');
-      }
-      if (e.type == DioErrorType.connectTimeout) {
-        print('Check your connection');
-      }
 
-      if (e.type == DioErrorType.receiveTimeout) {
-        print('Unable to connect to the server');
-      }
-
-      if (e.type == DioErrorType.other) {
-        print('Something went wrong');
-      }
-      print(e);
-    } catch (e) {
-      print(e);
-    }
+    final baseUrl = dotenv.env['APP_API_SITE'].toString();
+    await manager.uploadFile(
+      "$baseUrl${NetworkRoutes.TEACHER.rawValue}course/takeattendance/$id/$date",
+      formData,
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.acceptHeader: '*/*',
+        HttpHeaders.acceptEncodingHeader: 'gzip, deflate, br',
+        HttpHeaders.connectionHeader: 'keep-alive',
+      },
+    );
   }
 
   @override
   Future<ManageAttendanceModel?> showAttendance(String date, String id, String token) async {
     final response = await manager.send<ManageAttendanceModel, ManageAttendanceModel>(
-      NetworkRoutes.TEACHER.rawValue + '/course/showattendance/$id/$date',
+      '${NetworkRoutes.TEACHER.rawValue}/course/showattendance/$id/$date',
       parseModel: ManageAttendanceModel(),
       method: RequestType.GET,
       options: Options(headers: {
