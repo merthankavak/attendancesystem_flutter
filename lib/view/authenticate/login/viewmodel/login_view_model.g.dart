@@ -6,10 +6,11 @@ part of 'login_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$LoginViewModel on _LoginViewModelBase, Store {
-  final _$isRegisterAtom = Atom(name: '_LoginViewModelBase.isRegister');
+  late final _$isRegisterAtom =
+      Atom(name: '_LoginViewModelBase.isRegister', context: context);
 
   @override
   bool get isRegister {
@@ -24,7 +25,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_LoginViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_LoginViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -39,7 +41,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
-  final _$isLockAtom = Atom(name: '_LoginViewModelBase.isLock');
+  late final _$isLockAtom =
+      Atom(name: '_LoginViewModelBase.isLock', context: context);
 
   @override
   bool get isLock {
@@ -54,8 +57,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
-  final _$fetchLoginSeviceAsyncAction =
-      AsyncAction('_LoginViewModelBase.fetchLoginSevice');
+  late final _$fetchLoginSeviceAsyncAction =
+      AsyncAction('_LoginViewModelBase.fetchLoginSevice', context: context);
 
   @override
   Future<void> fetchLoginSevice(String typeOfUser) {
@@ -63,8 +66,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
         .run(() => super.fetchLoginSevice(typeOfUser));
   }
 
-  final _$fetchRegisterServiceAsyncAction =
-      AsyncAction('_LoginViewModelBase.fetchRegisterService');
+  late final _$fetchRegisterServiceAsyncAction =
+      AsyncAction('_LoginViewModelBase.fetchRegisterService', context: context);
 
   @override
   Future<void> fetchRegisterService(BuildContext context, String typeOfUser) {
@@ -72,8 +75,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
         .run(() => super.fetchRegisterService(context, typeOfUser));
   }
 
-  final _$_LoginViewModelBaseActionController =
-      ActionController(name: '_LoginViewModelBase');
+  late final _$_LoginViewModelBaseActionController =
+      ActionController(name: '_LoginViewModelBase', context: context);
 
   @override
   void isLoadingChange() {

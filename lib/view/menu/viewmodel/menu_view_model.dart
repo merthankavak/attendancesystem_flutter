@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../core/base/model/base_view_model.dart';
+import '../../../core/base/viewmodel/base_view_model.dart';
 import '../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
@@ -16,7 +16,7 @@ class MenuViewModel = _MenuViewModelBase with _$MenuViewModel;
 
 abstract class _MenuViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
 
   List<MenuModel> menuItems = [];
 

@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/base/model/base_view_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
@@ -17,7 +17,7 @@ class OnBoardViewModel = _OnBoardViewModelBase with _$OnBoardViewModel;
 
 abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
   List<OnBoardModel> onBoardItems = [];
 
   @observable

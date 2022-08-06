@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
+
 part 'bounding_box_model.g.dart';
 
 @JsonSerializable()

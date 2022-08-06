@@ -6,7 +6,7 @@ part of 'course_detail_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
   Computed<ManageAttendanceModel?>? _$manageAttendanceModelsComputed;
@@ -35,8 +35,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
               name: '_CourseDetailViewModelBase.courseStudentAttendanceStatus'))
           .value;
 
-  final _$detailModelAtom =
-      Atom(name: '_CourseDetailViewModelBase.detailModel');
+  late final _$detailModelAtom =
+      Atom(name: '_CourseDetailViewModelBase.detailModel', context: context);
 
   @override
   DetailModel? get detailModel {
@@ -51,8 +51,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$manageAttendanceModelAtom =
-      Atom(name: '_CourseDetailViewModelBase.manageAttendanceModel');
+  late final _$manageAttendanceModelAtom = Atom(
+      name: '_CourseDetailViewModelBase.manageAttendanceModel',
+      context: context);
 
   @override
   ManageAttendanceModel? get manageAttendanceModel {
@@ -68,8 +69,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$currentIndexAtom =
-      Atom(name: '_CourseDetailViewModelBase.currentIndex');
+  late final _$currentIndexAtom =
+      Atom(name: '_CourseDetailViewModelBase.currentIndex', context: context);
 
   @override
   int get currentIndex {
@@ -84,7 +85,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_CourseDetailViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_CourseDetailViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -99,8 +101,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$statusArrayAtom =
-      Atom(name: '_CourseDetailViewModelBase.statusArray');
+  late final _$statusArrayAtom =
+      Atom(name: '_CourseDetailViewModelBase.statusArray', context: context);
 
   @override
   List<dynamic> get statusArray {
@@ -115,8 +117,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
     });
   }
 
-  final _$getCourseDetailAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.getCourseDetail');
+  late final _$getCourseDetailAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.getCourseDetail',
+      context: context);
 
   @override
   Future<void> getCourseDetail(String typeOfUser, String courseId) {
@@ -124,8 +127,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.getCourseDetail(typeOfUser, courseId));
   }
 
-  final _$sendCourseDetailViewAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.sendCourseDetailView');
+  late final _$sendCourseDetailViewAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.sendCourseDetailView',
+      context: context);
 
   @override
   Future<void> sendCourseDetailView(String typeOfUser, String courseId) {
@@ -133,8 +137,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.sendCourseDetailView(typeOfUser, courseId));
   }
 
-  final _$sendCourseSchduleViewAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.sendCourseSchduleView');
+  late final _$sendCourseSchduleViewAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.sendCourseSchduleView',
+      context: context);
 
   @override
   Future<void> sendCourseSchduleView(String typeOfUser, String courseId) {
@@ -142,8 +147,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.sendCourseSchduleView(typeOfUser, courseId));
   }
 
-  final _$sendCourseDetailSettingsViewAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.sendCourseDetailSettingsView');
+  late final _$sendCourseDetailSettingsViewAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.sendCourseDetailSettingsView',
+      context: context);
 
   @override
   Future<void> sendCourseDetailSettingsView(
@@ -152,8 +158,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.sendCourseDetailSettingsView(typeOfUser, courseId));
   }
 
-  final _$sendCourseAttendanceViewAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.sendCourseAttendanceView');
+  late final _$sendCourseAttendanceViewAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.sendCourseAttendanceView',
+      context: context);
 
   @override
   Future<void> sendCourseAttendanceView(
@@ -162,8 +169,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.sendCourseAttendanceView(typeOfUser, courseId, date));
   }
 
-  final _$updateCourseAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.updateCourse');
+  late final _$updateCourseAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.updateCourse', context: context);
 
   @override
   Future<void> updateCourse(String courseId, String typeOfUser) {
@@ -171,8 +178,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.updateCourse(courseId, typeOfUser));
   }
 
-  final _$addCourseScheduleAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.addCourseSchedule');
+  late final _$addCourseScheduleAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.addCourseSchedule',
+      context: context);
 
   @override
   Future<void> addCourseSchedule(String courseId, String typeOfUser) {
@@ -180,8 +188,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.addCourseSchedule(courseId, typeOfUser));
   }
 
-  final _$takeAttendanceStatusAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.takeAttendanceStatus');
+  late final _$takeAttendanceStatusAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.takeAttendanceStatus',
+      context: context);
 
   @override
   Future<void> takeAttendanceStatus(
@@ -190,8 +199,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.takeAttendanceStatus(typeOfUser, date, id, file));
   }
 
-  final _$manageAttendanceStatusAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.manageAttendanceStatus');
+  late final _$manageAttendanceStatusAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.manageAttendanceStatus',
+      context: context);
 
   @override
   Future<void> manageAttendanceStatus(
@@ -200,8 +210,9 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.manageAttendanceStatus(typeOfUser, date, id));
   }
 
-  final _$showAttendanceStatusAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.showAttendanceStatus');
+  late final _$showAttendanceStatusAsyncAction = AsyncAction(
+      '_CourseDetailViewModelBase.showAttendanceStatus',
+      context: context);
 
   @override
   Future<void> showAttendanceStatus(String date, String id) {
@@ -209,8 +220,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.showAttendanceStatus(date, id));
   }
 
-  final _$showPickerAsyncAction =
-      AsyncAction('_CourseDetailViewModelBase.showPicker');
+  late final _$showPickerAsyncAction =
+      AsyncAction('_CourseDetailViewModelBase.showPicker', context: context);
 
   @override
   Future<void> showPicker(
@@ -219,8 +230,8 @@ mixin _$CourseDetailViewModel on _CourseDetailViewModelBase, Store {
         .run(() => super.showPicker(viewModel, context, index));
   }
 
-  final _$_CourseDetailViewModelBaseActionController =
-      ActionController(name: '_CourseDetailViewModelBase');
+  late final _$_CourseDetailViewModelBaseActionController =
+      ActionController(name: '_CourseDetailViewModelBase', context: context);
 
   @override
   void changeIndex(int index) {

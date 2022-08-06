@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_pickers/image_pickers.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/base/model/base_view_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../_product/_utility/decoration_helper.dart';
@@ -23,7 +23,7 @@ class ProfileViewModel = _ProfileViewModelBase with _$ProfileViewModel;
 
 abstract class _ProfileViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
   GlobalKey<ScaffoldState> profileScaffoldKey = GlobalKey();
   GlobalKey<FormState> profileStudentChangeUsernameFormKey = GlobalKey();
   GlobalKey<FormState> profileTeacherChangeUsernameFormKey = GlobalKey();
@@ -57,7 +57,7 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    helper = DecorationHelper(context: context);
+    helper = DecorationHelper(context: baseContext);
     profileService = ProfileService(vexanaManager!.networkManager, profileScaffoldKey);
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();

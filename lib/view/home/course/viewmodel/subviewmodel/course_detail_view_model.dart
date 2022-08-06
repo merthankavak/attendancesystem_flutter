@@ -17,9 +17,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_pickers/image_pickers.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../../../core/base/model/base_view_model.dart';
 import '../../../../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../../../../core/constants/navigation/navigation_constants.dart';
+import '../../../../../core/base/viewmodel/base_view_model.dart';
 
 part 'course_detail_view_model.g.dart';
 
@@ -27,7 +27,8 @@ class CourseDetailViewModel = _CourseDetailViewModelBase with _$CourseDetailView
 
 abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
+
   GlobalKey<ScaffoldState> detailScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> detailSettingsScaffoldKey = GlobalKey();
   GlobalKey<ScaffoldState> attendanceViewScaffoldKey = GlobalKey();
@@ -43,6 +44,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
   TextEditingController? courseEndDateController;
   TextEditingController? courseStartTimeController;
   TextEditingController? courseEndTimeController;
+
   late DecorationHelper helper;
   late ICourseService courseService;
 
@@ -75,7 +77,7 @@ abstract class _CourseDetailViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    helper = DecorationHelper(context: context);
+    helper = DecorationHelper(context: baseContext);
     courseService = CourseService(vexanaManager!.networkManager, detailScaffoldKey);
     courseStartDateController = TextEditingController();
     courseEndDateController = TextEditingController();

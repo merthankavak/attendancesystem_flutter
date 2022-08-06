@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../../core/base/model/base_view_model.dart';
+import '../../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../../_product/_widgets/dialog/resend_alert_dialog.dart';
 import '../../model/forgot_password_model.dart';
@@ -16,7 +16,7 @@ class ConfirmOtpViewModel = _ConfirmOtpViewModelBase with _$ConfirmOtpViewModel;
 
 abstract class _ConfirmOtpViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   GlobalKey<FormState> formStateConfirmOtp = GlobalKey();

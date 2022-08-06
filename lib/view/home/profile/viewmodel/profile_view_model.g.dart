@@ -6,7 +6,7 @@ part of 'profile_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
   Computed<TeacherModel?>? _$teacherModelComputed;
@@ -24,7 +24,8 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
               name: '_ProfileViewModelBase.studentModel'))
       .value;
 
-  final _$isLoadingAtom = Atom(name: '_ProfileViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_ProfileViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -39,8 +40,9 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
-  final _$studentProfileResponseModelAtom =
-      Atom(name: '_ProfileViewModelBase.studentProfileResponseModel');
+  late final _$studentProfileResponseModelAtom = Atom(
+      name: '_ProfileViewModelBase.studentProfileResponseModel',
+      context: context);
 
   @override
   StudentProfileResponseModel? get studentProfileResponseModel {
@@ -56,8 +58,9 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
-  final _$teacherProfileResponseModelAtom =
-      Atom(name: '_ProfileViewModelBase.teacherProfileResponseModel');
+  late final _$teacherProfileResponseModelAtom = Atom(
+      name: '_ProfileViewModelBase.teacherProfileResponseModel',
+      context: context);
 
   @override
   TeacherProfileResponseModel? get teacherProfileResponseModel {
@@ -73,8 +76,8 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
-  final _$changePasswordAsyncAction =
-      AsyncAction('_ProfileViewModelBase.changePassword');
+  late final _$changePasswordAsyncAction =
+      AsyncAction('_ProfileViewModelBase.changePassword', context: context);
 
   @override
   Future<void> changePassword(BuildContext context, String typeOfUser) {
@@ -82,8 +85,9 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.changePassword(context, typeOfUser));
   }
 
-  final _$updateStudentProfilePictureAsyncAction =
-      AsyncAction('_ProfileViewModelBase.updateStudentProfilePicture');
+  late final _$updateStudentProfilePictureAsyncAction = AsyncAction(
+      '_ProfileViewModelBase.updateStudentProfilePicture',
+      context: context);
 
   @override
   Future<void> updateStudentProfilePicture(String typeOfUser, Media file) {
@@ -91,8 +95,9 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.updateStudentProfilePicture(typeOfUser, file));
   }
 
-  final _$updateStudentFullNameAsyncAction =
-      AsyncAction('_ProfileViewModelBase.updateStudentFullName');
+  late final _$updateStudentFullNameAsyncAction = AsyncAction(
+      '_ProfileViewModelBase.updateStudentFullName',
+      context: context);
 
   @override
   Future<void> updateStudentFullName(String typeOfUser) {
@@ -100,8 +105,9 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.updateStudentFullName(typeOfUser));
   }
 
-  final _$updateTeacherFullNameAsyncAction =
-      AsyncAction('_ProfileViewModelBase.updateTeacherFullName');
+  late final _$updateTeacherFullNameAsyncAction = AsyncAction(
+      '_ProfileViewModelBase.updateTeacherFullName',
+      context: context);
 
   @override
   Future<void> updateTeacherFullName(String typeOfUser) {
@@ -109,8 +115,8 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.updateTeacherFullName(typeOfUser));
   }
 
-  final _$getUserInformationAsyncAction =
-      AsyncAction('_ProfileViewModelBase.getUserInformation');
+  late final _$getUserInformationAsyncAction =
+      AsyncAction('_ProfileViewModelBase.getUserInformation', context: context);
 
   @override
   Future<void> getUserInformation(String typeOfUser) {
@@ -118,15 +124,16 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.getUserInformation(typeOfUser));
   }
 
-  final _$logutAppAsyncAction = AsyncAction('_ProfileViewModelBase.logutApp');
+  late final _$logutAppAsyncAction =
+      AsyncAction('_ProfileViewModelBase.logutApp', context: context);
 
   @override
   Future<void> logutApp() {
     return _$logutAppAsyncAction.run(() => super.logutApp());
   }
 
-  final _$_ProfileViewModelBaseActionController =
-      ActionController(name: '_ProfileViewModelBase');
+  late final _$_ProfileViewModelBaseActionController =
+      ActionController(name: '_ProfileViewModelBase', context: context);
 
   @override
   void changeLoading() {

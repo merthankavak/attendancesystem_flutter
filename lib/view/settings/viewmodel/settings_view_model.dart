@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/base/model/base_view_model.dart';
+import '../../../core/base/viewmodel/base_view_model.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/init/lang/language_manager.dart';
 import '../../../core/init/notifier/theme_notifier.dart';
@@ -17,7 +17,7 @@ class SettingsViewModel = _SettingsViewModelBase with _$SettingsViewModel;
 
 abstract class _SettingsViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   late DecorationHelper helper;
 
@@ -29,21 +29,19 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    helper = DecorationHelper(context: context);
+    helper = DecorationHelper(context: baseContext);
   }
 
   @action
   Future<void> changeAppTheme() async {
-    if (context != null) {
-      context!.read<ThemeNotifier>().changeTheme();
-    }
+    baseContext.read<ThemeNotifier>().changeTheme();
   }
 
   @action
   Future<void> changeAppLocalization(Locale? locale) async {
     if (locale != null) {
       appLocale = locale;
-      await context?.setLocale(locale);
+      await baseContext.setLocale(locale);
     }
   }
 

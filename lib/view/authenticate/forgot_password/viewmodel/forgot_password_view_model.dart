@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/base/model/base_view_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../model/forgot_password_model.dart';
 import '../service/IForgotPasswordService.dart';
@@ -14,7 +14,7 @@ class ForgotPasswordViewModel = _ForgotPasswordViewModelBase with _$ForgotPasswo
 
 abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 

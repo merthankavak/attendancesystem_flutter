@@ -6,10 +6,11 @@ part of 'settings_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SettingsViewModel on _SettingsViewModelBase, Store {
-  final _$appLocaleAtom = Atom(name: '_SettingsViewModelBase.appLocale');
+  late final _$appLocaleAtom =
+      Atom(name: '_SettingsViewModelBase.appLocale', context: context);
 
   @override
   Locale? get appLocale {
@@ -24,7 +25,8 @@ mixin _$SettingsViewModel on _SettingsViewModelBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_SettingsViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_SettingsViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -39,16 +41,17 @@ mixin _$SettingsViewModel on _SettingsViewModelBase, Store {
     });
   }
 
-  final _$changeAppThemeAsyncAction =
-      AsyncAction('_SettingsViewModelBase.changeAppTheme');
+  late final _$changeAppThemeAsyncAction =
+      AsyncAction('_SettingsViewModelBase.changeAppTheme', context: context);
 
   @override
   Future<void> changeAppTheme() {
     return _$changeAppThemeAsyncAction.run(() => super.changeAppTheme());
   }
 
-  final _$changeAppLocalizationAsyncAction =
-      AsyncAction('_SettingsViewModelBase.changeAppLocalization');
+  late final _$changeAppLocalizationAsyncAction = AsyncAction(
+      '_SettingsViewModelBase.changeAppLocalization',
+      context: context);
 
   @override
   Future<void> changeAppLocalization(Locale? locale) {
@@ -56,8 +59,8 @@ mixin _$SettingsViewModel on _SettingsViewModelBase, Store {
         .run(() => super.changeAppLocalization(locale));
   }
 
-  final _$_SettingsViewModelBaseActionController =
-      ActionController(name: '_SettingsViewModelBase');
+  late final _$_SettingsViewModelBaseActionController =
+      ActionController(name: '_SettingsViewModelBase', context: context);
 
   @override
   void changeLoading() {

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/base/model/base_view_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../_product/_utility/decoration_helper.dart';
@@ -23,7 +23,7 @@ class CourseViewModel = _CourseViewModelBase with _$CourseViewModel;
 
 abstract class _CourseViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   GlobalKey<FormState> floatingActionFormStudent = GlobalKey();
@@ -62,7 +62,7 @@ abstract class _CourseViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    helper = DecorationHelper(context: context);
+    helper = DecorationHelper(context: baseContext);
     courseService = CourseService(vexanaManager!.networkManager, scaffoldKey);
     courseCodeController = TextEditingController();
     courseShortNameController = TextEditingController();

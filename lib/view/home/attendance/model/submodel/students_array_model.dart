@@ -1,6 +1,7 @@
-import 'package:attendancesystem_flutter/view/home/course/model/submodel/image/boundingBox/bounding_box_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
+
+import '../../../course/model/submodel/image/boundingBox/bounding_box_model.dart';
 
 part 'students_array_model.g.dart';
 

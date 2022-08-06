@@ -5,7 +5,7 @@ import '../../init/navigation/navigation_service.dart';
 import '../../init/network/vexana_manager.dart';
 
 abstract class BaseViewModel {
-  BuildContext? context;
+  late BuildContext baseContext;
   VexanaManager? vexanaManager = VexanaManager.instance;
   VexanaManager get vexanaManagerComputed => VexanaManager.instance;
   NavigationService navigation = NavigationService.instance;

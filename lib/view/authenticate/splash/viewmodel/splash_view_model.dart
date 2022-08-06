@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/base/model/base_view_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/constants/enums/preferences_keys_enum.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import 'device_and_cache.dart';
@@ -15,7 +15,7 @@ class SplashViewModel = _SplashViewModelBase with _$SplashViewModel;
 
 abstract class _SplashViewModelBase with Store, BaseViewModel, DeviceAndCache {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => baseContext = context;
 
   @observable
   String? token;
@@ -50,8 +50,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel, DeviceAndCache {
   }
 
   Future<void> startAnimationOnView() async {
-    if (context == null) return;
-    await Future.delayed(context!.durationLow);
+    await Future.delayed(baseContext.durationLow);
     _changeFirstInit();
   }
 

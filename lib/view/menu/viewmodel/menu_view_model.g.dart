@@ -6,7 +6,7 @@ part of 'menu_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$MenuViewModel on _MenuViewModelBase, Store {
   Computed<String>? _$typeOfUsersComputed;
@@ -17,7 +17,8 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
               name: '_MenuViewModelBase.typeOfUsers'))
           .value;
 
-  final _$currentIndexAtom = Atom(name: '_MenuViewModelBase.currentIndex');
+  late final _$currentIndexAtom =
+      Atom(name: '_MenuViewModelBase.currentIndex', context: context);
 
   @override
   int get currentIndex {
@@ -32,7 +33,8 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_MenuViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_MenuViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -47,7 +49,8 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
     });
   }
 
-  final _$typeOfUserAtom = Atom(name: '_MenuViewModelBase.typeOfUser');
+  late final _$typeOfUserAtom =
+      Atom(name: '_MenuViewModelBase.typeOfUser', context: context);
 
   @override
   String get typeOfUser {
@@ -62,38 +65,40 @@ mixin _$MenuViewModel on _MenuViewModelBase, Store {
     });
   }
 
-  final _$changeIndexAsyncAction =
-      AsyncAction('_MenuViewModelBase.changeIndex');
+  late final _$changeIndexAsyncAction =
+      AsyncAction('_MenuViewModelBase.changeIndex', context: context);
 
   @override
   Future<void> changeIndex(int index) {
     return _$changeIndexAsyncAction.run(() => super.changeIndex(index));
   }
 
-  final _$completeToMenuAsyncAction =
-      AsyncAction('_MenuViewModelBase.completeToMenu');
+  late final _$completeToMenuAsyncAction =
+      AsyncAction('_MenuViewModelBase.completeToMenu', context: context);
 
   @override
   Future<void> completeToMenu() {
     return _$completeToMenuAsyncAction.run(() => super.completeToMenu());
   }
 
-  final _$sendToPageAsyncAction = AsyncAction('_MenuViewModelBase.sendToPage');
+  late final _$sendToPageAsyncAction =
+      AsyncAction('_MenuViewModelBase.sendToPage', context: context);
 
   @override
   Future<void> sendToPage(String path) {
     return _$sendToPageAsyncAction.run(() => super.sendToPage(path));
   }
 
-  final _$logutAppAsyncAction = AsyncAction('_MenuViewModelBase.logutApp');
+  late final _$logutAppAsyncAction =
+      AsyncAction('_MenuViewModelBase.logutApp', context: context);
 
   @override
   Future<void> logutApp() {
     return _$logutAppAsyncAction.run(() => super.logutApp());
   }
 
-  final _$_MenuViewModelBaseActionController =
-      ActionController(name: '_MenuViewModelBase');
+  late final _$_MenuViewModelBaseActionController =
+      ActionController(name: '_MenuViewModelBase', context: context);
 
   @override
   void getToken() {

@@ -6,7 +6,7 @@ part of 'course_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CourseViewModel on _CourseViewModelBase, Store {
   Computed<StudentModel?>? _$studentModelComputed;
@@ -31,8 +31,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
               name: '_CourseViewModelBase.courseList'))
       .value;
 
-  final _$courseListModelAtom =
-      Atom(name: '_CourseViewModelBase.courseListModel');
+  late final _$courseListModelAtom =
+      Atom(name: '_CourseViewModelBase.courseListModel', context: context);
 
   @override
   CourseListModel? get courseListModel {
@@ -47,8 +47,9 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
     });
   }
 
-  final _$studentProfileResponseModelAtom =
-      Atom(name: '_CourseViewModelBase.studentProfileResponseModel');
+  late final _$studentProfileResponseModelAtom = Atom(
+      name: '_CourseViewModelBase.studentProfileResponseModel',
+      context: context);
 
   @override
   StudentProfileResponseModel? get studentProfileResponseModel {
@@ -64,8 +65,9 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
     });
   }
 
-  final _$teacherProfileResponseModelAtom =
-      Atom(name: '_CourseViewModelBase.teacherProfileResponseModel');
+  late final _$teacherProfileResponseModelAtom = Atom(
+      name: '_CourseViewModelBase.teacherProfileResponseModel',
+      context: context);
 
   @override
   TeacherProfileResponseModel? get teacherProfileResponseModel {
@@ -81,7 +83,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_CourseViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_CourseViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -96,8 +99,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
     });
   }
 
-  final _$getCoursesListAsyncAction =
-      AsyncAction('_CourseViewModelBase.getCoursesList');
+  late final _$getCoursesListAsyncAction =
+      AsyncAction('_CourseViewModelBase.getCoursesList', context: context);
 
   @override
   Future<void> getCoursesList(String typeOfUser) {
@@ -105,8 +108,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.getCoursesList(typeOfUser));
   }
 
-  final _$deleteCourseAsyncAction =
-      AsyncAction('_CourseViewModelBase.deleteCourse');
+  late final _$deleteCourseAsyncAction =
+      AsyncAction('_CourseViewModelBase.deleteCourse', context: context);
 
   @override
   Future<void> deleteCourse(String courseId, String typeOfUser) {
@@ -114,8 +117,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.deleteCourse(courseId, typeOfUser));
   }
 
-  final _$leaveCourseAsyncAction =
-      AsyncAction('_CourseViewModelBase.leaveCourse');
+  late final _$leaveCourseAsyncAction =
+      AsyncAction('_CourseViewModelBase.leaveCourse', context: context);
 
   @override
   Future<void> leaveCourse(String courseId, String typeOfUser) {
@@ -123,8 +126,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.leaveCourse(courseId, typeOfUser));
   }
 
-  final _$getUserInformationAsyncAction =
-      AsyncAction('_CourseViewModelBase.getUserInformation');
+  late final _$getUserInformationAsyncAction =
+      AsyncAction('_CourseViewModelBase.getUserInformation', context: context);
 
   @override
   Future<void> getUserInformation(String typeOfUser) {
@@ -132,8 +135,9 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.getUserInformation(typeOfUser));
   }
 
-  final _$floatingButtonControlAsyncAction =
-      AsyncAction('_CourseViewModelBase.floatingButtonControl');
+  late final _$floatingButtonControlAsyncAction = AsyncAction(
+      '_CourseViewModelBase.floatingButtonControl',
+      context: context);
 
   @override
   Future<void> floatingButtonControl(BuildContext context, String typeOfUser) {
@@ -141,8 +145,8 @@ mixin _$CourseViewModel on _CourseViewModelBase, Store {
         .run(() => super.floatingButtonControl(context, typeOfUser));
   }
 
-  final _$_CourseViewModelBaseActionController =
-      ActionController(name: '_CourseViewModelBase');
+  late final _$_CourseViewModelBaseActionController =
+      ActionController(name: '_CourseViewModelBase', context: context);
 
   @override
   void _changeLoading() {

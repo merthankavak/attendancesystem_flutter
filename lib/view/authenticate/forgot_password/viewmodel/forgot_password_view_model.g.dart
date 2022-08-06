@@ -6,10 +6,11 @@ part of 'forgot_password_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
-  final _$isLoadingAtom = Atom(name: '_ForgotPasswordViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_ForgotPasswordViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,8 +25,9 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
     });
   }
 
-  final _$fetchSendOtpCodeToEmailAsyncAction =
-      AsyncAction('_ForgotPasswordViewModelBase.fetchSendOtpCodeToEmail');
+  late final _$fetchSendOtpCodeToEmailAsyncAction = AsyncAction(
+      '_ForgotPasswordViewModelBase.fetchSendOtpCodeToEmail',
+      context: context);
 
   @override
   Future<void> fetchSendOtpCodeToEmail(String typeOfUser) {
@@ -33,8 +35,8 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
         .run(() => super.fetchSendOtpCodeToEmail(typeOfUser));
   }
 
-  final _$_ForgotPasswordViewModelBaseActionController =
-      ActionController(name: '_ForgotPasswordViewModelBase');
+  late final _$_ForgotPasswordViewModelBaseActionController =
+      ActionController(name: '_ForgotPasswordViewModelBase', context: context);
 
   @override
   void _changeLoading() {

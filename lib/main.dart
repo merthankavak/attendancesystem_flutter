@@ -17,11 +17,10 @@ Future<void> main() async {
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
-      supportedLocales: LanguageManager.instance.supportedLocales,
-      path: ApplicationConstants.LANG_ASSET_PATH,
-      startLocale: LanguageManager.instance.enLocale,
-      child: const MyApp(),
-    ),
+        supportedLocales: LanguageManager.instance.supportedLocales,
+        path: ApplicationConstants.LANG_ASSET_PATH,
+        startLocale: LanguageManager.instance.enLocale,
+        child: const MyApp()),
   ));
 }
 
@@ -40,13 +39,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: context.watch<ThemeNotifier>().currentTheme,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      onGenerateRoute: NavigationRoute.instance.generateRoute,
-      navigatorKey: NavigationService.instance.navigatorKey,
-    );
+        debugShowCheckedModeBanner: false,
+        theme: context.watch<ThemeNotifier>().currentTheme,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        onGenerateRoute: NavigationRoute.instance.generateRoute,
+        navigatorKey: NavigationService.instance.navigatorKey);
   }
 }
