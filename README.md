@@ -102,7 +102,7 @@ flutter run
   </tr>
   <tr>
      <td><img src="screenshots/createcourse.jpg" width="270" height="480"></td>
-     <td><img src="screenshots/teacher_addSchedule.jpg" width=270 height=480></td>
+     <td><img src="screenshots/teacher_Addschedule.jpg" width=270 height=480></td>
      <td><img src="screenshots/teacher_3dot.jpg" width=270 height=480></td>
   </tr>
  </table>
