@@ -17,8 +17,8 @@ dependencies:
 
   #Network
   http: ^0.13.4
-  dio: ^4.0.4
-  vexana: ^2.5.0
+  dio: ^5.0.3
+  vexana: ^3.4.1
 
   #Core
   intl: ^0.17.0
@@ -45,7 +45,7 @@ dependencies:
   cached_network_image: ^3.2.0
   full_screen_image: any
   flutter_svg: ^0.23.0+1
-  lottie: ^1.2.1
+  lottie: ^2.3.0
   pin_code_fields: ^7.3.0
   timer_count_down: ^2.2.0
   share_plus: ^4.0.10
